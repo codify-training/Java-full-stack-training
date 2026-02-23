@@ -1,0 +1,38 @@
+Java Intro:
+----------------
+Imagine this.
+
+You wake up in the morning.
+Your alarm rings.
+You unlock your phone.
+Order breakfast.
+Travel to office.
+Attend online meetings.
+Swipe your card.
+Watch a movie at night.
+
+You just used Java… without writing a single line of it.
+
+Why does world trust Java?
+Stable - Systems runs for years without crashing.
+Secure - Java has security layers that cant be break easily
+Scalable - Even your app/website traffic goes from 10 users to a million users, Java has good features to handles your app work smoothly. 
+Portable - Write once and run anywhere.
+
+
+Smartphones: 
+  All your apps in IOS or Android uses java.
+Banks & Financial systems: 
+   t/f money, swiping a card, processing some transaction ex. NEFT.
+Airlines and Railways: 
+   Ticket booking, seat allocation, reservations, feedback systems.
+Smart Devices & Tv's:
+   smart TV's or android TV's, barcode scanners.
+Cars & IOT:
+   Self driving cars & music systems.
+
+Java lives in all these places.
+
+Download the below tools.
+IntelliJ Idea - https://www.jetbrains.com/idea/download/?section=windows
+JDK 25 - https://www.oracle.com/in/java/technologies/downloads/#jdk25-windows
