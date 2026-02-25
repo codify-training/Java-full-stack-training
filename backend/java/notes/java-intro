@@ -116,6 +116,7 @@ Java promises - I wll support your old code.
 Java 8 still works today in the current version of java25.
 Because of this (BC) java is running for many yeas and is gaining the trust of huge organizations. 
 
+
 --------------------------------------------------------------------
 Hellworld program
 class HelloWorld
@@ -134,13 +135,70 @@ class HelloWorld
 
 String[] args
      Used to receive command line argument.
+     to pass argument from command line ex: java ClassName arg1 arg2 arg3
 
 System.out.println("Hello World")
   System - Build in class
   out - output stream
   println - print line
 
-
+To compile - javac Filename.java
+  Once we compile a java file we get .class file.
+To Run - java ClassName
+to pass args from command line ex: java ClassName arg1 arg2 arg3
+  Accessing them 
+      System.out.println("arg 0 : "+ args[0]);
+      System.out.println("arg 1 : "+ args[1]);
+      System.out.println("arg 2 : "+ args[2]);
 
 Class 
-Object.
+  A class is blueprint or template.
+   -> it defines what data an object will have and what action it can perform.
+   ->  Class does not occupy memory by itself.
+   class Car{
+      //data, variables, properties
+      String color;
+      int speed;
+      // Method, function, behaviour
+      void drive(){
+         System.out.println("drive")
+      }
+      void displayCarProps(){
+         System.out.println("Color: "+color + " Speed: "+ speed)
+      }
+   }
+
+Object:
+  An object is instane of class. It respresent real thing created from class.
+  Car myCar = new Car();
+  myCar - Object  
+  new Car() - Using this statement car object will be created.
+  Car - It represents type of object.
+
+  myCar.color = "red";
+  myCar.speed = 100
+  myCar.drive();
+  myCar.displayCarProps();
+
+  Car myNewCar = new Car();
+  myNewCar.color = "white";
+  myNewCar.speed = 200
+  myNewCar.drive();
+  myNewCar.displayCarProps();
+
+
+------------------------------------------------
+
+Assessment:
+   - HelloWorldProgram - compile and run.
+   - Class Bird - 
+       properties - weight, height, color.
+       Behaviuor - 
+          doFly() - print "bird can fly"
+          displayBirdProps - print output as --- weight : 100 height : 200cms  color - red
+
+Use 2 bird objects and print the props like Car class i have mentioned.     
+           
+
+
+
