@@ -1,0 +1,118 @@
+/* Day: 2 Covered Css Topics */
+
+.main {
+  margin: 20px 30px 40px 50px;
+}
+
+img {
+  width: 600px;
+}
+
+#padding-style {
+  width: fit-content;
+  border: black solid 2px;
+  background: wheat;
+  padding: 10px 20px 20px 5px;
+  margin: 40px;
+}
+
+button {
+  padding: 7px;
+}
+
+.para {
+  color: blue;
+  font-family: sans-serif;
+  font-weight: normal;
+  font-style: oblique;
+  font-size: 60px;
+  text-align: center;
+  text-decoration: underline;
+  text-transform: lowercase;
+}
+
+h1 {
+  font-size: 60px;
+  color: #194d33;
+  background: rgb(226, 134, 88);
+  border-color: rgb(18, 18, 114);
+  border-radius: 50px;
+}
+
+button {
+  border-radius: 40px;
+  background: #194d33;
+  border: none;
+  padding: 10px;
+  color: white;
+  font-size: 20px;
+  font-family: serif;
+  text-transform: capitalize;
+}
+
+/* Day: 2 Covered Css Topics */
+
+.main {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border: black 1px solid;
+}
+
+.around-space {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  border: black 1px solid;
+}
+
+.center-space {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  border: black 1px solid;
+}
+
+.end-space {
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  align-items: center;
+  gap: 20px;
+  border: black 1px solid;
+}
+
+.even-space {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  border: black 1px solid;
+}
+
+/* mobile devices/screens */
+@media (max-width: 576px) {
+  .main {
+    background-color: aquamarine;
+  }
+}
+
+/* tabs/ipads */
+@media (min-width: 577px) and (max-width: 768px) {
+  .main {
+    display: block;
+    background-color: blue;
+  }
+}
+
+/* desktops/laptops/PCs */
+@media (min-width:769px)  {
+  .main{
+    background-color: brown;
+    display: block;
+  }
+}

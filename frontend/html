@@ -1,0 +1,671 @@
+Day 2 — HTML File Structure & Basic CSS Styling
+
+1. Creating an HTML File
+Steps to Create an HTML File:
+
+1. Open VS Code 
+2. Create a new file
+3. Save with .html extension
+Ex:  index.html
+
+2. Basic HTML Document Structure
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+</head>
+<body>
+</body>
+</html>
+
+3. Meta Tags
+Character Encoding:
+<meta charset="UTF-8">
+
+Responsive Design:
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+4. Adding CSS Inside HTML (Internal CSS)
+
+<style>
+p {
+    color: blue;
+}
+</style>
+5. CSS Selectors
+Element Selector Example:
+p {
+    color: blue;
+}
+Div Styling:
+div {
+    background-color: aqua;
+}
+Image Styling:
+img {
+    width: 400px;
+}
+6. Class and ID Attributes
+Class Example:
+<div class="div1">
+CSS:
+.div1 {
+    background-color: yellow;
+}
+ID Example:
+<div id="div2">
+CSS:
+#div2 {
+    background-color: pink;
+}
+7. Adding Images
+Local Image:
+<img src="./sample.jpg" alt="">
+Online Image:
+<img src="https://example.com/image.jpg" alt="">
+8. Complete Example
+<!DOCTYPE html>
+<html>
+<head>
+<title>Day 2 Practice</title>
+<style>
+div{
+    background-color:aqua;
+}
+p{
+    color:blue;
+}
+img{
+    width:400px;
+}
+</style>
+</head>
+<body>
+<div class="div1">
+    <h1>I am h1</h1>
+    <h2>I am h2</h2>
+</div>
+<div id="div2">
+    <h3>I am h3</h3>
+    <h4>I am h4</h4>
+</div>
+<p>This is para 1</p>
+<p>This is para 2</p>
+<img src="./sample.jpg" alt="">
+<img src="https://example.com/image.jpg" alt="">
+</body>
+</html>
+Concepts Covered — Day 2
+• Creating HTML files
+• HTML page structure
+• Meta tags
+• Internal CSS
+• CSS selectors
+• Class & ID usage
+• Adding local and online images
+ 
+
+Day: 3
+1. Margin vs Padding (The Box Model Basics)
++---------------------------+
+|        Margin             |  ← space outside the box
+|  +---------------------+  |
+|  |      Border         |  |
+|  |  +---------------+  |  |
+|  |  |   Padding     |  |  | ← space inside the box
+|  |  | +-----------+ |  |  |
+|  |  | | Content   | |  |  |
+|  |  | +-----------+ |  |  |
+|  |  +---------------+  |  |
+|  +---------------------+  |
++---------------------------+
+
+Padding = Space inside the element
+
+It pushes the content away from the border.
+
+Margin = Space outside the element
+
+It creates distance between this element and other elements.
+
+
+2. Padding Example
+
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+.box {
+  background-color: lightblue;
+  padding: 20px;
+  border: 2px solid blue;
+}
+</style>
+</head>
+<body>
+
+<div class="box">
+  This text has padding around it.
+</div>
+
+</body>
+</html>
+
+You can also control sides individually:
+padding-top: 10px;
+padding-right: 20px;
+padding-bottom: 10px;
+padding-left: 20px;
+
+padding: 10px 20px;  /* top-bottom | left-right */
+padding: 10px 20px 30px 50px; 
+padding: 10px 20px 30px 40px; /* top | right | bottom | left */
+
+3. Margin Example
+<style>
+.box {
+  background-color: lightgreen;
+  padding: 10px;
+  margin: 30px;
+  border: 2px solid green;
+}
+</style>
+
+<div class="box">Box 1</div>
+<div class="box">Box 2</div>
+
+You can also control sides individually:
+margin-top: 10px;
+margin-right: 20px;
+margin-bottom: 10px;
+margin-left: 20px;
+
+margin: 20px;              /* all sides */
+margin: 10px 30px;         /* top-bottom | left-right */
+margin: 10px 20px 30px 40px; /* top | right | bottom | left */
+
+Difference
+
+| Property | Space Location | Use Case                         |
+| -------- | -------------- | -------------------------------- |
+| Padding  | Inside border  | Increase space around content    |
+| Margin   | Outside border | Create distance between elements |
+
+5. CSS Imports
+<head>
+  <link rel="stylesheet" href="filename.css">
+</head>
+
+6. Usage of External Css File
+External CSS means writing styles in a separate file (like style.css) and linking it to your HTML pages.
+Easy Maintainence
+
+Benefits:
+1. Reuse Across Multiple Pages
+
+One CSS file can style many pages.
+
+If your site has:
+
+home.html
+contact.html
+
+All can use the same style.css.
+Result: Same design everywhere.
+
+2. Easy Maintenance
+
+If you want to change the heading color:
+h1 {
+  color: red;
+}
+
+3. Faster Loading
+
+Browsers cache CSS files.
+After first load, pages load faster.
+
+4. Better Team Work
+
+Designers work on CSS
+Developers work on HTML/logic
+
+<!-- index.html -->
+ <head>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <h1>Welcome</h1>
+  <p>This is a website.</p>
+</body>
+
+<!-- contact.html -->
+ <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <link rel="stylesheet" href="main.css">
+   
+</head>
+
+<body>
+    <div id="padding-style">
+        i am naveen
+    </div>
+</body>
+
+</html>
+
+
+2. Text Styling Properties in CSS
+
+2.1 font-size
+
+Controls the size of text.
+
+p {
+  font-size: 16px;
+}
+
+Other units:
+
+px (pixels)
+em
+rem
+%
+
+Example:
+
+h1 {
+  font-size: 32px;
+}
+
+2.2 font-family
+
+Controls the font style.
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+Always provide fallback fonts:
+
+font-family:  serif;
+Common families:
+sans-serif (modern)
+serif (traditional)
+monospace (coding style)
+
+
+2.3 font-weight
+Controls thickness of text.
+
+p {
+  font-weight: bold;
+}
+
+Values:
+normal
+bold
+lighter
+bolder
+Numbers: 100 to 900
+
+Example:
+
+h1 {
+  font-weight: 700;
+}
+
+
+2.4 font-style
+
+Controls italic text.
+
+p {
+  font-style: italic;
+}
+
+Values:
+normal
+italic
+oblique
+
+
+2.5 text-align
+
+Controls alignment.
+
+p {
+  text-align: center;
+}
+
+
+Values:
+left
+right
+center
+
+
+2.6 text-decoration
+
+Used for underline, remove link underline, etc.
+
+a {
+  text-decoration: none;
+}
+
+Values:
+underline
+none
+line-through
+overline
+
+
+2.7 line-height
+
+Controls space between lines.
+
+p {
+  line-height: 1.6;
+}
+
+Improves readability.
+
+
+2.8 color
+
+Changes text color.
+
+h1 {
+  color: red;
+}
+
+Also:
+color: #333;
+color: rgb(255, 0, 0);
+color: blue;
+
+
+3. Combined Example
+
+HTML
+
+<link rel="stylesheet" href="style.css">
+
+<h1 class="title">My Website</h1>
+<p class="content">This is a sample paragraph.</p>
+
+
+<!-- giving styles in css file -->
+style.css
+body {
+  font-family: Arial, sans-serif;
+}
+
+.title {
+  font-size: 32px;
+  font-weight: bold;
+  text-align: center;
+  color: #2c3e50;
+}
+
+.content {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #555;
+}
+
+
+
+<!-- Day 3 – Flexbox & Media Queries -->
+1️. Flexbox Layout
+What is Flexbox?
+Flexbox (Flexible Box Layout) is a CSS layout model used to:
+a. Align items easily
+b. Distribute space between elements
+c. Build responsive layouts
+d. Control row and column structures
+
+<div class="container">
+  <!-- inner blocks -->
+</div>
+
+.container {
+  display: flex;
+}
+
+2️. Flex Direction – Row
+
+By default, flex items are placed in a row (left to right).
+Example:
+<div class="container">
+  <div class="box">Box 1</div>
+  <div class="box">Box 2</div>
+  <div class="box">Box 3</div>
+</div>
+
+.container {
+  display: flex;
+  flex-direction: row;   /* default */
+  gap: 10px;
+}
+
+.box {
+  background-color: lightblue;
+  padding: 20px;
+  border: 1px solid blue;
+}
+
+3️. Flex Direction – Column
+
+When we change direction to column, items stack vertically.
+Usage:
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+Output:
+
+Box1
+Box2
+Box3
+
+4️. Important Flexbox Properties
+
+a. justify-content: center;
+
+    <div class="center-space">
+        <div>
+            conatiner 1
+        </div>
+         <div>
+            conatiner 2
+        </div>
+         <div>
+            conatiner 3
+        </div>
+         <div>
+            conatiner 4
+        </div>
+         <div>
+            conatiner 5
+        </div>
+    </div>
+
+.center-space {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  border: black 1px solid;
+}
+
+b. justify-content: space-between;
+
+<div class="main">
+        <div>
+            conatiner 1
+        </div>
+         <div>
+            conatiner 2
+        </div>
+         <div>
+            conatiner 3
+        </div>
+         <div>
+            conatiner 4
+        </div>
+         <div>
+            conatiner 5
+        </div>
+</div>
+
+.main {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border: black 1px solid;
+}
+
+c. justify-content: space-around;
+
+
+    <div class="around-space">
+        <div>
+            conatiner 1
+        </div>
+         <div>
+            conatiner 2
+        </div>
+         <div>
+            conatiner 3
+        </div>
+         <div>
+            conatiner 4
+        </div>
+         <div>
+            conatiner 5
+        </div>
+    </div>
+
+.around-space {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  border: black 1px solid;
+}
+
+
+d. justify-content: space-evenly;
+
+<div class="even-space">
+        <div>
+            conatiner 1
+        </div>
+         <div>
+            conatiner 2
+        </div>
+         <div>
+            conatiner 3
+        </div>
+         <div>
+            conatiner 4
+        </div>
+         <div>
+            conatiner 5
+        </div>
+    </div> 
+
+    .even-space {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  border: black 1px solid;
+}
+
+5. Media Queries (Responsiveness)
+
+What is Responsiveness?
+Responsiveness means:-
+a. Website adjusts layout based on screen size
+b. Works on mobile, tablet, desktop  
+
+
+@media (max-width: 768px) {
+  /* CSS for smaller screens */
+}
+
+@media (min-width: 768px) {
+  /* CSS for smaller screens */
+}
+
+max-width → applies below this screen size
+min-width → applies above this screen size 
+
+Example:
+
+    <div class="main">
+        <div>
+            conatiner 1
+        </div>
+         <div>
+            conatiner 2
+        </div>
+         <div>
+            conatiner 3
+        </div>
+         <div>
+            conatiner 4
+        </div>
+         <div>
+            conatiner 5
+        </div>
+    </div>
+
+
+.main {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border: black 1px solid;
+}
+
+
+/* mobile devices/screens */
+@media (max-width: 576px) {
+  .main {
+    background-color: aquamarine;
+  }
+}
+
+/* tabs/ipads */
+@media (min-width: 577px) and (max-width: 768px) {
+  .main {
+    display: block;
+    background-color: blue;
+  }
+}
+
+/* desktops/laptops/PCs */
+@media (min-width:769px)  {
+  .main{
+    background-color: brown;
+    display: block;
+  }
+}
