@@ -164,6 +164,7 @@ Class
          System.out.println("drive")
       }
       void displayCarProps(){
+         int cardecsize = 10;
          System.out.println("Color: "+color + " Speed: "+ speed)
       }
    }
@@ -201,4 +202,77 @@ Use 2 bird objects and print the props like Car class i have mentioned.
            
 
 
+Varaiables and Methods:
+------------------------
+Variable: 
+    its a box that stores data.
 
+     Syntax -
+         datatype name = value;
+datatype - this defines which type of data we are keeping in the memory.
+name - reference to the data in the memory
+value - actual data.
+
+
+ex: int age = 25;
+    String name = "Akshay is ugly guy";
+    double salary = 5000.00; 
+
+Types of variables:
+----------------------
+local variables:
+   created and used inside the method.
+Instance variables: 
+    Created inside a class and outside method. Each object gets its own copy.
+static variables: 
+    Belongs to class, shared by all objects.
+
+Methods:
+---------
+    A block of code that can perform some work.
+    Method is used to (perform an action) or (perform task/action and return a result) 
+  Syntax: 
+       returnType methodName(parameters){
+         //code
+       }
+
+      No return No param
+      ----------------------
+      ex: void greet(){
+         
+            System.out.println(Hello");
+      }     
+
+      method with paramamters:
+      ----------------------------------
+         void printName(String name){
+            Syste.out.println("My Name is :"+name);
+         }
+         
+         object.printName("Akash");
+
+      method with multiple paramamters and return type :
+      --------------------------------------------------------
+         int doAdd(int a, int b, int c){
+            int d = a + b + c;
+            return d;
+         }
+
+         int result = doAdd(10, 20, 30);
+         sop("result: "+ result);
+
+      ----------------------------------------------------------
+      Write 3 classes:
+      class VoidNoParamDemo{
+         void greet(){
+         
+            System.out.println(Hello");
+      }   
+
+      psvm(){
+         VoidNoParamDemo voidNoParamDemo = new VoidNoParamDemo();
+         voidNoParamDemo.greet();
+
+      }
+      }
+      Class Names - VoidNoParamDemo, VoidParamDemo, ReturnResultMultiParamDemo
