@@ -669,3 +669,140 @@ Example:
     display: block;
   }
 }
+
+<!-- Day 4 Covered Topics -->
+1️. Navigation
+🔹 What is Navigation?
+=> Moving from one page to other page in the website.
+=> These navigation will be happened by using anchor element .
+
+Syntax:
+<a href="...">
+  text/button content
+</a>
+
+Example:
+
+    <div class="main">
+
+        <a href="index.html">
+            <div>
+                Home
+            </div>
+        </a>
+
+        <a href="contact.html" target="_blank">
+            <div>
+                Contact
+            </div>
+        </a>
+
+        <a href="grid.html">
+            <div>
+                Grid
+            </div>
+        </a>
+
+
+    </div>
+
+2. Phone Number Link
+<a href="tel:+917569559184" class="mail">
+        +91 7569559184
+</a>
+a. What is tel: ?
+tel: is used to create a clickable phone number link.
+
+When someone clicks this:
+📱 On mobile → It opens the dialer app
+💻 On desktop → It may open calling apps if installed in the system.
+
+href="tel:+917569559184"
+tel: → protocol for phone numbers
++91 → country code (India)
+7569559184 → phone number
+
+3.Email Link:
+<a href="mailto:unb1309@outlook.com" class="mail">
+    unb1309@outlook.com
+</a>
+
+What is mailto: ?
+
+mailto: is used to create a clickable email link.
+
+When someone clicks:
+
+📧 It opens the default email app
+Automatically fills the “To” field
+
+href="mailto:unb1309@outlook.com"
+mailto: → email protocol
+unb1309@outlook.com → recipient email
+
+Summary:
+
+| Type      | Purpose    | Opens     |
+| --------- | ---------- | --------- |
+| `tel:`    | Phone call | Dialer    |
+| `mailto:` | Send email | Email app |
+
+4. Hover Effect:
+=> Hover effect will change the default stylings/UI (User Interface) in webpage
+
+Example:
+ <button class="btn">open grid</button>
+
+ .btn {
+  background: red;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+p:hover {
+  color: brown;
+}
+
+5. Disabled State
+=> Disabled state will be seen in buttons mostly.
+=> Click event of the button will be turned Off.
+
+Example:
+ <button class="btn" disabled>open grid</button>
+.btn:disabled {
+  background: gray;
+}
+
+6. Difference between Flex box Layout and Grid Layout:
+
+🔹 Flexbox
+
+Flexbox is one-dimensional.
+It works either:
+In a row
+OR in a column
+
+Best for:
+Navigation bars
+Buttons
+Small layouts
+
+🔹 Grid
+
+Grid is two-dimensional.
+It works:
+In rows
+AND columns together
+
+Best for:
+Full page layouts
+Complex designs
+
+| Feature   | Flexbox         | Grid              |
+| --------- | --------------- | ----------------- |
+| Dimension | One-dimensional | Two-dimensional   |
+| Direction | Row OR Column   | Rows AND Columns  |
+| Best For  | Components      | Full Page layouts |
+| Alignment | Easy alignment  | Exact/accurate placement |
