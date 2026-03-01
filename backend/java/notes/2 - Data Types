@@ -1,0 +1,31 @@
+Data Types:
+---------------
+  It tells what kind of data you are storing inside a variable.
+EX: int i = 10;
+    int - dataType 
+
+1. Primitive Data Type
+     4 categories:
+        Integer - It holds whole number.
+            byte  - 1byte size - 
+              byte j; - 8 bits - 2power of 8 - (-127 to 127)
+            short - 
+                2bytes - 16bits - 2 power 16 - (-32768 to 32767)
+            int   -
+                4 bytes - 32bits - 2 power 32
+            long  -
+                8 bytes - 64bits - 2 power 64 - It should have l suffix
+                long num = 10l
+        Floating - this has percision storage
+           float  - 4bytes - this has less precision holding capacity
+               float num = 10.2f
+           double - 8 bytes - this has more number and precision holding capacity
+           12.5 - 0.5 is called precision
+        character 
+            char- 2bytes - stores single character
+            ex - char ch = 'A'
+        Logical - 
+            boolean - 1bit - stores true or false.
+
+2. No-Primitive data type. 
+

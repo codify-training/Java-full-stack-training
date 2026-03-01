@@ -1,0 +1,3 @@
+Data Types:
+   create a class and declare and initialize all the 8 types and write an instance method and print all those 8 types values in that method.
+   write main method, create object and invoke the instance method.
