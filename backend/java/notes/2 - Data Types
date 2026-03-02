@@ -2,6 +2,9 @@ Data Types:
 ---------------
   It tells what kind of data you are storing inside a variable.
 EX: int i = 10;
+    int j = 20;
+    int z = 30;
+    int tes = 40;
     int - dataType 
 
 1. Primitive Data Type
@@ -28,4 +31,30 @@ EX: int i = 10;
             boolean - 1bit - stores true or false.
 
 2. No-Primitive data type. 
+    they dont store the value directly instead they store a referennce to where data lives in memory.  
+        String : 
+           String str = "Test";
+        Arrays/Colections:
+          int[] str = [10, 20, 30, 40, 50, 60, 70,80];
+          ArrayList<Integer> arr = new ArrayList(10, 20, 30);          
+        classes/interfaces:
+           User defined types.
+        Wrapper classes:
+          int - integer.
+              ex: Class Integer{
+                 int i;
+              }
+           byte - Byte   
+           short - Short
+           long - Long
+           float - Float
+           double - Double
+           char - Character
+           boolean - Boolean 
 
+    Primitive Types Vs Wrapper class
+      You cant assign null to primitive types. 
+      You can assign null to wrapper class.
+
+
+   

@@ -16,6 +16,9 @@ class InstanceStaticMethodDemo{
 public static void main(String[] args){
      InstanceStaticMethodDemo instanceObj = new InstanceStaticMethodDemo();
      instanceObj.greet();
+     int i = 10;
+     System.out.println(instanceObj.instanceVariable);
+     System.out.println(i);
 
      InstanceStaticMethodDemo.doGreetNoInstance();
 
