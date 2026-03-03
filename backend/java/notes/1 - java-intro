@@ -262,6 +262,20 @@ Methods:
          sop("result: "+ result);
 
       ----------------------------------------------------------
+      
+      There wont be something called multiple returns to a muthod.
+      int doAction(int a, int b, int c){
+            int d = a + b + c;
+            return d;
+
+           d = a + b -c
+           return d; // this is wrong.
+         }
+
+
+      
+      Assessment:
+      ------------------
       Write 3 classes:
       class VoidNoParamDemo{
          void greet(){
@@ -276,3 +290,40 @@ Methods:
       }
       }
       Class Names - VoidNoParamDemo, VoidParamDemo, ReturnResultMultiParamDemo
+      --------------------------------------------------------------------------
+
+      Types of Methods:
+         Instance Methods:
+             Needs an Obejct to access this instance method
+            EX:
+            class InstanceMethodDemo{
+               void greet(){
+                  sout("Hello Greeting");
+               }
+              psvm(){
+               InstanceMethodDemo instanceObj = new InstanceMethodDemo();
+               instanceObj.greet();
+              }
+
+            }
+
+
+         Static Methods: 
+              No need of object to acces ths, we can use just class name to access this method.
+           class InstanceMethodDemo{
+               static void greet(){
+                  sout("Hello Greeting");
+               }
+              psvm(){              
+               InstanceMethodDemo.greet();
+              }
+
+            }
+          
+
+
+Design Level thing:
+ For a method to be static you can have a 2 rule step.
+ 1) We should not use instance variable inside static method.
+ 2) if you are accessing this method in more than 1 classes, then you can keep method as static.
+     

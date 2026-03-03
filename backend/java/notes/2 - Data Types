@@ -1,0 +1,60 @@
+Data Types:
+---------------
+  It tells what kind of data you are storing inside a variable.
+EX: int i = 10;
+    int j = 20;
+    int z = 30;
+    int tes = 40;
+    int - dataType 
+
+1. Primitive Data Type
+     4 categories:
+        Integer - It holds whole number.
+            byte  - 1byte size - 
+              byte j; - 8 bits - 2power of 8 - (-127 to 127)
+            short - 
+                2bytes - 16bits - 2 power 16 - (-32768 to 32767)
+            int   -
+                4 bytes - 32bits - 2 power 32
+            long  -
+                8 bytes - 64bits - 2 power 64 - It should have l suffix
+                long num = 10l
+        Floating - this has percision storage
+           float  - 4bytes - this has less precision holding capacity
+               float num = 10.2f
+           double - 8 bytes - this has more number and precision holding capacity
+           12.5 - 0.5 is called precision
+        character 
+            char- 2bytes - stores single character
+            ex - char ch = 'A'
+        Logical - 
+            boolean - 1bit - stores true or false.
+
+2. No-Primitive data type. 
+    they dont store the value directly instead they store a referennce to where data lives in memory.  
+        String : 
+           String str = "Test";
+        Arrays/Colections:
+          int[] str = [10, 20, 30, 40, 50, 60, 70,80];
+          ArrayList<Integer> arr = new ArrayList(10, 20, 30);          
+        classes/interfaces:
+           User defined types.
+        Wrapper classes:
+          int - integer.
+              ex: Class Integer{
+                 int i;
+              }
+           byte - Byte   
+           short - Short
+           long - Long
+           float - Float
+           double - Double
+           char - Character
+           boolean - Boolean 
+
+    Primitive Types Vs Wrapper class
+      You cant assign null to primitive types. 
+      You can assign null to wrapper class.
+
+
+   
