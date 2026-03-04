@@ -28,13 +28,57 @@ class Student{
         sout("Name : "+ name);
     } 
 }
-
-
 Same Package
 Different package through inheritance only.
 
+
+Default:(No Keyword)
+--------
+If we dont specifify any access specifier keyword, then it will become default scope.
+
+class Student{
+    String name;
+    void printName(){
+        sout("Name : "+ name);
+    } 
+}
+
+Accessible within class 
+Accessible within same package.
+
+
+Private:
+----------
+Accessible wthin same class.
+Most retrictive
+Data hiding.
 
 
          Same Class | same Package | Different Package                                          | Entire Project
 public     Y                Y           Y                                                           Y
 protected  Y                Y           direct access No (Its possible using inheritence)           N
+Default    Y                Y           N                                                           N 
+private    Y                N           N                                                           N 
+
+
+Constructor:
+------------
+Contructor is special type of method used to create an object.
+   Student s = new Student()
+   Student() - this is the constructor.
+
+   Memory for object is created
+   Default values assigned
+   Variables are initialize.
+
+
+public class Student{
+    public String name;
+    int age;
+    public void printName(){
+        sout("Name : "+ name + "age " + age);
+    }
+    psvm(){
+       Student s1 = new Student();     
+    } 
+}
