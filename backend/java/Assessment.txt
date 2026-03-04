@@ -5,3 +5,40 @@ Data Types:
   Wrapper Types Assessment:
      create a class and declare and initialize all the 8 wrapper types and write an instance method and print all those 8 wrapper types values in that method.
    write main method, create object and invoke the instance method.
+
+Access Specifiers/Modifiers
+----------------------------
+Create a project in intellij and run hello world.
+Create 1 package name it as access-specifiers
+  inside  access-specifiers create 4 more packages.( 1. publicdemo, 2. protecteddemo 3. defaultdemo 4. privatedemo)
+  every packages - create 2 more packages in every demos packages. -  insidepackage outsidepackage 
+
+ Class student
+    int age;
+    string name;
+    void display(){
+      sout("age "+ age + " name "+ name)
+    }
+    psvm(){
+      student st = new student();
+      //acess varaibles 
+      //access methods
+    }
+
+
+Class CollegeInsidepackage{
+   psvm(){
+
+   }
+}  
+
+
+outsidepackage 
+   Class CollegetestOutsidePackage{
+   psvm(){
+
+   }
+}
+
+
+

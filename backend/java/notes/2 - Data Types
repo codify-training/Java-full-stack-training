@@ -44,7 +44,8 @@ EX: int i = 10;
               ex: Class Integer{
                  int i;
               }
-           byte - Byte   
+           byte - Byte  
+              Byte b = 20; 
            short - Short
            long - Long
            float - Float
@@ -56,5 +57,9 @@ EX: int i = 10;
       You cant assign null to primitive types. 
       You can assign null to wrapper class.
 
-
+Auboxing and Unboxing:
+  Java makes switching between primitive and wrapper classes easily through a feature called Autoboxing and unboxing.
+     Integer i = 10; // Auto boxing.
+     int j = i; // Auto unboxing.
    
+
