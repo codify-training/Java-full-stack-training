@@ -979,3 +979,163 @@ Photo galleries
 | Best For       | Components | Full layouts  |
 | Alignment      | Easy       | Very powerful |
 | Complex Layout | Limited    | Excellent     |
+
+
+<!-- Day - 06 Covered Topics  -->
+
+1. Input Text Field
+ <div class="username-container">
+  <label for="username">username</label>
+  <input type="text" id="username" name="username" />
+</div>
+
+This is GOOD practice 👍
+
+Because:
+It groups label + input together.
+Easy to style with CSS.
+Makes layout clean.
+
+What it does:
+
+type="text" → normal text input
+
+id="username" connects with label
+
+Why for="username"?
+
+It connects label to input.
+When user clicks label → input gets focused.
+
+2. Input Number
+<input type="number" id="number" />
+a. Allows only numbers.
+b. Browser will show up/down arrows.
+
+3. <input type="email" id="email" />
+Browser checks if format looks like:
+example : naveen@gmail.com
+
+4. <input type="password" id="password" />
+a. input/data will be filled like this -> *****
+
+5. <input type="date" id="date" />
+a. It shows a calendar picker.
+
+6. <input type="time" id="time" />
+a. It shows a calendar picker with 24 hour format.
+
+7. Radio buttons
+<input type="radio" name="gender" id="male" />
+<input type="radio" name="gender" id="female" />
+
+8. <input type="checkbox" id="check" />
+note: IDs must be unique
+
+9. Select Dropdown
+<select name="select" id="select">
+  <option value="">select</option>
+  <option value="1">one</option>
+  <option value="2">two</option>
+  <option value="3">three</option>
+</select>
+
+Allows user to choose one option.
+value will be sent to backend/server
+
+10. File Input
+<input type="file" name="file" id="file" />
+Allows user to upload files.
+
+11. Button field 
+<input type="button" value="click button" id="btn" />
+
+a. value -> button name
+
+<!-- full example -->
+ <!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form Page</title>
+    <!-- link css file -->
+    <link rel="stylesheet" href="css file" />
+  </head>
+  <body>
+    <h1>Basic Form</h1>
+
+    <br />
+
+    <form >
+      <div class="username-container">
+        <label for="username">username</label>
+        <input type="text" id="username" />
+      </div>
+
+      <div class="username-container">
+        <label for="num">number</label>
+        <input type="number" id="num" />
+      </div>
+
+      <div class="username-container">
+        <label for="email">Email</label>
+        <input type="email" id="email" />
+      </div>
+
+      <div class="username-container">
+        <label for="pwd">Password</label>
+        <input type="password" id="pwd" />
+      </div>
+
+      <div class="username-container">
+        <label for="email">date</label>
+        <input type="date" id="email" />
+      </div>
+
+      <div class="username-container">
+        <label for="time">time</label>
+        <input type="time" id="time" />
+      </div>
+
+      <div class="username-container">
+        <label for="male">
+          <input type="radio" id="male" name="gender" />
+          male
+        </label>
+
+        <label for="female">
+          <input type="radio" id="female" name="gender" />
+          female
+        </label>
+      </div>
+
+      <div class="username-container">
+        <label for="checkbox">Check box</label>
+        <input type="checkbox" id="checkbox" />
+      </div>
+
+      <div class="username-container">
+        <label for="select">Choose</label>
+        <select name="select" id="select">
+          <option value="">select</option>
+          <option value="1">one</option>
+          <option value="2">two</option>
+          <option value="3">three</option>
+        </select>
+      </div>
+
+      <div class="username-container">
+        <label for="file">select files</label>
+        <input type="file" name="file" id="file" />
+      </div>
+
+      <br />
+      <br />
+
+      <div class="username-container">
+        <input type="button" value="click button" id="btn" />
+      </div>
+    </form>
+  </body>
+</html>

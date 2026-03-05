@@ -116,3 +116,14 @@ button {
     display: block;
   }
 }
+
+/* form css */
+.username-container {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.form {
+  width: 500px;
+}
