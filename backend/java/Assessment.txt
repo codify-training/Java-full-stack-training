@@ -40,5 +40,40 @@ outsidepackage
    }
 }
 
+------------------------------------------------------------------------------------------------------------
+
+Constructrs:
+------------
+Employee - empCompanyName, empName, empSal, displayData(){display name and sal}
+create 2 constructors .
+default constructor
+  - keep company name - "theupskillhouse"
+parameter constructor - 
+  - pass empname, empsal and initialize  empName, empSal
+
+ main
+    when emp.displayData -   should print empname, empsal
+
+-------------------------------------------------------------------
+
+Operator:
+  Voter card application - 
+      class , age - variable,
+       age more than 18 then print eligible for voter application.
+       age less than 18 then not Eligible for  voter application.
+
+  Addition
+      create program to do addition of 4 variables.
+
+      method(a, b, c,d){do addition, return result}
+
+      main
+       create object, call method with 4 paramets values and print result.       
+
+
+
+
+
+
 
 
