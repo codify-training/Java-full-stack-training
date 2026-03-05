@@ -1139,3 +1139,162 @@ a. value -> button name
     </form>
   </body>
 </html>
+
+<!-- Day - 07 Covered Topics -->
+1. Header Tag
+
+The <header> element represents the top section of a webpage.
+It usually contains:
+Logo
+Navigation links
+Buttons
+Title
+
+Example:
+<header>
+  <div>
+    <img src="logo.png" alt="logo" width="70">
+  </div>
+
+  <div>
+    <a href="#">Home</a>
+    <a href="#">Articles</a>
+    <a href="#">Contact</a>
+  </div>
+
+  <div>
+    <button>Get Started</button>
+  </div>
+</header>
+
+Output:
+[ Logo ]   Home Articles Contact    [ Get Started ]
+
+2. Nav is also used like header. refer same example.
+
+3. Section Tag
+The <section> element groups related content together.
+
+  <section>
+  <div>Latest Articles</div>
+  <div>HTML Basics</div>
+  <div>CSS Basics</div>
+</section>
+
+Output:
+Latest Articles
+HTML Basics
+CSS Basics
+
+4. Lists in HTML
+Lists are used to display items in an organized format.
+There are two types of lists.
+
+a. 🔹 Ordered List (default: Numbered List)
+Uses the <ol> tag. 
+  <ol></ol>
+
+Example:
+  
+<ol>
+  <li>Naveen</li>
+  <li>Mahesh</li>
+  <li>Navitha</li>
+  <li>Jyostna</li>
+</ol>
+
+Output:
+1. Naveen
+2. Mahesh
+3. Navitha
+4. Jyostna
+
+🔹 Unordered List (default: Bullet List)
+
+Uses <ul> tag.
+Example:
+<ul>
+  <li>Naveen</li>
+  <li>Mahesh</li>
+  <li>Navitha</li>
+  <li>Jyostna</li>
+</ul>
+
+Output:
+• Naveen
+• Mahesh
+• Navitha
+• Jyostna
+
+5.Inline Styles
+Inline styles apply CSS directly inside an HTML tag.
+Syntax:
+<tag style="property:value;"></tag>
+
+Example-1:
+<h2 style="color: blue; font-size: 40px;">
+  Heading Example
+</h2>
+
+| Property          | Purpose                 |
+| ----------------- | ----------------------- |
+| `color`           | text color              |
+| `font-size`       | text size               |
+| `background`      | background color        |
+| `text-decoration` | underline, line-through |
+
+
+Example-2: Flex box example
+<div style="background: violet;">
+  <ul style="display:flex; gap:20px; list-style:none;flex-direction: row;">
+    <li>Naveen</li>
+    <li>Mahesh</li>
+    <li>Navitha</li>
+    <li>Jyostna</li>
+  </ul>
+</div>
+
+Output:
+Naveen   Mahesh   Navitha   Jyostna
+
+5. Footer Tag
+The <footer> tag is used for the bottom section of the website.
+
+Usually contains:
+
+Copyright
+Contact info
+Links
+Address
+Social media
+
+Example:
+<footer>
+
+  <div>
+
+    <div>
+      <img src="logo.png" width="80">
+    </div>
+
+    <div>
+      <ul>
+        <li>Home</li>
+        <li>Articles</li>
+        <li>About</li>
+      </ul>
+    </div>
+
+    <div>
+      <ul>
+        <li>Hyderabad, India</li>
+        <li>info@email.com</li>
+        <li>+91 9876543210</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <p>© 2026 All Rights Reserved</p>
+
+</footer>
