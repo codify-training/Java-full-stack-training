@@ -1298,3 +1298,195 @@ Example:
   <p>© 2026 All Rights Reserved</p>
 
 </footer>
+
+<!-- Day - 8 Covered Topics -->
+ 
+HTML provides elements to embed multimedia content like videos and audio directly in webpages.
+
+Common multimedia elements:
+
+<video> → For videos
+<audio> → For audio files
+<iframe> → To embed external content
+
+1.Video Element
+The <video> element is used to embed/insert videos from our local project in a webpage without external plugins.
+
+Supported formats include:
+a. MP4
+b .WebM
+
+Example-1:
+<video width="400" controls autoplay muted loop>
+  <source src="sample-video.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
+Example-2:
+<video src="demo.mp4" width="400" height="350" controls >
+  </video>
+
+Note: Both Examples will work.
+
+
+| Attribute  | Purpose                   |
+| ---------- | ------------------------- |
+| `width`    | Sets video width          |
+| `controls` | Shows play, pause, volume |
+| `<source>` | Defines video file        |
+
+Real-Time Usage
+
+Used in:
+Product demos
+Tutorials
+Landing pages
+Online courses (Training Institute Platforms)
+
+2.Audio Element
+The <audio> element is used to play sound files on webpages.
+
+Supported formats:
+MP3
+Ogg
+
+Example-1:
+<audio controls>
+  <source src="song.mp3" type="audio/mp3">
+  Your browser does not support the audio element.
+</audio>
+
+<audio src="sample-3s.mp3" controls loop autoplay></audio>
+
+
+| Attribute  | Purpose                  |
+| ---------- | ------------------------ |
+| `controls` | Shows play/pause buttons |
+| `autoplay` | Plays automatically      |
+| `loop`     | Repeats audio            |
+
+
+Real-Time Usage:
+
+Music websites
+Podcasts
+Meditation apps
+Language learning platforms
+
+3. Iframe Element
+The <iframe> element is used to embed another webpage inside your webpage. 
+
+Real-Time usage for embedding:
+YouTube videos
+Google Maps
+External websites
+Payment gateways
+
+
+Example-1:
+This is most common real-time uses of <iframe> on websites to show demonstartion videos in websites.
+<iframe 
+  width="560" 
+  height="315"
+  src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+  title="YouTube video">
+</iframe>
+
+Example-2:
+This is one of the most common real-time uses of <iframe> on websites (for contact/location pages).
+<iframe 
+  src="https://www.google.com/maps?q=Hyderabad&output=embed"
+  width="600"
+  height="400">
+</iframe>
+
+Output:
+What happens?
+Displays Google Map inside your webpage
+Users can see location directly
+
+Example-3:
+You can display documents like PDFs using iframe.
+<iframe src="Naveen Resume.pdf" width="700" height="550" frameborder="0"></iframe>
+
+Real time usage in:
+Resume display
+Documentation pages
+Online books
+Reports
+
+
+<!-- Javascript  -->
+4. Introduction to JavaScript
+
+🔹 What is JavaScript?
+JavaScript is a programming language used to make websites interactive.
+It is aslo called as brain of the website.
+HTML → Structure
+CSS → Design
+JavaScript → Functionality
+
+Example interactions:
+
+Button clicks
+Form validation
+Dynamic content updates
+Animations
+
+5. Importance of JavaScript
+JavaScript is important because it allows websites to:
+
+✔ Create dynamic content
+✔ Validate forms
+✔ Handle user events
+✔ Update page without refresh
+✔ Build modern web apps
+
+Real Examples
+Form validation
+Image sliders
+Dropdown menus
+Popups and modals
+
+6. How to add JavaScript into HTML?
+We can add Javascript with tag <script></script> direclty into HTML in the body Tag.This is called as Internal Adding.
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+  //  javascript code goes 
+</script>
+</body>
+</html>
+
+7. JavaScript Variables
+
+🔹 What are Variables?
+Variables are used to store data values.
+
+Example:
+
+Name
+Age
+Price
+User input
+
+Varibale defined with Examples:
+const name = "John"; -> String data type
+const age = 25;      -> Number data type
+const active=false;  -> boolean data type
+const number = 9.99;  -> float data type
+const data=null;      -> null data type
+const filtered = {}   -> object which is empty data type
+const values = {
+  1:"ok",
+  2:false
+}
+-> object which is having data with key, value pair.
+
+-> from the above examples const means javascript keyword.
+-> const is used to define variable of any data type in javascript.
