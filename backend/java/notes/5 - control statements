@@ -1,0 +1,36 @@
+Java Control statements:
+   This decides how the program flow.
+   1. which Code runs.
+   2. how many times it runs or i have a piece of code that should run multiple times
+   3. under what conditions it runs.
+
+1. Decision Making statement
+    These statements decide which block of code should run based on a condition.
+   1. If statement - Runs code only if codition is true 
+       if(condition){
+          //code to executec
+       }
+   2. if else statement
+       choose between 2 blocks of code.
+       if(condition){
+        //Code to execute when condition satisfies
+       }else{
+          //Code to execute when condition is not satisfied
+       }
+   3. if else if ladder
+       used when there are multiple conditions
+       if(condtion1){
+         // code to execute
+       } else if(condition){
+        //code to execute
+       } else if(condition){
+        //code to execute
+       }else{
+        //code to execute
+       }
+
+   4. swaitch statement.
+
+2. Looping statements
+3. Jump statements.
+
