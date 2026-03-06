@@ -71,9 +71,21 @@ Operator:
        create object, call method with 4 paramets values and print result.       
 
 
+1. Write a program to check whether a number is even or odd.
+  EX:
+  Input : 8 
+   output - Even number
+  Input : 9 
+  output - Odd number
 
-
-
-
-
+2. Write a program to check wether a number is positive, negitive or Zero
+  Input : 10 
+   output - Positive Number
+  Input : -10 
+  output - Negitive number
+  
+3. Largest of 3 numbers
+  ex: 20, 45, 30 
+  Output - Largest number is 45
+  
 
