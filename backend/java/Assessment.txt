@@ -88,4 +88,33 @@ Operator:
   ex: 20, 45, 30 
   Output - Largest number is 45
   
+Switch
+-------
+Print weeks in a day.
+1. - Day is sunday
+2. - Day is monday
+3. - Day is Tuesday
+4 
+5 
+6 
+7 - Day is saturday
+default:
+  sout("invalid entry given");
+
+
+Loops:
+-------
+Sum of n numbers.
+
+1 + 2 + 3 + 4 + 5
+
+input:
+5
+output:
+sum = 15
+
+
+
+
+
 
