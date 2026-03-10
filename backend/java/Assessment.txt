@@ -113,8 +113,47 @@ input:
 output:
 sum = 15
 
+10-03
+-------
+While Loop
+-----------
+Write a program to pickup input from user and sum them all. 
+when user enters zero, print the sum and exit loop and halt Program.
+Hint: Use while loop, refer to our session program for taking input from user 
 
+Do While
+Give options to the user to select from addition, substraction, multiplication and division.
+Ask user to enter 2 numbers, you have to use 2 nextInt() and keep it inside variables.
+Use switch stement and print the result.
 
+EX: 
+1. Addition
+2. Substraction
+3. Multiplication
+4. Division
+5. exit
+Enter your choice: 1
+Enter num1: 12
+Enter num2: 15
+Addition Result: 27
 
+1. Addition
+2. Substraction
+3. Multiplication
+4. Division
+5. exit
+Enter your choice: 2
+Enter num1: 15
+Enter num2: 12
+Substration Result: 3
+
+1. Addition
+2. Substraction
+3. Multiplication
+4. Division
+5. exit
+Enter your choice: 5
+
+Program Halted.
 
 
