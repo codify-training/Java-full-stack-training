@@ -1,3 +1,4 @@
+package org.example.control_statements.decisions;
 class SwitchStatementDemo{
 
     public static void main(String args[]){

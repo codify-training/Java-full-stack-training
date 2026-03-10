@@ -76,14 +76,62 @@ Java Control statements:
     1. initialization
     2. after initialiazation goes to condition and checks.
     3. if condition satisifies executes block of code.
-    4. goto inc/dec value will increment or decrement  
-    5. goto condition
+    4. goto inc/dec value will increment or decrement.  
+    5. goto condition.
     6. if true executes block of code else come out of loop.
 
 2. while loop
-3. do while loop
+   This is used to repeat a block of code whie a condtion is true.(Zero or more times.)
+  Syntax:
+     while(condition){
+      //block of code.
+     }
 
+    Steps:
+    1. The condition is cheked first.
+    2. when the condition is true block of code executes
+    3. After executing block of code again checks for condition.
+    4. Loop stops when condition is false. 
+
+3. do while loop
+    This is used to repeat a block of code atleast one time. (1 or more times)
+  do{
+      // Block of code
+  }while(condition);  
+  
+   Steps:
+      1. Execute code inside do.
+      2. check condition
+      3. if condition true - repeat.
+      4. if condition false - stop.
 
 
 3. Jump statements.
+
+   These statements are used to transfer control from one part to another part.
+
+   1. break - Stops the loop immediately and transfer control to outside of loop.
+   Ex: for(int i=0; i <=10; i++){
+           if(i == 5){
+               break;
+           }
+           System.out.println(i);
+       }
+   
+   2. continue - Skips the current iteration
+   ex: for(int i=0; i <=10; i++){
+            if(i == 5){
+                continue;
+            }
+            System.out.println("ayiyiuyiyui"+i);
+            System.out.println(i);
+            System.out.println("sdsdasdasd"+i);
+        }
+        print of 5 will be skipped.
+        oup - 1 2 3 4 6 7 8 9 10
+   3. return
+     return - stops the program and return control to the caller.
+       loop stops
+       entire metod stops
+       no code executes after return.
 

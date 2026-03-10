@@ -1,4 +1,4 @@
-package org.example.control_statements;
+package org.example.control_statements.decisions;
 
 public class If_else_StatementDemo {
     public static void main(String[] args) {
