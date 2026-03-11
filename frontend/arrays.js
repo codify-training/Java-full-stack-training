@@ -55,13 +55,18 @@ function a(parameters) {
 // old way of declaring varibles
 var details = "details";
 details = 10;
-details = 10;
-// console.log(details);
+details = 20;
+console.log(details);
 
 // block scope means anywhere  outside the function 
 let userData = "none";
 userData = "hello";
-// console.log(userData);
+console.log(userData);
+
+// block scope means anywhere  outside the function 
+const values = "none";
+values = "hello";
+console.log(values);
 
 
 function getUserDetails() {
