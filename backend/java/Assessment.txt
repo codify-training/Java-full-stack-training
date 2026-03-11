@@ -156,4 +156,41 @@ Enter your choice: 5
 
 Program Halted.
 
+---------------------------------------------------------------
+
+
+Student class 
+
+collegenme
+name1, name2, name3, name4, name5 take 5 variables.
+
+
+Student(name1, name2..name5){
+  ths(name1, name2, name3..name4);
+  this.name5 = name5
+  }
+  Student(name1, name2, name3..name4){
+    this(name1, name2, name3);
+    this.name4 = name4
+  }
+  Student(name1, name2, name3){
+    this(name1, name2);
+    this.name3 = name3
+  }
+  Student(name1, name2){
+    this(name1)
+    this.name2 = name2
+  }
+ Student(name1){
+    this();
+   this.name1 = name1
+  }
+   Student(){
+    college = "Narayana"
+  }
+  main(){
+    student("Ramesh", "Mahesh", "Hanish", ..."");
+    sout("Name1 : "+name1)
+  }
+
 

@@ -16,5 +16,4 @@ public class DoWhileLoop {
         }while(choice != 5);
         System.out.println("Program Halted");
     }
-
 }

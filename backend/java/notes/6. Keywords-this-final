@@ -1,0 +1,42 @@
+This Keyword:
+-------------
+This is a keyword and a reference varaible that refers to current Object. 
+
+1. Used to refer current object variable.
+  EX:
+   String name = "";
+    ThisKeywordDemo(String name){
+        this.name = name;
+    }
+
+2. Call current class constructor.
+   EX:  ThisKeywordDemoConstructor(){
+        this.stateName = "Andhra Pradesh";
+    }
+
+    ThisKeywordDemoConstructor(String name1, String name2){
+        this(name1);
+        this.name2 = name2;
+    }
+
+    ThisKeywordDemoConstructor(String name){
+        this();
+        this.name = name;
+    }
+  
+3. pass current object to method.
+     public void assignData(PassCurrentObjectAndReturnCurrObj obj){
+        obj.name1 = "test";
+    }
+     public PassCurrentObjectAndReturnCurrObj getCurrInstance(){
+         assignData(this); // Pass current object like this.
+         return this;
+     }
+4. return current object.
+EX:
+  public PassCurrentObjectAndReturnCurrObj getCurrInstance(){
+         assignData(this);
+         return this; // Return current object like this.
+     }
+
+
