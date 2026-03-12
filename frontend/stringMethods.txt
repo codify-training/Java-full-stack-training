@@ -1,0 +1,83 @@
+String Methods
+
+1. toLowerCase():
+Converts all characters in a string to lowercase.
+
+const text = "HELLO STUDENTS";
+
+console.log(text.toLowerCase());
+O/P: hello students
+
+2. toUpperCase():
+Converts all characters in a string to uppercase.
+
+O/P:
+HELLO JAVASCRIPT
+
+3. trim():
+Removes spaces from both the start and end of a string.
+
+const text = "   Hello World   ";
+O/P:
+console.log(text.trim());
+
+
+4. trimStart()
+
+Removes spaces from the beginning of a string.
+
+const text = "   JavaScript";
+console.log(text.trimStart());
+
+O/P:
+JavaScript
+
+5. trimEnd()
+
+Removes spaces from the end of a string.
+
+const text = "JavaScript   ";
+console.log(text.trimEnd());
+
+O/P:
+JavaScript
+
+6. charAt()
+
+Returns the character at a specific index position.
+Index starts from 0.
+
+const text = "JavaScript";
+
+console.log(text.charAt(0));
+console.log(text.charAt(4));
+
+O/P:
+J
+S
+
+Explanation:
+Index 0 → J
+Index 4 → S
+
+7. replace()
+
+Replaces a word or value in a string.
+
+const text = "I like Java";
+
+console.log(text.replace("Java", "JavaScript"));
+
+O/P:
+I like JavaScript
+
+
+| Method          | Purpose                       |
+| --------------- | ----------------------------- |
+| `toLowerCase()` | Convert text to lowercase     |
+| `toUpperCase()` | Convert text to uppercase     |
+| `trim()`        | Remove spaces from both sides |
+| `trimStart()`   | Remove spaces from beginning  |
+| `trimEnd()`     | Remove spaces from end        |
+| `charAt()`      | Get character by index        |
+| `replace()`     | Replace text                  |

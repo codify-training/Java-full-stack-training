@@ -1,0 +1,111 @@
+JavaScript Array Methods
+
+1.push()
+
+Adds a new element at the end of an array.
+
+Ex-1:
+const fruits = ["apple","banana"];
+fruits.push("mango");
+console.log(fruits);
+
+O/P:
+["apple","banana","mango"]
+
+Ex-2:
+const numbers = [1,2,true];
+numbers.push(4);
+console.log(numbers);
+
+O/P:
+[1,2,true,4]
+
+---------------------------------------------------------------------------------------
+
+2.slice()
+
+Extracts a portion of an array without changing the original array.
+
+Syntax:
+array.slice(startIndex, endIndex)
+
+Ex-1:
+const fruits = ["apple","banana","mango","grape"];
+const result = fruits.slice(1,3);
+console.log(result);
+
+O/P:
+["banana","mango"]
+
+Explanation: Start from index 1 and stop before 3.
+
+
+Ex-2:
+const numbers = [10,20,30,40,50];
+console.log(numbers.slice(2,4));
+O/P:
+[30,40]
+
+----------------------------------------------------------------------------
+
+3.splice()
+
+splice() is used to add, remove, or replace elements in an array.
+Note: It changes the original array.
+
+Syntax: 
+array.splice(startIndex/index number, deleteCount, newElement)
+
+Example 1 (Removing Elements):
+
+const fruits = ["apple","banana","mango","grape"];
+fruits.splice(1,2);
+console.log(fruits);
+
+O/P:
+["apple","grape"]
+
+Explanation:
+Start at index 1 and remove 2 elements.
+
+Example 2 (Adding Elements):
+const colors = ["red","blue","black"];
+const result =  colors.splice(1,1,"pink");
+
+// O/P: [ 'blue' ]
+console.log(result);
+
+// O/P: [ 'red', 'pink', 'black' ]
+console.log(colors);
+
+Example-3:
+const colorsData = ["red","blue","black"];
+const values = colorsData.splice(0,1,"pink");
+
+// O/P: [ 'red' ]
+console.log(values);
+Here: It will console the operation value i.e. red is at first position so index number will be 0, So red will be removed.So only blue, black remains. Those will be the output.
+
+// O/P: [pink, blue, black]
+console.log(colorsData);
+Here, As we see above we are removing 0th element/item and pink will be replaced at 1st postion i.e. 0th index number 
+
+Example-4:
+const numbers = [1,2,5,6];
+numbers.splice(2,0,3,4);
+console.log(numbers);
+
+O/P:
+[1,2,3,4,5,6]
+
+Explanation:
+Start at index 2
+Remove 0 elements
+Add 3 and 4
+
+
+| Method          | Purpose                       |
+| --------------- | ----------------------------- |
+| `push()`        | Add element at end of array   |
+| `slice()`       | Extract part of array         |
+| `splice()`      | Add/remove elements in array  |

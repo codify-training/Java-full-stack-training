@@ -126,8 +126,7 @@ Example:
 
 Output:
 
-6
-Division
+6. Division
 console.log(number / number1);
 
 Divides numbers.
