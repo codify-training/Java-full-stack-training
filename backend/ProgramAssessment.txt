@@ -1,0 +1,45 @@
+1. Right Triangle Pattern
+
+*
+**
+***
+****
+*****
+
+
+2. Reverse Triangle
+*****
+****
+***
+**
+*
+
+3. Pyramid Pattern
+    *
+   ***
+  *****
+ *******
+*********
+
+4. Number Triangle
+1
+12
+123
+1234
+12345
+
+5. Reverse Number Pattern
+12345
+1234
+123
+12
+1
+
+6. Fibonacci Series
+0 1 1 2 3 5 8 13
+
+7. Palindrome Number
+
+8. Swap two numbers
+
+9. Armstrong number
