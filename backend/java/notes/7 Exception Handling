@@ -1,0 +1,40 @@
+Exception Handling:
+----------------------
+An Exception is unexpected event that occurs during execution of program dusruption normal flow of instruction.
+When a program encounters an error, it creates an object(which line number, which class , full trace details) and handover it to JVM and JVM prints this object to the console.
+
+EX:
+public class ArithmeticOperators {
+    public static void main(String[] args) {
+        int a = 11;
+        int b = 0;
+        System.out.println("Division - "+ (a / b)); // Exception occurs here.
+        //Control wont come down.
+        System.out.println("Addition - "+ (a + b));
+        System.out.println("Susbtraction - "+ (a - b));
+
+    }
+}
+EX: trace:
+Exception in thread "main" java.lang.ArithmeticException: / by zero
+	at org.example.operators.ArithmeticOperators.main(ArithmeticOperators.java:9)
+
+Exception often happens bcz of below reasons:
+---------------------------------------------
+User Input: A user enters ABC instead of number.
+Hardware issue: Disk is full. When a program tries to create a file and if the disk is full, the file cant be created and the program fails.
+Physical Limmit:  We have 4 items and if we try to access 8th item the we get exception and progrm halts. 
+
+
+classifications:
+-----------------
+Fixable and Fatal
+  Fixable errors are the ones that a programmer can handle and recover it from exception. ArithmeticExeption, NullpointerExeption
+  Fatal errors are the ones that a programmer can t handle or cant be recovered.
+  OutofMemory, stackoverflow 
+
+Checked Exception Unchecked exceptions.
+
+
+
+

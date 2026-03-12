@@ -40,3 +40,25 @@ EX:
      }
 
 
+Final Keyword
+--------------
+1. To restrict modification we use final keyword.
+
+final keyword can be used with:
+  -> Variable
+  Syntax: final datatype varaiableName = value;
+  EX: final int i =10
+  
+-> Method
+  final returntype MethodName(){}
+  final void display(){
+    sout("Name is test");
+  }
+  -> We cant Override final method.
+   
+-> Class
+  final class classname{}
+  ex: final Class TestFinalDemo{}
+  We cant Extend final class.
+
+
