@@ -7,10 +7,8 @@ EX:
 public class ArithmeticOperators {
     public static void main(String[] args) {
         int a = 11;
-        int b = 0;
-        try{
+        int b = 0;        
         System.out.println("Division - "+ (a / b)); // Exception occurs here.
-        }
         //Control wont come down.
         System.out.println("Addition - "+ (a + b));
         System.out.println("Susbtraction - "+ (a - b));
@@ -21,6 +19,7 @@ EX: trace:
 Exception in thread "main" java.lang.ArithmeticException: / by zero
 	at org.example.operators.ArithmeticOperators.main(ArithmeticOperators.java:9)
 
+  
 Exception often happens bcz of below reasons:
 ---------------------------------------------
 User Input: A user enters ABC instead of number.
@@ -63,3 +62,25 @@ finally - Executes code regardless of wether an exception was thrown or not.
 finall{
   // Code to run regardless of wether exception occurs or not.
 }
+When a file is opened it has to closed
+When a DB connection is opened, it has to closed.
+
+
+Exception Heirarchy:
+--------------------
+                    
+                     Throwable
+                        |
+                        |
+           Errors                    Exceptions
+          --------                  -----------------          
+          OutofmemoryError                 |
+          StackoverFlowError        Checked               unchecked  
+          VirtualMachineError      ----------             ------------
+                                                          Exception
+                                                             |  
+                                    Exception            RuntimeException
+                                      |                      |
+                                  IOException             NullpointerException    
+                                  FileNotFoundException   ArithmeticException
+                                  SqlException            IllegalArgumentException

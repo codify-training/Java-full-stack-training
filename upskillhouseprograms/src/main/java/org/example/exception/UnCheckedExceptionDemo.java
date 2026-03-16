@@ -4,7 +4,7 @@ public class UnCheckedExceptionDemo {
 
     public static void main(String[] args) {
             int a = 11;
-            int b = 2;
+            int b = 0;
             try{
                 System.out.println("Division - "+ (a / b)); // Exception occurs here.
             }catch (ArithmeticException ex){
