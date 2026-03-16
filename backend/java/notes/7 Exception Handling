@@ -8,7 +8,9 @@ public class ArithmeticOperators {
     public static void main(String[] args) {
         int a = 11;
         int b = 0;
+        try{
         System.out.println("Division - "+ (a / b)); // Exception occurs here.
+        }
         //Control wont come down.
         System.out.println("Addition - "+ (a + b));
         System.out.println("Susbtraction - "+ (a - b));
@@ -33,8 +35,31 @@ Fixable and Fatal
   Fatal errors are the ones that a programmer can t handle or cant be recovered.
   OutofMemory, stackoverflow 
 
-Checked Exception Unchecked exceptions.
+Checked Exception & Unchecked exceptions.
+------------------------------------------
+1. Checked execption willl araise in compile time             1. Unchecked exception will araise in runtime.
+2. Checked exception must be handled using try catch          2. Explicit handling is not mandatory
+block or using throws key word.
+3. Subclass of Exception                                      3. Subclasses of RuntimeException
 
+Keywords in Exception handling:
+---------------------------------
+try   -  Identifies block of code where an exception might occur.
+  try{
+    //code
+  }
 
+catch - From the code inside try, we identify which type of error might occur and then we keep that error class inside catch block.
+catch(Exception ex){
+    //block of code
+}
+throw - Manually raise an exception using this keyword
+  throw new Exception()
+throws - Its a declaration in the method, that an error imight occur.
+  public void display() throws Exception{
 
-
+  }
+finally - Executes code regardless of wether an exception was thrown or not.
+finall{
+  // Code to run regardless of wether exception occurs or not.
+}
