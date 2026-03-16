@@ -194,3 +194,32 @@ Student(name1, name2..name5){
   }
 
 
+--------------------------------------------------------------------------------------------
+
+Create a method with age check, if age below 18 then throw a compile time IOException, In the declaration mention the checked exception you thrown.
+main method - call the age check method, hadle the exception here and print "Invalid Age for voting" , Final print message saying "AP Voter Association checking system" 
+even if voter is valid or invalid.
+
+
+Enter age : 16
+invalid age for voting
+AP Voter Association checking system
+Type 1 to continue or 0 to exit: 1
+
+Enter age : 20
+Voter age Eligible for voting
+AP Voter Association checking system
+Type 1 to continue or 0 to exit: 1
+
+Enter age : 25
+Voter age Eligible for voting
+AP Voter Association checking system
+Type 1 to continue or 0 to exit: 1
+
+Enter age : 10
+invalid age for voting
+AP Voter Association checking system
+Type 1 to continue or 0 to exit: 0
+
+
+0 exit the program.
