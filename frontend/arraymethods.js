@@ -75,3 +75,13 @@ console.log(clrs);
 // descending order
 clrs.sort((a,b) => b - a);
 console.log(clrs);
+
+// -----------------------------------------------
+
+// find() 
+const array = [3, 5, 10, true, "hello"];
+
+const secondArray = ["naveen", "mahesh", "jyo", 7, 9, 10, null]
+
+const newValue = secondArray.find((e) => e === null);
+console.log(newValue);

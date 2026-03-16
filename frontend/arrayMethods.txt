@@ -312,3 +312,182 @@ join()	Convert array to string
 reverse()	Reverse array
 sort()	Sort elements
 concat()	Combine arrays
+
+-------------------------------------------------------------------
+
+1. find()
+
+Returns the first element that matches a condition.
+
+Example 1
+const numbers = [5,10,15,20];
+
+const result = numbers.find(num => num > 10);
+
+console.log(result);
+
+Output
+15
+
+
+Example 2:
+const ages = [12,17,18,25];
+
+const adult = ages.find(age => age >= 18);
+console.log(adult);
+
+Output
+18
+
+
+2. filter()
+
+Returns all elements that match a condition.
+
+Example 1
+const numbers = [10,20,30,40];
+
+const result = numbers.filter(num => num > 20);
+
+console.log(result);
+
+Output
+[30,40]
+
+
+Example 2
+const ages = [12,18,25,16];
+
+const adults = ages.filter(age => age >= 18);
+
+console.log(adults);
+
+Output
+[18,25]
+
+3. map()
+
+Creates a new array by modifying each element.
+
+Example 1
+const numbers = [1,2,3];
+
+const result = numbers.map(num => num * 2);
+
+console.log(result);
+
+Output
+[2,4,6]
+
+Example 2
+const prices = [100,200,300];
+
+const discount = prices.map(price => price - 50);
+console.log(discount);
+
+Output:
+[50,150,250]
+
+4. Destructuring : the process of unpacking values from the objects or arrays into distinct varaibales; 
+
+//  Objects :
+const userData = {
+    username: "naveen",
+    age:23,
+    city: "hyderabad",
+    state:'AP'
+}
+
+console.log(userData.username);
+console.log(userData.age);
+
+output:
+naveen
+23
+
+// Arrays:
+const data = ["apple","mango","guava"];
+const [first,second] = data;
+console.log(first);
+console.log(second);
+
+output:
+apple
+mango
+
+
+--------------------------------------------------------------------------------
+
+JSON:
+JSON stands for JavaScript Object Notation.
+It is a lightweight data format used to store and exchange data between systems.
+JSON is a text format used to send and receive structured data.
+
+Example: When your React frontend sends login details to your Spring Boot backend, the data is usually sent in JSON format.
+
+JSON Basic Structure
+
+JSON stores data as key–value pairs.
+
+Data is in key : value format
+
+Keys must be inside double quotes
+
+Values can be:
+String
+Number
+Boolean
+Array
+Object
+Objects are inside {}
+Arrays are inside []
+
+Ex:
+{
+  "name": "Naveen",
+  "age": 25,
+  "city": "Hyderabad"
+}
+
+Explanation:
+| Key  | Value     |
+| ---- | --------- |
+| name | Naveen    |
+| age  | 25        |
+| city | Hyderabad |
+
+Ex: 2
+
+{
+  "name": "Naveen",
+  "age": 25,
+  "isEmployee": true,
+  "skills": ["Java", "Spring Boot", "Angular"]
+}
+
+Explanation:
+| Key        | Type    |
+| ---------- | ------- |
+| name       | String  |
+| age        | Number  |
+| isEmployee | Boolean |
+| skills     | Array   |
+
+
+Ex:3
+
+{
+  "name": "Naveen",
+  "address": {
+    "city": "Hyderabad",
+    "state": "Telangana",
+    "pincode": 500001
+  }
+}
+
+Explanation:
+
+| Key        | Type    |
+| ---------- | ------- |
+| name       | String  |
+| address    | Object  |
