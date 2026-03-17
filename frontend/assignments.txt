@@ -1,0 +1,64 @@
+1️. Write a program to find the student whose id is 3. use find() method
+const students = [
+  { id: 1, name: "Naveen", age: 23 },
+  { id: 2, name: "Rahul", age: 24 },
+  { id: 3, name: "Anita", age: 22 },
+  { id: 4, name: "Priya", age: 25 }
+];
+
+Expected Output:
+{ id: 3, name: "Anita", age: 22 }
+
+
+
+2. Find the first number greater than 50.
+const numbers = [10, 20, 45, 60, 30, 80];
+
+Explanation : Use find() to get the first number greater than 50.
+Expected output:
+60
+
+
+
+3.Filter even numbers from the array use filter() method
+
+const numbers = [5, 10, 15, 20, 25, 30];
+Expected output:
+[10, 20, 30]
+
+
+
+4. Filter employees with salary greater than 50000. use filter() method
+
+const employees = [
+  { name: "John", salary: 40000 },
+  { name: "David", salary: 60000 },
+  { name: "Sara", salary: 55000 },
+  { name: "Mike", salary: 30000 }
+];
+
+Expected Output:
+[
+ { name: "David", salary: 60000 },
+ { name: "Sara", salary: 55000 }
+]
+
+5. Convert numbers into their squares. use map() method
+const numbers = [1, 2, 3, 4, 5];
+
+Expected output:
+[1, 4, 9, 16, 25]
+
+
+6. Extract only names from users array. use map()
+
+const users = [
+  { id: 1, name: "Naveen" },
+  { id: 2, name: "Rahul" },
+  { id: 3, name: "Anita" }
+];
+
+return only name values not ids.
+
+Expected Output:
+["Naveen", "Rahul", "Anita"]
