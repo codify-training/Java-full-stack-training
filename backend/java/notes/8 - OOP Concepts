@@ -1,0 +1,58 @@
+OOP Concepts: Object Oriented Programming.
+ -> Oop is a way of writing programs by using Objects(real world things) instead of just functions and logics.
+ -> Oop Helps in breaking large application into smaller objects making systems easier to maintain.
+    
+ Lets take banking app.
+          Credit system, Salary Processing, Bank Employees, customers, Loans  
+
+  C program file
+   credit
+   salary
+   BankEmploee
+   Customer
+    - money credit
+    - Bal enq
+    - money Dep.
+   Loans
+     Give
+     Take load
+
+
+Credit
+  - data, logic
+Salary
+  - data, logic
+BankEmploee
+   - data -logic.
+Customer
+   - data -logic
+
+-> It allows Protects data, Code Reuse, Supports flexibilty, hides internal complexity.
+
+ Protects data using Encapsulation:
+ ----------------------------------
+ Encapsulation means wrapping of data(variables) and its method(functions) together into a single unit called class and restrict direct access to data.
+
+ class BankAccount{
+    private double balance = 0;
+
+    public void deposit(int amt){
+        if(amt > 40000){
+            System.out.println("verify aadhar and take amount");
+        }
+        balance = balance + amt;
+    }
+   public void withdrawl(int amt){
+        balance = balance - amt;
+    }
+   public double getBalance() {
+       return balance;
+   }
+ }
+
+Here balance is private so that no one from outside modify it directly, instead it is modified via methods.
+
+ Why encapsulation was designed.
+  -> Protect data.
+  -> Avoid unauthorized modifiction.
+
