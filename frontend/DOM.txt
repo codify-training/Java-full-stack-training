@@ -1,0 +1,160 @@
+What is DOM (Document Object Model)?
+
+The DOM (Document Object Model) is a programming interface for HTML documents. It represents the web page as a tree structure (like a family tree) where each element is a node/object.
+
+In simple terms:
+DOM = Your HTML page converted into objects that JavaScript can read and modify.
+
+Why DOM is Important?
+
+It allows JavaScript to:
+Change HTML content
+Change CSS styles
+Add or remove elements
+Handle events (click, input, change etc.)
+
+Ex:
+<!DOCTYPE html>
+<html>
+  <body>
+    <h1 id="title">Hello World</h1>
+    <p>This is a paragraph</p>
+  </body>
+</html>
+
+DOM Tree (simplified):
+
+Document
+  └── html
+       └── body
+            ├── h1 (id="title")
+            └── p
+
+Note: We can see this kind of structure in our developer tools by clicking on inspect of the current window.
+
+Example 1: Accessing an Element
+
+// html file 
+<h1 id="title">Hello World</h1>
+
+// js file
+const element = document.getElementById("title");
+
+Explanation: Accessing element from html through id using getElementById method.
+
+----------------------------------------------------------------------------------------
+
+Example 2: Changing Content
+// html file element
+<h1 id="title">Hello World</h1>
+
+// js file
+const element = document.getElementById("title");
+element.textContent = "hey! welcome back"
+Explanation: when ever our javascript file runs then h1 element will be change from Hello world to hey! welcome back
+
+---------------------------------------------------------------------------------------------------------
+
+Example 3: Changing Style
+
+<h1 id="title">Hello</h1>
+
+const el = document.getElementById("title");
+el.style.color = "red";
+el.style.fontSize = "40px";
+
+Explanation: Here, we can change color, fontsize etc.. from the javascript file when ever an event is happened like click event, mouse focus event etc..
+
+--------------------------------------------------------------------------------------------------------
+
+Example 4: Creating New Element
+
+<div id="container"></div>
+
+const headingElement = document.createElement("h2");
+headingElement.textContent = 'hello word';
+document.body.appendChild(headingElement);
+
+Explanation: Here, we can create element from javascript dynamically without HTML interference.
+
+----------------------------------------------------------------------------------------------------------
+
+Example-5: On Click event from html to JavaScript integration
+
+// html file with button element
+<button type="button" class="btn" onclick="buttonClicked()">click me</button>
+
+// javascript file with function
+function buttonClicked() {
+    // block of code inside function
+    alert("event clicked!");
+}
+
+Explanation:  Here, when ever button is clicked then buttonClicked() function will be called then block of code inside the function will be executed.
+
+
+--------------------------------------------------------------------------------------------------------
+
+Example-6: Interacting HTML elements into JavaScript code using DOM
+
+Step 1: Browser Loads HTML → Creates DOM
+
+// id selector
+<button id="btn">click me</button>
+
+// class seelctor
+<button class="btn">click me</button>
+
+The browser converts this into a DOM tree (objects) like below
+
+document
+  └── body
+        └── button (id="btn")
+
+Step 2: JavaScript Accesses DOM
+
+// getting element by id selector
+const myButton = document.getElementById("btn");
+
+// getting element by using class selector
+const myButton = document.querySelector(".btn");
+
+
+JavaScript:
+
+Goes into DOM
+Finds element with id="btn"
+Stores it in myButton
+
+Step 3: Event Listener process
+myButton.addEventListener("click", function () {
+    alert("Form Submitted");
+})
+
+Explanation:
+
+This does NOT execute immediately.
+
+Instead:
+Registers a listener
+Browser keeps watching for a click event
+
+Step 4: User Clicks Button
+
+When user clicks:
+Browser detects event → sends it to JavaScript and then callback function executes and shows dialog box
+
+final output:
+alert("Form Submitted")
+
+Life cycle flow:
+1. HTML loads
+2. DOM is created
+3. JS runs
+4. JS selects elements
+5. JS registers event listener
+6. User clicks button
+7. Event triggers
+8. Function executes
+9. Alert is shown
+
