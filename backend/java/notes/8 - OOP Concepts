@@ -1,7 +1,9 @@
 OOP Concepts: Object Oriented Programming.
  -> Oop is a way of writing programs by using Objects(real world things) instead of just functions and logics.
  -> Oop Helps in breaking large application into smaller objects making systems easier to maintain.
-    
+ -> It allows Protects data(Encapsulation), Code Reuse(Inheritence), Supports flexibilty, hides internal complexity.
+
+
  Lets take banking app.
           Credit system, Salary Processing, Bank Employees, customers, Loans  
 
@@ -27,7 +29,7 @@ BankEmploee
 Customer
    - data -logic
 
--> It allows Protects data, Code Reuse, Supports flexibilty, hides internal complexity.
+
 
  Protects data using Encapsulation:
  ----------------------------------
@@ -52,7 +54,70 @@ Customer
 
 Here balance is private so that no one from outside modify it directly, instead it is modified via methods.
 
- Why encapsulation was designed.
+Why encapsulation was designed.
   -> Protect data.
   -> Avoid unauthorized modifiction.
 
+
+Code Reuse - Using Inheritence.
+------------------------------------
+  Grandfather 
+    10kg gold 
+    1 maruthi car
+    Snoring()
+  Father 
+    10kg gold 
+    1 maruthi car
+    2 houses 
+    Snoring()
+  Son
+    10kg gold 
+    1 maruthi car
+    2 houses 
+    1 company
+    Snoring()
+
+-> It allows one class to acquire the (properties/data/varibles) and (behaviour/function/methods) of another class.    
+    The class that acquires properties and bhaviour is child class, 
+    The class that provides properties and bhaviour to child class is Parent class, 
+
+    Why it is designed:
+      -> To increase code Reusability
+      -> Reduce code Dupilication.
+
+      EX: Program
+      Java-full-stack-training\upskillhouseprograms\src\main\java\org\example\oops\inheritance\InheritanceDemo.java
+
+
+Supports flexibilty using Polymorphism.
+-----------------------------------------
+Its greek word, poly(many) morphs(forms).
+ The ability of same function or behaviuor to be present in multiple forms is called polymorphism. 
+ EX: upskillhouseprograms\src\main\java\org\example\oops\polymorphism\PolymorhDemo.java
+
+Two types
+  Compile Time polymorphism(Method Overloading) - Same behaviour different forms.
+     These Methods will reside in same class.
+     The arguments will be different.
+     The method name and return type will be same.
+
+     The method resolution(which method to be picked among differnt methods of same behaviour) will happen during compiletime itself.
+
+    EX: 
+    public String joinInfo(String info1, String info2, String info3){
+        return info1 + info2 + info3;
+    }
+
+    public String joinInfo(String info1, String info2){
+        return info1 + info2;
+    }
+      . 
+  Runtime Polymorphism(Method Overriding).
+  ---------------------------------------- 
+     These Methods will reside in different class.
+     The arguments will be same.
+     The method name and return type will be same.
+
+     The method resolution(which method to be picked among differnt methods of same behaviour) will happen during Runtime.
+
+     D:\Tutions\upskillhouse\Java-full-stack-training\upskillhouseprograms\src\main\java\org\example\oops\polymorphism\RuntimePolymorphism.java
