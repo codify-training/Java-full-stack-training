@@ -121,3 +121,37 @@ Two types
      The method resolution(which method to be picked among differnt methods of same behaviour) will happen during Runtime.
 
      D:\Tutions\upskillhouse\Java-full-stack-training\upskillhouseprograms\src\main\java\org\example\oops\polymorphism\RuntimePolymorphism.java
+
+
+Abstraction:
+------------ 
+It is process of hiding complex implementation details of a system and showing only the essential feastures to the user.
+
+How abstraction achieved in java ?
+----------------------------------
+we have 2 tools to achieve abstraction.
+1. Abstract Class
+2. Interfaces.
+
+Abstract Class:
+---------------
+  -> if we keep abstract keyword infront of class, then it will become abstract class.
+  -> It can have abstract methods(method without bodies) and normal methods(methods with bodies).
+  -> If a class contains an abstract method then that class becomes abstract class.
+  -> You cannot object for an abstract class.(the reason is this is not a complete class.)
+
+  abstract Methods:
+    - If we keep abstract keyword infront of a method then it will become abstract method.
+    - It will only definition. It wont have implementation.
+    
+
+Interfaces:
+----------
+ It defines a contract that an implementing class must follow. they specify what to do but not how to do.
+
+An interface is a collection of abstract methods, i.e it will have only declaration not definition.
+
+  -> interface has 100% abstraction
+  -> Cannot create object directly.
+  -> Supports multiple inheritence. - We can discuss tomorrow.
+
