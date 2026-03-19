@@ -158,3 +158,108 @@ Life cycle flow:
 8. Function executes
 9. Alert is shown
 
+---------------------------------------------------------------------------------------------------
+
+1. Remove()
+Removes an element from the DOM i.e. will remove element from web page
+
+ex:
+// html file
+<p id="para">This will be removed</p>
+<button onclick="removePara()">Remove</button>
+
+// function js file
+function removePara() {
+  const element = document.getElementById("para");
+  element.remove();
+}
+
+O/p:Paragraph disappears when button is clicked.
+
+2.classList.add()
+Adds a CSS class to an element. if styles is prensent in html or css file.
+
+ex-1: styles which are present as internal CSS in html file
+
+<style>
+.sample {
+  color: red;
+  font-weight: bold;
+}
+</style>
+
+<div id="heading" > hello world </div>
+
+
+// js file
+// creating a button element from java script
+const btnElement = document.createElement("button");
+btnElement.textContent = "remove";
+document.body.appendChild(btnElement);
+
+const headingEle = document.getElementById("heading");
+
+btnElement.addEventListener("click",function(){
+  // adding styles from html/css files with class selector
+   headingElement.classList.add("sample");
+})
+
+O/P: if user clicks on button then styles will be added
+
+3. classList.remove()
+Removes a style class from an element.
+
+btnElement.addEventListener("click",function(){
+  // adding styles from html/css files with class selector
+   headingElement.classList.remove("sample");
+})
+
+note: referring from the above example
+O/P: if user clicks on button then styles will be removed for the html element
+
+4.removeAttribute()
+Removes an HTML attribute like inline styles, disabled etc...
+
+Ex-1:
+<div id="para" style="border: 1px solid black;margin: 10px;" >
+    hello world
+</div>
+<button type="button" id="btn">click me</button>
+
+const myPara = document.getElementById("para");
+const myButton = document.getElementById("btn");
+
+
+myButton.addEventListener("click", function () {
+   myPara.removeAttribute("style");
+})
+
+ex-2:
+<input type="text" id="inputBox" disabled>
+<button onclick="enableInput()">Enable</button>
+
+function enableInput() {
+  const disabledEle =  document.getElementById("inputBox");
+  disabledEle.removeAttribute("disabled");
+}
+
+Explanation: Here, remove attribute will be used to change the state of the input field.
+Above example clicking on enableInput button input box will be enabled, user can enter data into it.
+
+
+5. style.removeProperty()
+Removes a specific CSS property.
+
+ex-1:
+<p id="para" style="color: red;">Hello</p>
+<button onclick="removeStyle()">Remove Color</button>
+
+function removeStyle() {
+  const paraEle = document.getElementById("para");
+  paraEle.style.removeProperty("color");
+}
+
+Explanation: Here, remove property method will remove particular style property of the element
+
+
+

@@ -1,0 +1,131 @@
+1. What is a Form in HTML?
+
+HTML form is used to collect user input (like name, email, password, etc.).
+
+Real-life examples:
+Login form
+Signup form
+Contact form
+
+Basic Structure of a Form:
+<form>
+  <input type="text" placeholder="Enter name">
+  <button type="submit">Submit</button>
+</form>
+
+Common Form Elements:
+
+| Element      | Purpose                     |
+| ------------ | --------------------------- |
+| `<input>`    | Text, email, password, etc. |
+| `<textarea>` | Multi-line input            |
+| `<select>`   | Dropdown                    |
+| `<button>`   | Submit form                 |
+| `<label>`    | Label for input             |
+
+
+Important:
+When you click Submit, the page reloads by default.
+
+To handle form using JavaScript we use
+event.preventDefault();
+
+-----------------------------------------------------------------------------------------------------------
+
+2. submitting form with event listener with form id
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Form Example</title>
+</head>
+<body>
+
+<h2>Registration Form</h2>
+
+<form id="myForm">
+  <label>Name:</label><br>
+  <input type="text" id="name"><br><br>
+
+  <label>Email:</label><br>
+  <input type="email" id="email"><br><br>
+
+  <button type="submit">Submit</button>
+</form>
+
+<script src="script.js"></script>
+</body>
+</html>
+
+// script.js file
+const form = document.getElementById("myForm");
+
+form.addEventListener("submit", function(event) {
+  event.preventDefault(); // stop page reload
+
+  const name = document.getElementById("name").value;
+  const email = document.getElementById("email").value;
+
+  console.log("Name:", name);
+  console.log("Email:", email);
+
+  alert("Form submitted successfully!");
+
+  
+});
+
+3. Key Concepts to Remember:
+a. event.preventDefault() → stops reload
+b. value → get input value
+c. addEventListener() → handle form events
+
+----------------------------------------------------------
+
+3. Submitting form using onsubmit event:
+
+<form onsubmit=submitForm(event)>
+  <label>Name:</label><br>
+  <input type="text" id="name"><br><br>
+
+  <label>Email:</label><br>
+  <input type="email" id="email"><br><br>
+
+  <button type="submit">Submit</button>
+</form>
+
+function submitForm(e) {
+  // stop page reload
+  e.preventDefault(); 
+  const name = document.getElementById("name").value;
+  const email = document.getElementById("email").value;
+
+  console.log("Name:", name);
+  console.log("Email:", email);
+
+  alert("Form submitted successfully!");
+}
+
+-------------------------------------------------------------------------------------------------
+
+4. Submitting form using onclick event:
+
+<form>
+  <label>Name:</label><br>
+  <input type="text" id="name"><br><br>
+
+  <label>Email:</label><br>
+  <input type="email" id="email"><br><br>
+
+  <button type="button" onclick="submitForm()" >Submit</button>
+</form>
+
+function submitForm() {
+  // stop page reload
+  const name = document.getElementById("name").value;
+  const email = document.getElementById("email").value;
+
+  console.log("Name:", name);
+  console.log("Email:", email);
+
+  alert("Form submitted successfully!");
+}
