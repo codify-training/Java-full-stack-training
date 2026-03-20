@@ -62,3 +62,30 @@ return only name values not ids.
 
 Expected Output:
 ["Naveen", "Rahul", "Anita"]
+
+
+----------------------------------------------------------------------------------------------------
+
+1. Form Assignment:
+
+LIVE FORM VALIDATION + DATA DISPLAY
+
+problem statement: Create a form with Username, Email, Password
+
+Validation Rules:
+Username ≥ 3 characters
+Email must contain @
+Password ≥ 6 characters
+
+Concepts to Use:
+DOM element creation (createElement, appendChild)
+Logical operators
+use onclick or onsubmit event
+
+Expected Output:
+
+Form Submitted Successfully!
+User Details:
+Username: Naveen
+Email: naveen@gmail.com
+Password: naveen@123 
