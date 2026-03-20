@@ -1,0 +1,38 @@
+Arrays:
+-------
+An array is a container that holds fixed number of values of same type(data type).
+Array store eleents in contigeous memory location
+Its index starts from zero.
+
+Syntax:
+------
+  Declaration: 
+      datatype[] refernceName;
+EX: int[] arr;
+     string[] strArr;
+
+  Initialization:   
+      arr = new int[6]; - This allocate a block of memory that holds 6 integer values.
+
+   Direct initialization:
+       arr = {10, 20, 30, 40}   
+
+   Index based:
+     referenceName[index] = value;      
+      EX: arr[0] = 20; arr[1] = 30
+
+
+Note: If we initialize an array with 5 elements and if we are using only 3 items, then the remaning 2 non used items will have the default value of that particular data type.
+
+Features:
+  Fixed size, once created cannot be changed.
+  It holds same data type.
+  Indexed access.
+
+Types of arrays:
+  1. Single dimensional array.
+     int[] arr = new int[5];
+  2. Multidimensional array  
+      int[][] arr = new int[5][5]
+     
+     
