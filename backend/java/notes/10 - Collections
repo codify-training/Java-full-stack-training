@@ -1,0 +1,96 @@
+Problems with arrays:
+--------------------
+ -> Fixed size
+ -> It cant dynamically grow.(when add elements it cant grow dynamically.)
+ -> Difficult to add or remove elements.
+
+All these issues are resolved in collections.
+------------------------------------------------------------
+
+Java Collection:
+----------------
+    It is framework(set of classes and interfaces), used to store, manage and manipulate group of objects dynamically.
+
+ Store:
+ ------
+    List<String> li = new ArrayList<>();
+    li.add("Apple");
+    li.add("Mango");
+    li.add("Banana");  
+
+manage:
+  Adding an element in a particular position.
+  Updting an element in a position.
+  Remove an element.
+  li.set(3, "Grape") // adding an element in particular position
+  li.set(0, "Jackfruit"); // Apple will be replaced with jackfruit.
+  li.remove("Banana");
+
+  Manipulte Data:
+     Searching - li.contains("Mango")
+     Sorting -  Collections.sort(li); 
+
+
+Collection FrameWork(class and interfaces)
+-------------------------------------------
+      Collection framework categorized into 2 branches Collection branch, Map branch
+
+  Collection branch - for single object
+  Map branch  - for key value pair.     
+                                               Collection Framework
+                         
+                 -----------------------------------------------------------------------------------------------------------------------------------------
+
+                                                     Iterable(Interface)
+                                                             |
+                                                    Collection(Interface)     
+                                                             |
+                                             ----------------------------------------------------------------
+                                               |             |                          |                 
+                                             List(I)      Set(I)                      Queue(I)
+                                               |              |                         |
+                                 ----------------------- ----------------------  -------------------------------              
+                                  |       |        |         |       |                  |                  |
+                            ArrayList LinkedList  Vector   Hashset  SortedSet(I)      Dequeue(I)       Priority Queue
+                                                              |          |               |
+                                                          linkedHashset  Treeset      ArrayQueue               
+
+
+
+
+                                                  Map(Interface)
+                                                         |
+                                         ------------------------------------
+                                           |            |                   |  
+                                         HashMap       HashTable           SortedMap(I)
+                                           |                                |
+                                        LinkedHashMap                     TreeMap
+
+               -----------------------------------------------------------------------------------------------------------------------------------------                         
+
+
+    Iterable Interface:
+    ---------------------
+     -> It is root for entire collection heirarchy 
+     -> If a class implements iterable then it can be traversed.
+     -> For the entire structure the uniform step of traversing is defined in Iterable.
+
+     Iterable<String> fruits = Arrays.asliist("Kiwi", "Mango", "Apple");
+     for(String str: fruits){
+        sout(str);
+     }
+   
+    Collection Interface:
+    --------------------
+    -> It extends Iterable interface.
+    -> In iterable you will have only declaration about traversing, but where in Collection it declares how you store, manipulate and manage data.
+
+Store:
+    Add/Remove - add(e)
+Manipilate
+    Reomve -  remove(e)
+    set element in position - set(index, element)    
+    BulkOperation - addAll(), removeAll();
+  Manage  
+    Conversion - toArray() 
+    Qerying      - Size(), isEmpty()
