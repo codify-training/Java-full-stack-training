@@ -329,3 +329,149 @@ form.addEventListener("submit", function(e) {
 
   
 });
+
+
+---------------------------------------------------------------------------------------------------------
+
+5. Errors Styling for input fields/Error messages
+
+Styling the error messages or input fields with DOM intercation using JavaScript.
+
+Ex:
+
+<form>
+      <label for="username">uername</label>
+      <input type="text" name="username" id="username" autofocus />
+
+      <label for="email">email</label>
+      <input type="text" name="email" id="email" />
+
+      <label for="password">password</label>
+      <input type="text" name="password" id="password" />
+      <label for="number">Phone Number <span>*</span> </label>
+      <input type="number" name="number" id="number" />
+      <span id="errMessage"></span>
+      <br>
+      <br>
+       <button type="button" style="margin-top: 20px" onclick="submitForm()">
+        submit
+      </button>
+</form>
+
+//css 
+.error-styling {
+  border: red 1px solid;
+  padding: 10px;
+}
+
+// js
+const usernameElement = document.getElementById("username");
+const emailElement = document.getElementById("email");
+const passElement = document.getElementById("password");
+const phoneElement = document.getElementById('number');
+const errMsg = document.getElementById("errMessage");
+errMsg.textContent = "Please fill out all fields";
+function submitForm() {
+
+    if (usernameElement.value === '' || phoneElement.value === "" || emailElement.value === '' || passElement.value === '') {
+        usernameElement.classList.add("error-styling");
+        emailElement.classList.add("error-styling");
+        passElement.classList.add("error-styling");
+        phoneElement.classList.add("error-styling");
+        document.body.appendChild(errMsg);
+    }
+
+
+}
+
+--------------------------------------------------------------------------------------------------
+
+6. <span> ELEMENT
+
+What is <span>?
+<span> is an inline HTML element used to:
+Style a part of text
+Target specific content using CSS or JavaScript
+
+Key Points:
+Inline element
+Used inside text
+No default styling
+Useful for highlighting or modifying small parts
+
+Ex:
+<style>
+  .highlight {
+    color: red;
+    font-weight: bold;
+  }
+</style>
+
+<p>
+  This is a <span class="highlight">important</span> message.
+</p>
+
+Real Use Cases:-
+Highlight errors in forms
+Change dynamic values
+Styling specific words
+
+
+-------------------------------------------------------------------------------------
+
+7.REMOVE UP/DOWN ARROWS IN INPUT TYPE NUMBER
+<input type="number"> shows:
+⬆ Up arrow
+⬇ Down arrow
+
+Solution:
+
+//css styling
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin:0;
+}
+
+Explanation:
+It removes the up (⬆) and down (⬇) arrows from an <input type="number"> field.
+
+1. input[type="number"]
+
+This is a CSS attribute selector
+Targets only inputs with:
+<input type="number">
+
+
+2. ::-webkit-outer-spin-button
+This is a pseudo-element
+Targets the outer part of the number input 
+
+
+3. ::-webkit-inner-spin-button
+Another pseudo-element
+Targets the inner clickable arrows (up/down buttons)
+
+Note: Specific to WebKit browsers (Chrome, Edge, Safari)
+
+4. -webkit-appearance: none;
+
+Removes default browser styling
+Hides the arrows completely
+
+5. margin: 0;
+
+Removes any extra spacing around the arrows
+Helps avoid layout issues after hiding them
+
+Default O/p:
+[  25  ⬆⬇ ]
+
+Css styling O/P:
+[  25  ]
+
+WHY WE USE THIS:
+Clean UI design
+Custom styling
+Avoid accidental value changes
+Better UX in forms
