@@ -1,0 +1,203 @@
+1. WHAT IS typeof ?
+typeof is used to Check the data type of a variable
+
+Why we use it?
+To understand what kind of data we are working with
+Useful in conditions and validation
+
+Syntax:
+typeof variable
+
+COMMON DATA TYPES WITH EXAMPLES:
+
+a. STRING
+let name = "Naveen";
+console.log(typeof name);
+O/P: string
+
+b. NUMBER
+let age = 25;
+console.log(typeof age);
+O/P: number
+
+c. UNDEFINED
+let x;
+console.log(typeof x);
+O/P: undefined
+
+d. NULL
+let value = null;
+console.log(typeof value);
+O/P: object
+
+Note: 
+This is a JavaScript bug
+null is not actually an object, but typeof shows "object"
+
+e. OBJECT
+let user = {
+  name: "Naveen"
+};
+console.log(typeof user);
+O/P: object
+
+f. ARRAY
+let arr = [1, 2, 3];
+console.log(typeof arr);
+O/P: object
+Note: Arrays are also objects in JavaScript
+
+g. FUNCTION
+function greet() {}
+console.log(typeof greet);
+O/P:
+function
+
+REAL-TIME USE CASE:
+
+let input = 100;
+if (typeof input === "number") {
+  console.log("Valid number");
+} else {
+  console.log("Not a number");
+}
+
+
+-------------------------------------------------------------------------------------
+
+
+2. JSON.stringify()
+method used to convert JavaScript object/Array into JavaScript Object Notation (JSON) string.
+
+Ex:1
+let user = {
+  name: "Naveen",
+  age: 25
+};
+
+let str = JSON.stringify(user);
+console.log(str);
+
+// checking variale type
+console.log(typeof str);
+
+O/P:
+{"name":"Naveen","age":25}
+
+Ex:2
+let dummyArray = ["Naveen",24,true,9.99];
+let convertedArray = JSON.stringify(dummyArray)
+O/P:
+["Naveen",24,true,9.99];
+
+Note: Now it becomes a string, we can check in console tab.
+
+
+---------------------------------------------------------------------------------------
+
+
+3. JSON.parse()
+Converts any type JSON string into JavaScript object/array based on its initialization.
+
+let data = '{"name":"Naveen","age":25}';
+
+Note: data is considered as a string.
+
+let obj = JSON.parse(data);
+console.log(obj);
+
+O/P:
+{
+  name: "Naveen",
+  age: 25
+};
+
+
+------------------------------------------------------------------------------------------
+
+
+4. Array of Objects real time usage:
+
+// html code
+    <form
+      id="sampleForm"
+      style="display: flex; flex-direction: column; width: 50%"
+    >
+      <label for="username">uername</label>
+      <input type="text" name="username" id="username" autofocus />
+
+      <label for="email">email</label>
+      <input type="text" name="email" id="email" />
+
+      <label for="website">website</label>
+      <input type="text" name="website" id="website" />
+
+      <label for="number">Phone Number </label>
+      <input type="number" name="number" id="number" />
+
+      <br />
+
+      <button type="button" style="margin-top: 20px" onclick="submitForm()">
+        Get
+      </button>
+    </form>
+
+    //js code
+
+    // we are accessing elements by using id in input field
+const usernameElement = document.getElementById("username");
+const emailElement = document.getElementById("email");
+const websiteEl = document.getElementById("website");
+const phoneElement = document.getElementById('number');
+
+const data = [
+
+    {
+        "id": 4,
+        "name": "Patricia Lebsack",
+        "username": "Karianne",
+        "email": "Julianne.OConner@kory.org",
+        "country": "uk",
+        "phone": "898978867676",
+        "website": "kale.biz",
+    },
+    {
+        "id": 5,
+        "name": "Chelsey Dietrich",
+        "username": "Kamren",
+        "email": "Lucio_Hettinger@annie.ca",
+        "country": "usa",
+        "phone": "7878787878787",
+        "website": "demarco.info",
+    },
+    {
+        "id": 6,
+        "name": "Mrs. Dennis Schulist",
+        "username": "ytyyuu",
+        "email": "Karley_Dach@jasper.info",
+        "phone": "8687676767676",
+        "country": "india",
+        "website": "ola.org",
+    },
+
+]
+
+
+function submitForm() {
+
+    // hardcoded data -> not recommended in real-time project
+    const userData = data[2];
+
+    // find methods will always return a object from the array unlike filter.
+    const indianUser = data.find((k) => k.country === 'india');
+    console.log("indian", indianUser);
+
+    const indianUsers = data.filter((i) => i.country === 'india');
+    console.log("filetred method", indianUsers);
+
+    // filling data in the input fields from the extracted data
+    usernameElement.value = indianUser.username || "-";
+    emailElement.value = indianUser.email;
+    websiteEl.value = indianUser.website;
+    phoneElement.value = indianUser.phone;
+}
