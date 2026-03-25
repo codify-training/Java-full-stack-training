@@ -68,22 +68,21 @@ Collection FrameWork(class and interfaces)
 
                -----------------------------------------------------------------------------------------------------------------------------------------                         
 
+Iterable Interface:
+---------------------
+  -> It is root for entire collection heirarchy 
+  -> If a class implements iterable then it can be traversed.
+  -> For the entire structure the uniform step of traversing is defined in Iterable.
 
-    Iterable Interface:
-    ---------------------
-     -> It is root for entire collection heirarchy 
-     -> If a class implements iterable then it can be traversed.
-     -> For the entire structure the uniform step of traversing is defined in Iterable.
-
-     Iterable<String> fruits = Arrays.asliist("Kiwi", "Mango", "Apple");
-     for(String str: fruits){
-        sout(str);
-     }
+  Iterable<String> fruits = Arrays.asliist("Kiwi", "Mango", "Apple");
+  for(String str: fruits){
+    sout(str);
+  }
    
-    Collection Interface:
-    --------------------
-    -> It extends Iterable interface.
-    -> In iterable you will have only declaration about traversing, but where in Collection it declares how you store, manipulate and manage data.
+Collection Interface:
+--------------------
+-> It extends Iterable interface.
+-> In iterable you will have only declaration about traversing, but where in Collection it declares how you store, manipulate and manage data.
 
 Store:
     Add/Remove - add(e)
@@ -94,3 +93,60 @@ Manipilate
   Manage  
     Conversion - toArray() 
     Qerying      - Size(), isEmpty()
+
+List Interface:
+----------------
+  A list is a collection the stores element in order and lets you access them by position.
+ -> Maintains Insertion order.
+ -> Allows duplicates.
+ -> Supports index based access.
+
+ Syntax: List<dataytpe> variablename = new ArrayList<>();
+ EX: List<String> li = new ArrayList<String>();
+   li.add("A")//add element
+   li.add("B")
+   li.add("C")
+   li.add("C")//allows duplicates
+   li.get(0); //access by index
+
+   li.set(0, "B"); //update
+   li.remove(0); // Remove by index
+   li.size();//no of elements
+
+
+List has 3 implementation:
+   -> ArrayList
+   -> LinkedList
+   -> Vector.
+
+ArrayList:
+------------
+   It internally uses dynamic array(when the limit s reached the size will increase by itself.).
+   Synatax: List<String> li = new ArrayList<>();
+arraylist will be initialized with Initial Capacity of 10. 
+If arraylist capacity is getting filled then its size will be increased by 50% i.e (10 + 10/2 = 15) 
+and new array is created and all these elements will be copied inside the new array from old one.
+When we need to use arraylist:
+      When we read data frequently.
+      if we want access elements by index.
+
+Since the array grow dynamically and all the old array elements will be copied to the new array elements        
+bcz of this data insertion are slow.
+
+Deletion will be costly based on how deep you are going(because rearrangement will happen.)
+
+
+LinkedList:
+-------------
+this is internally a doubly linked list(along with data we store address of next item and prev. item address)
+ - > data 
+ -> pointer to next item adress
+ -> pointer to previous item address.
+
+ EX: List<String> li = new LinkedList<>();
+ li.add("A");
+ li.remove(0);
+ li.get(0)
+
+ Searching and retreiing are costly here.
+ insertion and deletions are faster.
