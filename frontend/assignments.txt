@@ -89,3 +89,79 @@ User Details:
 Username: Naveen
 Email: naveen@gmail.com
 Password: naveen@123 
+
+--------------------------------------------------------------------------------------------------------
+
+
+2. Event Booking Form 
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Event Booking</title>
+  <style>
+    .error {
+      color: red;
+    }
+    .success {
+      color: green;
+    }
+    .box {
+      margin-bottom: 15px;
+    }
+  </style>
+</head>
+<body>
+
+<h2>Event Booking Form</h2>
+
+<form id="bookingForm">
+
+  <div class="box">
+    <label><b>Select Event Type:</b></label><br>
+    <input type="radio" name="event" value="wedding"> Wedding
+    <input type="radio" name="event" value="birthday"> Birthday
+    <input type="radio" name="event" value="corporate"> Corporate
+  </div>
+
+  <div class="box">
+    <label><b>Select Facilities:</b></label><br>
+    <input type="checkbox" name="facility" value="catering"> Catering
+    <input type="checkbox" name="facility" value="decoration"> Decoration
+    <input type="checkbox" name="facility" value="music"> Music
+  </div>
+
+  <!-- Date -->
+  <div class="box">
+    <label><b>Select Date:</b></label><br>
+    <input type="date" id="date">
+  </div>
+
+  <!-- Time -->
+  <div class="box">
+    <label><b>Select Time:</b></label><br>
+    <input type="time" id="time">
+  </div>
+
+  <button type="submit">Book Event</button>
+
+</form>
+
+<!-- Message -->
+<p id="message"></p>
+
+<!-- Output -->
+<div id="output"></div>
+
+</body>
+</html>
+
+Expected Output:
+
+Booking Successful!
+
+Booking Details:
+Event Type: Birthday
+Facilities: Catering, Music
+Date: 2026-04-10
+Time: 18:30
