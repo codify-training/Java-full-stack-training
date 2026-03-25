@@ -1,0 +1,27 @@
+ASSIGNMENT 1: Save and Remove User Details (LOCAL STORAGE)
+Problem Statement:
+-> Create a simple UI with fields username, email and password
+-> User enters their deatils and click save button then details should be stored in local storage.
+-> When page reloads → details should automatically display on webpage
+-> add remove button -> user clicks on remove data should be removed from localStorage
+
+Hint: use stringify and parse methods.
+
+--------------------------------------------------------------------------------------
+
+ASSIGNMENT 2: LOGIN SESSION (SESSION STORAGE)
+
+Problem Statement
+Create a simple login system:
+
+User enters email
+Clicks Login
+Show message: Logged in as email (user email)
+Data should be stored using sessionStorage
+When tab closes → data should be removed
+User clicks on Logout button then data should be removed from sessionStorage
+
+Requirements:
+Email input
+Login button
+Logout button
