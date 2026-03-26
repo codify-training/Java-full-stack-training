@@ -150,3 +150,119 @@ this is internally a doubly linked list(along with data we store address of next
 
  Searching and retreiing are costly here.
  insertion and deletions are faster.
+
+Vector:
+-------
+Vector is a legacy collection.
+vector is synchronized.
+It is slower
+
+                                                               
+                                                               Set Interface
+                                                               ---------------
+
+Set is used to store unique elements.(It wont store duplicate values.)
+         -> Hashset
+         -> Treeset
+         -> LinkedHashSet.
+
+HashSet:
+---------
+     it uses hashing technique to store elements.(It uses hashmap internally).
+EX: HashSet<String> hSet = new HashSet<>();
+hSet.add("Ram");
+hSet.add("SAM");
+hSet.add("HAT");
+hSet.add("FAT");
+
+Ordering is not maintained internally.
+permits one null.
+
+Internal Working.
+--------------------
+1. When we intilize an hashset, with 16 size buckets will be created(this is nothing but array) 
+
+2. Hashcode will be calculated ex: "Ram".hasCode(); - generates a random integer number.
+
+3. hashCode % capacity(15) 
+ex: 1234 % 15 = 4
+
+4. SAM hash code value - 1249
+  1249 % 15 = 4
+
+5. HAT hashCode 1232
+  1232 % 15 = 2
+
+6. again i am trying to insert HAT.
+  1232 % 15 = 2
+It goes to the particular bucket and checks if the value already present, if present duplicate insertion of HAT is rejected. else it will get inserted.
+
+Linked Hashset:
+---------------
+Maintains insertion order.
+Duplicates are not allowed.
+EX: LinkedHashSet lhs = new LinkedHashSet();
+lhs.add(10)
+lhs.add(20)
+//lhs.add(20);//Element wont get inserted.
+lhs.add(5);
+
+Treeset:
+--------
+  -> Treeset implements sortedset.
+The elements inside a treset will get sorted by its natural sorting order(Strings in alphabetical order, numbers in the numerical order ).
+This do not permit null values.
+Syntax: TreeSet<String> ts = new TreeSet<>();
+Values will sorted in ascending order by default and then stored in treeset.
+
+
+                                                      Queue interface
+                                                      ----------------
+Queue is First come first served.
+-> Priority Queue
+-> Array DeQueue.
+
+Priority Queue:
+---------------
+Does not follow standard Queue, the data will be added based on priority. Natural sorting order.
+Highest priority item will be ready to comeout of the queue first.
+the head will be attached to the highest priority item.
+
+EX: PriorityQueue<String> pq = new PriorityQueue<>()
+pq.add("Fun");
+pq.add("SUN");
+pq.add("BUN");
+
+peek(); - retrieves the head element data.
+poll(); - retrieves the head element data. it removes the element while it retrieves the data.
+
+
+Array Dequeue:
+--------------
+It is a double ended queue.
+It allows you to treat both head and tail as entry/exit points.
+you can add/remove/get elements from tail/head using ArrayDequeue.
+
+Adding Elements:
+-------------
+                           Exception will be 
+                           thrown if fails      Operation fails return null  
+      Add to Front         addFirst(e)          offerFirst(e)
+      Add to Last          addLast(e)           offerLast(e)
+
+
+Removing Elements
+
+                         Exception will be 
+                           thrown if fails      Operation fails return null  
+      Remove at Front         removeFirst(e)          pollFirst(e)
+      Remove at Last          removeLast(e)           pollLast(e)
+
+Inspecting/Retrieving
+---------------------
+Removing Elements
+
+                         Exception will be 
+                           thrown if fails      Operation fails return null  
+      View Front         getFirst(e)          peekFirst(e)
+      View Last          getLast(e)           peekLast(e)
