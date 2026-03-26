@@ -1,0 +1,261 @@
+WHAT IS BROWSER STORAGE?
+Browser storage is used to:
+1. Store data in the user’s browser
+2. So that data can be used later (even after refresh)
+
+Why we use it?
+Save user data (name, theme, cart, etc.)
+Avoid calling backend again
+Improve user experience
+
+TYPES OF BROWSER STORAGE
+1️.Local Storage
+2️.Session Storage
+
+-----------------------------------------------------------------------------------------------------
+
+1. LOCAL STORAGE
+Local Storage is a browser storage that:
+a) Stores data permanently in the browser
+b) Data remains even after refresh or closing the browser
+
+
+Key Features:
+No expiry (until manually deleted)
+Stores data as key–value pairs
+Size ~5MB
+Same origin only (same website)
+
+
+METHODS OF LOCAL STORAGE
+
+1. setItem(key, value)
+setItem is a built-in javascript method used to store the data in the form of string.
+
+Syntax:
+localStorage.setItem("name", "naveen");
+
+
+
+
+2. getItem(key)
+getItem is a method used to get stored data from storge using key as reference.
+
+Syntax:
+let name = localStorage.getItem("name");
+console.log(name);
+O/P: naveen
+
+
+3. removeItem(key)
+this method will removes particular data using key as reference.
+
+Syntax:
+localStorage.removeItem("name");
+
+
+4. clear()
+Removes all stored data
+
+Syntax:
+localStorage.clear();
+
+
+5. key(index number)
+It will return key using the index number of the storage data.
+
+Syntax:
+localStorage.key(2);
+
+O/P:
+It will return key for that particular index number from storage
+
+REAL-TIME EXAMPLES (LOCAL STORAGE)
+1. Remember Username
+User enters name → saved
+Next time → auto-filled
+
+2. Dark Mode/Light Mode Toggle
+localStorage.setItem("theme", "dark");
+When page loads:
+if(localStorage.getItem("theme") === "dark"){
+  document.body.style.background = "black";
+}
+
+3. Shopping Cart (Myntra application)
+Store products added to cart
+Even after closing tab again we can see our added cart item
+
+
+---------------------------------------------------------------------------------------------------------
+
+2. SESSION Storage
+
+Session Storage is a browser storage that:
+a-> Stores data only for a single browser tab/session
+b-> Data is deleted when the tab is closed
+
+Key Features:
+Temporary storage
+Cleared when tab closes
+Same methods as localStorage
+
+
+METHODS OF SESSION STORAGE
+
+1. setItem(key, value)
+setItem is a built-in javascript method used to store the data in the form of string.
+
+Syntax:
+sessionStorage.setItem("name", "naveen");
+
+
+2. getItem(key)
+getItem is a method used to get stored data from storge using key as reference.
+
+Syntax:
+let name = sessionStorage.getItem("name");
+console.log(name);
+O/P: naveen
+
+
+3. removeItem(key)
+this method will removes particular data using key as reference.
+
+Syntax:
+sessionStorage.removeItem("name");
+
+
+4. clear()
+Removes all stored data
+
+Syntax:
+sessionStorage.clear();
+
+
+5. key(index number)
+It will return key using the index number of the storage data.
+
+Syntax:
+sessionStorage.key(2);
+
+O/P:
+It will return key for that particular index number from storage
+
+REAL-TIME EXAMPLES (SESSION STORAGE)
+1. Temporary Login Data
+Store user info during session
+Logout or close tab → data cleared
+
+2. Multi-step Form
+Step 1 → save data
+Step 2 → retrieve data
+Close tab → reset
+
+3. OTP Verification
+Store OTP temporarily
+Auto delete after session
+
+
+LOCAL vs SESSION STORAGE:
+| Feature  | Local Storage  | Session Storage  |
+| -------- | -------------- | ---------------- |
+| Lifetime | Permanent      | Until tab closes |
+| Storage  | Yes            | Yes              |
+| Use Case | Long-term data | Temporary data   |
+
+
+------------------------------------------------------------------------------------------------------
+
+Note: All methods from localStorage and sessionStorage with same functionality. So, I am including localStorage and sessionStorage in same example.
+
+Full Example for all methods with localStorage and sessionStorage:
+
+   <form
+      id="sampleForm"
+      style="display: flex; flex-direction: column; width: 50%"
+    >
+      <label for="username">uername</label>
+      <input type="text" name="username" id="username" autofocus />
+
+      <label for="email">email</label>
+      <input type="text" name="email" id="email" />
+
+
+      <label for="number">Phone Number </label>
+      <input type="number" name="number" id="number" />
+
+      <br />
+
+      <button type="button" style="margin-top: 20px" onclick="submitForm()">
+        submit
+      </button>
+
+      <button type="button" style="margin-top: 20px" onclick="getUserData()">
+        Get Data
+      </button>
+
+    <button type="button" style="margin-top: 20px" onclick="deleteStoredItem()">
+        Remove Data
+    </button>
+
+    <button type="button" style="margin-top: 20px" onclick="clearStorage()">
+        Clear Data
+    </button>
+
+    </form>
+
+// js code
+const usernameElement = document.getElementById("username");
+const emailElement = document.getElementById("email");
+const phoneElement = document.getElementById('number');
+
+function submitForm() {
+    const userData = {
+        username:usernameElement.value,
+        email: emailElement.value,
+        phone: phoneElement.value
+    }
+
+    // stringify conversion of object into string
+    const convertedObject = JSON.stringify(userData);
+    localStorage.setItem("user",convertedObject);
+
+    // length property will return length of the items stored in localStorage
+    console.log("length",localStorage.length);
+
+    // session storage
+    sessionStorage.setItem("user",convertedObject);
+
+    console.log("length",localStorage.length);
+
+
+}
+
+function submitForm() {
+    //  here, we are retrieving the stored data from local storage using key
+    const storedData = localStorage.getItem("user");
+
+    const sessionStoredData = sessionStorage.getItem("user");
+
+    const userValue = JSON.parse(storedKey);
+    console.log("user data", userValue.username);
+
+
+}
+
+function deleteStoredItem(){
+    // data will be removed from local storage
+    localStorage.removeItem("user");
+
+    sessionStorage.removeItem("user");
+}
+
+function clearStorage(){
+    // all data will be cleared i.e. other data will also cleared
+    localStorage.clear();
+
+    // sessionStorage
+    sessionStorage.clear();
+}
+
