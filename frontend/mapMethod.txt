@@ -1,0 +1,187 @@
+WHAT IS map() FUNCTION?
+
+map() is an array method used to:
+1. loop through each element in an array
+2. transform it
+3. and return a new array
+
+Simple Meaning:
+“Take an array → change each item → return a new array”
+
+// syntax
+array.map((item, index) => {
+  return newValue;
+});
+
+SIMPLE EXAMPLE (Numbers)
+
+const numbers = [2, 4, 6, 8];
+const result = numbers.map((n) => n * 2);
+console.log(result);
+
+O/P:
+[4, 8, 12, 16]
+
+Explanation:
+Loop runs for each value
+Each value is multiplied by 2
+New array is created
+
+Ex-2: EXAMPLE (ARRAY OF OBJECTS)
+
+// array of objects
+const data = [
+
+    {
+        "id": 4,
+        "name": "Patricia Lebsack",
+        "username": "Karianne",
+        "email": "Julianne.OConner@kory.org",
+        "country": "uk",
+        "phone": "898978867676",
+        "website": "kale.biz",
+    },
+
+    {
+        "id": 5,
+        "name": "Chelsey Dietrich",
+        "username": "Kamren",
+        "email": "Lucio_Hettinger@annie.ca",
+        "country": "usa",
+        "phone": "7878787878787",
+        "website": "demarco.info",
+    },
+
+    {
+        "id": 6,
+        "name": "Mrs. Dennis Schulist",
+        "username": "ytyyuu",
+        "email": "Karley_Dach@jasper.info",
+        "phone": "8687676767676",
+        "country": "india",
+        "website": "ola.org",
+    },
+
+    {
+        "id": 7,
+        "name": "Mrs. Dennis2",
+        "username": "ytyyuu",
+        "email": "Karley_Dach@jasper",
+        "phone": "90909090909",
+        "country": "india",
+        "website": "ola.com",
+    },
+]
+
+Step-by-Step Explanation:
+
+Step-1: data.map(d => ...)
+Explanation: Runs for each object in array
+
+Step 2: d=> represents each object
+Example object::
+d = {
+  name: "Patricia Lebsack",
+  email: "..."
+}
+
+
+Step 3: Return HTML for each item
+return `
+  <div class="card">
+    <p>${d.name}</p>
+  </div>
+`
+For every object → one card is created
+
+
+Step 4: Output of map()
+[
+  "<div>...</div>",
+  "<div>...</div>",
+  "<div>...</div>"
+]
+
+It returns array of HTML strings
+
+Step 5: .join('')
+.join('')
+
+Converts array → single string
+
+Why join is needed?
+
+Without join:
+["<div>..</div>", "<div>..</div>"]
+
+With Join:
+<div>..</div><div>..</div>
+
+
+Step 6: Display in UI
+container.innerHTML = listContainer;
+All cards are rendered on screen
+
+Visual Flow:
+
+Array of objects
+        ↓
+map()
+        ↓
+Array of HTML strings
+        ↓
+join('')
+        ↓
+Single HTML string
+        ↓
+innerHTML
+        ↓
+Display in browser
+
+
+| Feature                 | map() | forEach() |
+| ----------------------- | ----- | --------- |
+| Returns array           | ✅     | ❌         |
+| Used for transformation | ✅     | ❌         |
+| Used for display        | ✅     | ❌         |
+
+
+
+--------------------------------------------------------------------------------------------------------------
+
+
+
+PRACTICE PROBLEM: DISPLAY USER CARDS USING map()
+
+Problem Statement:
+You are given an array of user objects.
+
+Use map() to:
+Loop through the array
+Create HTML <div> cards for each user
+Display them on the screen
+
+const users = [
+  { name: "Naveen", email: "naveen@gmail.com" },
+  { name: "Ravi", email: "ravi@gmail.com" },
+  { name: "Priya", email: "priya@gmail.com" }
+];
+
+Requirements
+Use map()
+Show each user inside a <div>
+Display:
+Name
+Email
+Render inside a container using innerHTML
+
+Expected O/P:
+
+Name: Naveen
+Email: naveen@gmail.com
+
+Name: Ravi
+Email: ravi@gmail.com
+
+Name: Priya
+Email: priya@gmail.com
