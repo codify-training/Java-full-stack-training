@@ -1,0 +1,41 @@
+1. Template Literals:
+It is a feature to work with strings in a easier way. It is introduced in ES6 Modules. 
+
+Syntax:
+`text ${variable}`
+=> ${} is called expression interpolation
+=> We can insert variables or calculations inside it
+
+Instead of using " " or ' ', we use backticks:
+` `
+Why Template Literals?
+Before template literals, we used string concatenation (+), which is harder to read.
+
+Ex: Old way:
+const name = "Naveen";
+const age = 22;
+console.log("My name is " + name + " and I am " + age + " years old");
+
+Ex: New way
+const name = "Naveen";
+const age = 22;
+console.log(`My name is ${name} and I am ${age} years old`);
+Advantage: Much cleaner and easier to understand.
+
+Ex: Real Time Usage:
+HTML with DOM (document object model)
+API keys
+Env variables
+
+const name = "Naveen";
+document.body.innerHTML = `<h1>Hello ${name}</h1>`;
+Most commonly used in real projects.
+
+Multi-line Strings:
+const message = `Hello Students
+Welcome to JavaScript class
+Enjoy learning`;
+console.log(message);
+
+Advantage:
+No need for \n for next line

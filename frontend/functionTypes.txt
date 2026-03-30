@@ -1,0 +1,47 @@
+1. basic function => standard method
+=> Most used function way for day to day life
+=> Best for readability
+function add(a, b) {
+    return a + b;
+}
+
+
+2. Function expression => Here, function is stored in a variable and It will call itself
+=> Best for recursion and passing function to other function.
+Syntax:
+const variableName = function(){
+  // block of code
+};
+
+Ex-1:
+const multiply = function add(a, b) {
+    return a * b;
+}
+console.log(multiply(2, 3));
+
+Ex-2:
+const getUserInfo = function(name, age){
+  return `My name is ${name} and I am ${age} years old`;
+};
+console.log(getUserInfo("Naveen", 22));
+
+3. Arrow Functions => Introduced in ES6 modules and used for shorter and cleaner way
+=> Best for simple logic, callback methods
+Ex-1:
+const subtraction = (a, b) => a - b;
+console.log(subtraction(10, 20));
+O/P: Result will be subtraction 
+
+Ex-2:
+const indian = (i) => i.country === 'india';
+const data = {
+    "id": 4,
+    "name": "Patricia Lebsack",
+    "username": "Karianne",
+    "email": "Julianne.OConner@kory.org",
+    "country": "india",
+    "phone": "898978867676",
+    "website": "kale.biz",
+}
+console.log(indian(data));
+O/P: if condition satisfies then it will boolean value as output like true or false
