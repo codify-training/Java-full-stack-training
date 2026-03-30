@@ -266,3 +266,80 @@ Removing Elements
                            thrown if fails      Operation fails return null  
       View Front         getFirst(e)          peekFirst(e)
       View Last          getLast(e)           peekLast(e)
+
+
+                                                  Map Interface
+                                                -----------------
+
+Map - Map is a data structure used to store or retrieve data based on key value pairs.
+
+   (key, value)
+   (key2, value)
+
+Key Characteristics: 
+---------------------
+   UniqueKeys -  You cant have 2 identical keys.If you try to keep same key with a different or same value then the old value will be replaced by new value.
+   Duplicate Values - Different keys can have same values.
+
+Map implementations:
+--------------------
+         -> HashMap.
+         -> LinkedHashMap.
+         -> SortedMap(interface)
+              -> Treemap
+         -> HashTable(legacy iplementation, no need to use.)     
+
+
+HashMap:
+--------
+    The most popular and goto implementation of map for general use.  
+It internally uses hashig technique to store/retrieve data.
+Order - It cant gurantee insertion order.
+Performace - Extremely very fast, both adding and finding data will take same time.(bcz it uses hashing technique)
+
+Syntax: Map<keytype, ValueType> map = new HashMap<>();
+EX: Map<Integer, String> map = new HashMap<>();
+
+Basic Operations:
+  Adding data to map
+   map.put(1, "Apple");
+   map.put(2, "Banana");
+   map.put(5, "Mango");
+  Get Value:
+     map.get(5) - it return value thet is mapped to 5 key. (Mango) 
+  Remove:
+      map.remove(5); - it remove map entry with key 5
+   Check Key-
+      map.cotainsKey(2) - it return true.
+      map.containsKey(8) - it returns false    
+   Check Value.
+      map.containsValue("Banana") - it returns true.
+
+  How to iterate a map.
+  ---------------------
+     for(Map.Entry<Integer, String> entry : map.entrySet()){
+      soup("Key: "+ entry.getKey() + "   Value: "+ entry.getValue());
+     }
+
+
+  LinkedHashMap:
+  --------------
+     This will be Exactly like HashMap, but it rememebers the insertion order.
+     performance: Slightly slower compared to Hashmap, it has to do extra work for remembering order.    
+   Syntax: Map<Keytype, ValueType> map = new LinkedHashMap<>();
+   EX: Map<String, String> map = new LinkedHashmap<>();  
+
+   Use when you want to have insertion order.
+
+
+   TreeMap:
+   ----------
+   It Sorts keys in natural sorting order(Numb's 1,2,3,4... Aplphabets a, b, c,d .... AScending order)
+
+   Performance:  It is slow compared to the other 2 bcz each time you add an item, map has to sort it.
+
+   use when you wat the dta to be sorted continuously.
+
+   Sysntax: Map<keytype, ValueType> map = new TreeMap<>();
+ EX: Map<Integer, String> map = new TreeMap<>();  
+
