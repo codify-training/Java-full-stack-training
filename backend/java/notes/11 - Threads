@@ -1,0 +1,16 @@
+                                              MultiThreading
+                                              --------------
+Process: When you run a Java program, The operating sysytem start a process. The process is nothing ut JVM itseld.
+  EX: if you run 2 programs in your machine then 2 process will get triggered.
+
+Thread:
+    Thraed is a light weight subprocess. This will be present inside a process. 
+    EX: Inside the process java starts atleast one main thread.
+    The main thread calls at during execution of PSVM() and follow the execution instruction by instruction.
+
+Multithreadig:
+---------------
+in java we can instiate multiple thread to perform variuos tasks in the process simultaneously using multithreading.
+In Java we can implement multithreading using 2 ways.
+1. Exending Thread
+2. Implementing Runnable interface.
