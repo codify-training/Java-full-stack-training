@@ -1,0 +1,18 @@
+1. Create account in git hub.
+2. Goto the project path in the github.
+3. goto code button, then select https and copy the link. (ex: https://github.com/codify-training/Java-full-stack-training.git)
+4. In IDE File -> New Window -> Clone git repsitory -> here paste the URL.
+5. Then the project starts downlloading.
+
+
+
+
+
+
+Terminology:
+Check out - Get code from github to your local machine
+Checkin - Send your changes to github from your local machine.
+
+
+Push - Send the changes in your local machine to the github
+pull - Bring all the changes from the github to your local.

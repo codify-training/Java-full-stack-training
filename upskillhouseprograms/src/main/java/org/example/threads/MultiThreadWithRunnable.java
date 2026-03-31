@@ -1,26 +1,27 @@
 package org.example.threads;
 
-class CommonWorker{}
+class CoWorker{}
+class MyTask implements Runnable{
 
-class Worker extends Thread{
-    int i;
+    int taskId;
     public void run(){
         try {
             Thread.sleep(1000);
         } catch (InterruptedException e) {
         }
-        System.out.println("Task - "+i);
+        System.out.println("Task - "+taskId);
     }
-}
 
-public class ExtendingThreadDemo {
+}
+public class MultiThreadWithRunnable {
     public static void main(String[] args) {
         long start = System.currentTimeMillis();
-        for (int i=1; i<10; i++){
-            Worker w1 = new Worker();
-            w1.i = i;
-            w1.start();
-         }
+        for(int i=0; i<=10; i++){
+            MyTask task = new MyTask();
+            task.taskId = i;
+            Thread t1 = new Thread(task);
+            t1.start();
+        }
         long end = System.currentTimeMillis();
         System.out.println("Time Taken : "+ (end - start));
     }

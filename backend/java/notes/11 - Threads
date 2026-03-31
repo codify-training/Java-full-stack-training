@@ -13,4 +13,18 @@ Multithreadig:
 in java we can instiate multiple thread to perform variuos tasks in the process simultaneously using multithreading.
 In Java we can implement multithreading using 2 ways.
 1. Exending Thread
+    Steps: 
+    1. make the class exends Thread class
+    2. create object for the class 
+    3. Invoke object.start() method. 
+ 
 2. Implementing Runnable interface.
+     1. Make the class Implement Runnable interface
+     2. Create object for the class.
+     3. Create Object for the Thread class and pass the object from step 2  to the thread class consructor. 
+     4. invoke thread class Object start() method.
+
+
+When to use what:
+   When my class dont extend any other classes then we go for Approach 1.
+   when my class extends any other class then we go for approach 2.
