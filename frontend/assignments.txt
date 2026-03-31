@@ -165,3 +165,45 @@ Event Type: Birthday
 Facilities: Catering, Music
 Date: 2026-04-10
 Time: 18:30
+
+
+-------------------------------------------------------------------------------------------------------------------------
+
+4. Counter Application
+
+Create a Countdown Counter Application.
+
+
+Start counting down from a given number (example: 10)
+Decrease the value every 1 second
+When the counter reaches 0:
+Stop the timer
+Display "Time’s Up!" on UI
+
+Requirements:
+=> Display a number on screen
+=> Use setInterval() to decrease count
+=> Use clearInterval() to stop timer
+=> Show "Time’s Up!" when count = 0
+
+Expected Output:
+
+=> While Running
+10
+9
+8
+7
+...
+
+after entire execution
+Time’s Up!
+
+// Html code snippet
+<h2 id="counter">10</h2>
+<button onclick="startCounter()">Start</button>
+
+// JS code snippet
+let count = 10;
+function startCounter() {
+  // Write logic here
+}
