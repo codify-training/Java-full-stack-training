@@ -9,11 +9,13 @@ How to create a project in github
 2. After this go inside organization, then create repository.
 3. after creating repository checkuot the project. 
 
-How to make changes in an organization:
----------------------------------------
+How to make changes when you join a company:
+--------------------------------------------
 You create your branch from main branch.
 I will chekout this branch in my local.
 I make the changes now in this branch and create a pull request. 
+
+Your lead will review those changes and then approves that request. then changes will come from your branch to the main branch.
 
 
 
