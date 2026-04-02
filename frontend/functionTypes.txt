@@ -45,3 +45,167 @@ const data = {
 }
 console.log(indian(data));
 O/P: if condition satisfies then it will boolean value as output like true or false
+
+
+----------------------------------------------------------------------------------------------------------
+
+4. Anonymous Function:
+=> It is a function without a name and it is used when we want to execute a function immediately after its definition. 
+=> It is also known as IIFE (Immediately Invoked Function Expression).
+
+Syntax:
+function(){
+}
+
+Ex: 
+const greet = function() {
+  console.log("Hello");
+};
+
+Explanation: Function has no name → assigned to variable
+
+Why we use it?
+=> When we don’t need to reuse the function
+Mostly used in:
+=> Events
+=> setTimeout, setInterval
+
+
+---------------------------------------------------------------------------------------------------------
+
+5. setTimeout():
+It is used to run a function after a delay (once).
+Syntax:
+setTimeout(function, time_in_milli_seconds);
+Note: 1000 ms = 1 second
+
+Ex:
+setTimeout(function() {
+  // block of code inside function
+  console.log("Hello after 2 seconds");
+}, 2000);
+
+O/P:
+Hello after 2 seconds
+
+Explanation: block of code will be executed after 2 seconds.
+
+Real Use Case:
+=> Show popup after delay
+=> Auto logout warning
+=> Loader used to content display
+
+-----------------------------------------------------------------------------------------------------------
+
+6. setInterval():
+=> It is used to run a function repeatedly at fixed time intervals (i.e block of code inside a function will run forever).
+Syntax:
+setInterval(function, time_in_ms);
+
+Ex:
+setInterval(function() {
+  console.log("Running every 2 seconds");
+}, 2000);
+
+O/P:
+Running every 2 seconds
+Running every 2 seconds
+Running every 2 seconds
+...
+
+Real Use Case:
+=> Clock or Timer applications
+=> Auto refresh data
+=> Animations
+
+ ----------------------------------------------------------------------------------------------------------
+
+ 7. clearInterval()
+ => It is used to stop the ongoing or current interval using interval's id.
+Note:
+=> setInterval() returns an ID
+=> We use that ID to stop it
+
+Ex:
+let intervalId = setInterval(function() {
+  console.log("Running...");
+}, 1000);
+
+// Stop after 5 seconds
+setTimeout(function() {
+  clearInterval(intervalId);
+  console.log("Stopped!");
+}, 5000);
+
+O/P:
+Running...
+Running...
+Running...
+Running...
+Running...
+Stopped!
+
+
+--------------------------------------------------------------------------------------------------------
+
+
+| Function           | Purpose               |
+| ------------------ | --------------------- |
+| Anonymous Function | Function without name |
+| setTimeout()       | Run once after delay  |
+| setInterval()      | Run repeatedly        |
+| clearInterval()    | Stop interval         |
+
+
+----------------------------------------------------------------------------------------------------------
+
+Combined Example:
+
+// html
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <link rel="stylesheet" href="dumm.css" />
+  </head>
+  <body>
+
+    <br />
+
+    <div id="main">
+      <h1>Timer</h1>
+    </div>
+    <button type="button" onclick="startTimer()">Start Timer</button>
+
+  </body>
+</html>
+
+
+// js code
+const mainEL = document.getElementById("main");
+let counter = 5;
+function startTimer() {
+
+    const timerid = setInterval(() => {
+
+        console.log("counter", counter);
+        counter--;
+        mainEL.innerHTML = `<h1> ${counter} <h1>`;
+
+        if (counter === 0) {
+
+            setTimeout(() => {
+                alert("Time is up!");
+            }, 3000);
+
+            clearInterval(timerid);
+            return;
+        }
+
+    }, 1000);
+
+
+}
