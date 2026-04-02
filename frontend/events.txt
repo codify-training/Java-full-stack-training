@@ -1,0 +1,290 @@
+1. change Event
+=> change event triggers only after the value is changed AND user leaves the field (blur).
+
+Works mostly with:
+<select>
+<input>
+<textarea>
+
+Method 1: Using addEventListener
+
+const fruit = document.getElementById("fruit");
+const message = document.getElementById("message");
+
+fruit.addEventListener("change", function () {
+    const value = fruit.value;
+
+    if (value === "") {
+        message.textContent = "Option is not selected";
+    } else {
+        message.textContent = "Selected " + value;
+    }
+});
+
+2. onchange:
+=> onchange  is an HTML attribute version of the change event.
+
+Method 2: Using onchange (HTML)
+Ex: 
+<select onchange="selectFruit(this.value)">
+function selectFruit(value) {
+    const message = document.getElementById("message");
+
+    if (value === "") {
+        message.textContent = "Option is not selected";
+    } else {
+        message.textContent = "Selected " + value;
+    }
+}
+
+3. input Event
+=> input event triggers every time user types or changes value instantly.
+Use Cases:
+Live Error Validations
+Search fields
+
+Ex:
+const email = document.getElementById("emailAddress");
+const error = document.getElementById("error");
+
+email.addEventListener("input", function (event) {
+    const value = event.target.value;
+
+    if (value.includes("@")) {
+        error.textContent = "Valid input";
+        error.style.color = "green";
+    } else {
+        error.textContent = "Invalid input";
+        error.style.color = "red";
+    }
+});
+
+2. oninput:
+=> oninput  is an HTML attribute version of the change event like onchange and onclick.
+
+Ex:
+<input type="text" oninput="validateEmail(this.value)">
+function validateEmail(value) {
+    const error = document.getElementById("error");
+
+    if (value.includes("@")) {
+        error.textContent = "Valid input";
+    } else {
+        error.textContent = "Invalid input";
+    }
+}
+
+Key Points:
+Fires on every keystroke
+Best for live validation
+
+-----------------------------------------------------------------------------------------------------
+
+Real-Life Use Cases
+a) use input for:
+Live email validation
+Search suggestions
+Character count
+b) Use change for:
+Dropdown selection
+Date picker
+Final form validation
+
+-----------------------------------------------------------------------------------------------------------
+
+| Feature  | `input`          | `change`           |
+| -------- | ---------------- | ------------------ |
+| Trigger  | Every key press  | After focus loss   |
+| Speed    | Fast (real-time) | Slow               |
+| Use case | Live validation  | Final value check  |
+| Example  | Email typing     | Dropdown selection |
+
+
+-------------------------------------------------------------------------------------------------------
+
+
+
+change → after value change + blur
+onchange → HTML version of change
+input → real-time typing event
+oninput → HTML version of input
+
+
+
+-------------------------------------------------------------------------------------------------------
+
+Full working Example:
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>user cards</title>
+    <style>
+      .card {
+        color: 1px solid black;
+        margin: 20px;
+        padding: 10px;
+        width: max-content;
+        border: 1px solid brown;
+      }
+      .row-c {
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <br />
+    <!-- dropdown -->
+    <select style="width: 30%; padding: 10px; margin-bottom: 10px" id="fruit">
+      <option value="">select option</option>
+      <option value="apple">Apple</option>
+      <option value="banana">Banana</option>
+      <option value="orange">Orange</option>
+    </select>
+
+    <div id="message">Option is not selected</div>
+
+    ---------------------------------------------------------------------------
+
+    <!-- onchange event -->
+
+    <br />
+    <br />
+    <select
+      style="width: 30%; padding: 10px; margin-bottom: 10px"
+      onchange="selectData(this.value)"
+    >
+      <option value="">select car</option>
+      <option value="audi">Audi</option>
+      <option value="bmw">BMW</option>
+      <option value="swift">Swift</option>
+    </select>
+
+    <div id="car">Option is not selected</div>
+
+    ---------------------------------------------------------------------------
+    
+    <!-- input change event -->
+    <div style="display: flex; flex-direction: column; margin: 10px 0">
+      <label for="email">Email:</label>
+      <input
+        type="email"
+        id="email"
+        style="padding: 10px"
+        placeholder="enter email address"
+        
+      />
+      <div id="msg">Email is required!</div>
+    </div>
+    <button type="button" onclick="login()">login</button>
+
+    <!-- input event -->
+     <div style="display: flex; flex-direction: column; margin: 10px 0">
+      <label for="email">Email:</label>
+      <input
+        type="email"
+        id="emailAddress"
+        style="padding: 10px"
+        placeholder="enter email address"
+        
+      />
+      <div id="error">Email is required!</div>
+    </div>
+
+    <script src="map.js"></script>
+  </body>
+</html>
+
+
+// js code
+const selectedItem = document.getElementById("fruit");
+const msgEl = document.getElementById("message");
+selectedItem.addEventListener("change", () => {
+    console.log("selected", selectedItem.value);
+    const selectedFruit = selectedItem.value;
+    if (selectedFruit === "") {
+        msgEl.textContent = "Option is not selected";
+    } else {
+        msgEl.textContent = `selected ${selectedFruit}`;
+    }
+
+})
+
+
+// this process will be speed!
+const carEl = document.getElementById("car");
+
+function selectData(data) {
+    console.log("selected", data);
+    if (data === "") {
+        carEl.textContent = "Option is not selected";
+    } else {
+        carEl.textContent = `selected ${data}`;
+    }
+}
+
+// input change event
+
+const emailEL = document.getElementById("email");
+const message = document.getElementById("msg");
+
+emailEL.addEventListener("change", function (event) {
+    const email = event.target.value;
+    console.log("email", email);
+})
+
+function login() {
+    const email = emailEL.value;
+    if (email === "") {
+        alert("enter email!");
+        return;
+    }
+    if (email.endsWith("@gmail.com") || email.endsWith("@yahoo.com") || email.endsWith("@outlook.com")) {
+        message.textContent = "success!"
+    } else {
+        console.log("Invalid email");
+        message.style.color = "red";
+        message.textContent = "Email is invalid"
+        emailEL.value = "";
+    }
+}
+
+
+// input event
+
+const emailAddress = document.getElementById("emailAddress");
+const error = document.getElementById("error");
+
+emailAddress.addEventListener("input", function (event) {
+    const email = event.target.value;
+    console.log("email", email);
+
+    if (email.endsWith("@gmail.com") || email.endsWith("@yahoo.com") || email.endsWith("@outlook.com")) {
+        error.textContent = "success!"
+        error.style.color="green";
+    } else {
+        console.log("Invalid email");
+        error.style.color = "red";
+        error.textContent = "Email is invalid"
+    }
+})
+
+
+function emailValidation(email){
+     if (email === "") {
+        alert("enter email!");
+        return;
+    }
+    if (email.endsWith("@gmail.com") || email.endsWith("@yahoo.com") || email.endsWith("@outlook.com")) {
+        message.textContent = "success!"
+    } else {
+        console.log("Invalid email");
+        message.style.color = "red";
+        message.textContent = "Email is invalid"
+        emailEL.value = "";
+    }
+}
