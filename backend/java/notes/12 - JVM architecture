@@ -1,0 +1,121 @@
+                                  JVM Architecture
+                                  -----------------
+Class Loader:
+    -> Loads classes into JVM memory
+        Class loader does 3 min activities
+        1. Loading
+        2. Linking
+        3. Initialization
+
+        Loading:
+        ---------
+            Reads .class file.
+            Generates binary data.
+            saves a set of information inside method area.
+                -> Full qualifies name of class and its parent classes
+                -> whether class is related to a class, interface or enum.
+                -> modifiers, variables, method info will be saved.
+        Linking:
+        --------
+            Verification:
+                Ensures bytecdode follows JVM rules and it is safe to execute.          
+            Preparation:
+                Allocates memory for static variables assign default values.
+            Resolution:
+                Converts symbollic references to direct reference in memory.
+                or Replacing a symbollic name( like variable, method or class names.) with the actual meory address where it exists.
+                int 454651423761543 = 10;
+
+        Initialization:
+        ---------------
+            Static varaibles are assigned with actual values.
+            Executes static block.
+
+   class Loader types:
+         Bootstrap class loader:
+             Loads class that are availabel inside JAVA_HOME/lib
+         Extension class loader
+              Loads clases from extension directory. JAVA_HOME/lib/ext
+         Application class loader
+              Loads classes from application class path.
+              our project .class files.
+             EX:  
+               pkg1 
+              Class Test{
+
+              }
+              pkg2
+              class NewIem{
+                psvm(){
+                    Test test = new Test(); 
+                }
+              }
+              Here in above example the application class loader loads NewItem class, this class calls Test class, so Test also loaded.
+
+
+
+JVM Memory:
+------------
+     - Method Area
+         Stores class level info like className, parent class, method, variable static data information.
+     - Heap Area
+          All Objects are stored in this area.
+     - Stack Area
+         - For each thread a runtime stack is created.
+         - Stack contains stack frames.
+              - Method parameters
+              - Local Variables
+              - Return address(After the execution of method where the control should go.)   
+            Class StackConceptDemo{
+                psvm(){
+                    int a = 20;
+                    callM1();
+                }
+                static void callM1(){
+                    int b= 30;
+                    callM2();
+                }
+                static void callM2(){
+                    int c=40;
+                }
+                static void callM3(){
+                    int b= 30;
+                    callM2();
+                }
+
+
+            }
+     - PC Register:
+        Holds the address of currently executing instruction.
+     -> Native method stack
+            Native methods - these are the methods that are used to communicate with programs that are written other languages(like C, C++) Java communicating with OS.
+          In order to store these native methods jvm uses native method atacks.   
+
+Execution Engine:
+-----------------
+    It executes the .class files.
+    Read byte code line by line uses data present in variuos memory areas it executes the instruction.
+       1. Interpreter
+            - Reads instruction line by line
+            - Converts this into machine code.
+            - Exutes the generated machine code instruction immediatley.
+       2. JIT Compiler(Just in time compiler.)
+             static void callM1(){
+                    int b= 30;
+                    callM2();
+                }
+                static void callM2(){
+                    int c=40;
+                }
+                static void callM3(){
+                    int b= 30;
+                    callM2();
+                }
+         -> The disadavantage with interpreter is even if some method calls multiple times every time interpretetion is required,
+            Compiles entire byte code, and changes to native code, whenever interpreter sees repeated method JIT compiler provide diret native code so that reinterpretatoins not required.
+
+       3. Garbage collector.
+             it destroys unreferenced objects.
+
+
+JNI(Java native)
