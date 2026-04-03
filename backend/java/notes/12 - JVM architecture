@@ -118,4 +118,21 @@ Execution Engine:
              it destroys unreferenced objects.
 
 
-JNI(Java native)
+JNI(Java native interfaces)
+------------------------
+JNI is a bridge that allows Java code running inside JVM to call native Code and vice versa.
+
+EX: camera access
+     Printer access.
+     Speakers access.
+  Here the camera access software is written in native languages like (c, c++), 
+  java communicates with this using JNI.
+  (means java can calls camera to open and take pic and 
+  then make native code to send the taken pic back)
+
+Native Method Libraries:
+-------------------------
+Collection of native libraries required for executing native methods.
+   -> These libraries are written in c,c++.
+
+-----------------------------------------------------------------------------------------------

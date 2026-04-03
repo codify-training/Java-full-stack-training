@@ -1,0 +1,38 @@
+Object class.
+--------------
+   Every class will extend object class by default. We dont need to mention it explicitly.
+   the 3 important methods in this object class is.
+        toString()
+        equals()
+        hashCode()
+Testing weather Every class extends object class or not?
+Human{
+}
+
+ Person extends Human {}
+    Person p = new Person()
+    Human p = new Person()
+
+Person extends Object{
+}
+ Object p = new Person()
+
+-----------------------
+toString():
+---------------
+returns human readable string representation of an object.
+  By Default it prints className@hex formatted hashcode
+  ToStringDemo - Reference sample.
+
+
+Equals:
+-------
+Check if 2 objects are logically equal. (compare based on content.)
+Refere diagram and org.example.ObjectClassDemo.EqualsCheckDemo program.
+
+
+hashCode:
+---------
+returns a number based on memory address by doing some calculations.
+Reference - org.example.ObjectClassDemo.HashCodeDemo
+
