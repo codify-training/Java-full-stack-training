@@ -1,0 +1,73 @@
+                                    Database
+                                    --------
+
+Unstructured : It doesnt have a fixed formatted
+data stored in files, JSON format, documents etc.
+
+Structured : Data is stored in a fixed format, the fixed reprsentation is defined as tables, 
+tables will have rows and columns.
+EX: Postgres SQl, MYSQL, Oracle etc.
+
+In order to interact with database and to perform operations we use SQL Commands.
+
+These SQL commands are categorized in 4 types.
+
+  1. DDL - Data definition language 
+     Used to define, alter and manage structure of table, these DDL commands are used.
+       Create - Used to build new table object.
+          create table tablenmae(
+            columnName dataType null/not null
+          )
+         EX: create table employee(
+            emp_id SERIAL primary key,
+            first_name varchar(50) not null,
+            last_name varchar(50) not null,
+            email text unique,
+            phone varchar(50)
+         )
+
+       alter - modifies the existing object
+        used to modify the structure of the table, ex: add/remove of table columns.
+          Add A column
+             alter table employee ADD column city varchar(50);
+          Delete/Drop a column
+              alter table employee drop column city; 
+       drop  - Deletes entire table object and its structure from the database
+             drop table tablename;
+             ex: drop table employee      
+       truncate - Removes all data inside the table, but it keeps the structure.
+          truncate table employee
+  2. DML
+      these are SQL commands used to retrieve, insert, modify and delete the actual data stored in the table.       
+      insert - Used to add data into the table.
+         by using insert we can add one or more records at a time to the table.
+       insert into tableName(column1, column2 ...)values(column1Value, column2Value ...)
+       EX: For inserting single row.
+             insert into employee(first_name, last_name, email, phone) values('Ram', 'Roy', 'ram@gmail.com', '7200124319') 
+            insert into employee(first_name, last_name, email, phone)
+             values('Rakesh', 'reddy', 'rakesh@gmail.com', '7200127819'),('Ravi', 'Bish', 'abis@gmail.com', '7200324210') 
+       
+      SELECT - retreives data from one or more tables.
+         select * from tablename;
+         ex: select * from employee;
+        select particular columns:
+          select first_name, last_name, email from employee
+        Filter data from the table.
+            select * from employee where email = 'rakesh@gmail.com';
+        Sort data in the table:
+             select * from employee order by last_name asc;
+             asc - ascending order
+             desc - descending order. 
+      update - This command to used to modify the data.
+          update tableName set columnName = 'newVal' where columnName = 'oldVal'
+          ex: update employee set columnName = 'reddy@gmail.com' where columnName = 'rakesh@gmail.com'
+      delete - Used to delete the data from the table.
+         delete from tableName where columnName = value;
+         ex: delete from employee where emp_id = 3
+
+  3. TCL
+  4. DCL
+
+
+
+    

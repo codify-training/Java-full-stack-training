@@ -1,0 +1,35 @@
+--DDL Commands
+create table employee(
+            emp_id SERIAL primary key,
+            first_name varchar(50) not null,
+            last_name varchar(50) not null,
+            email text unique,
+            phone varchar(50)
+         );
+alter table employee ADD column city varchar(50);
+alter table employee drop column city;
+
+drop table employee;
+
+truncate table employee
+
+--DML Commands
+-- insert command
+  insert into employee(first_name, last_name, email, phone) 
+  values('Ram', 'Roy', 'ram@gmail.com', '7200124319') 
+
+ insert into employee(first_name, last_name, email, phone)
+ values('Rakesh', 'reddy', 'rakesh@gmail.com', '7200127819'),
+ ('Ravi', 'Bish', 'abis@gmail.com', '7200324210') 
+
+-- select command
+select * from employee;
+select first_name, last_name, email from employee
+select * from employee where email = 'rakesh@gmail.com';
+select * from employee order by last_name asc;
+
+update employee set email = 'reddy@gmail.com' where email = 'rakesh@gmail.com'
+--Dangerous: update witout where condition.
+update employee set last_name = 'shyam'
+ 
+delete from employee where emp_id = 3
