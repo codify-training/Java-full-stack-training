@@ -39,7 +39,7 @@ window.addEventListener("keydown", (event) => {
    alert(`pressed key : ${event.key}`) 
 })
 
-Explanation: here, without input we can run website if we press any we can check using the alert dialog box.
+Explanation: here, without entering any input field, if we press any we can see the alert dialog box appearing.
 
 
 ----------------------------------------------------------------------
