@@ -1,0 +1,80 @@
+
+1. Callback function:
+=>  function that is passed as an argument to another function and is executed after some operation has been completed. 
+
+1. Why do we need Callbacks?
+JavaScript usually runs code line by line (Synchronously). However, some things take time—like loading an image or waiting for a timer. 
+Callbacks allow us to say: "Hey, run this code ONLY after that specific task is finished."
+
+
+Ex: Callback using synchronous example
+function sayGoodbye() {
+    console.log("Goodbye! Have a great day.");
+}
+
+// This is the Main function that accepts a callback
+function greetUser(name, callback) {
+    console.log("Hello, " + name + "!");
+    
+    // Now we "call back" the function passed as an argument
+    callback();
+}
+
+// We pass 'sayGoodbye' as an argument (without parentheses)
+greetUser("Naveen", sayGoodbye);
+
+Explanation:
+greetUser starts running.
+It prints "Hello, Naveen!".
+Then, it triggers the callback(), which is actually sayGoodbye.
+It prints "Goodbye! Have a great day."
+
+
+
+Ex:2 Callback using Asynchronous example
+console.log("1. I am ordering pizza...");
+
+// The arrow function inside is the 'callback'
+setTimeout(() => {
+    console.log("2. Pizza is delivered!");
+}, 3000); 
+
+console.log("3. I am watching TV while I wait.");
+
+Explanation:
+I am ordering pizza...
+I am watching TV while I wait.
+(3 seconds later) Pizza is delivered! 
+Note: Notice how Step 3 happened before Step 2. The callback allowed the program to keep moving while the "pizza" was being prepared.
+
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+2. callback hell
+=>  when we have multiple nested callbacks, it can lead to code that is difficult to read and maintain. 
+=>  This is often referred to as "callback hell" or "pyramid of doom".
+
+Ex-1: Synchronous example
+function setData() {
+    add(data, function (data) {
+        update(data, function (data) {
+            deleteData(data, function (data) {
+                console.log("all operations completed", data);
+            })
+        })
+    })
+}
+
+Ex-2: Asynchronous example
+
+// async and await
+async function setData(){
+    const data = await add(data);
+    const updatedData = await update(data);
+    const deletedData = await deleteData(updatedData);
+    console.log("all operations completed", deletedData);
+}
+
