@@ -68,6 +68,20 @@ function setData() {
     })
 }
 
+Problems:
+=> Hard to Read and maintain: You have to squint to follow the closing brackets });.
+=> Hard to Handle Errors: If Step 2 fails, where do you put the error message? You’d have to write if/else logic inside every single level.
+=> High Risk of Bugs: It is very easy to accidentally delete a closing bracket and break the entire script.
+
+
+Soluion:
+In modern JavaScript, we don't use nested callbacks anymore. We use two main solutions:
+
+=> Promises: Allows us to "chain" tasks using .then().
+=> Async/Await: The most modern way that makes asynchronous code look like normal, easy-to-read synchronous code.
+
+
+
 Ex-2: Asynchronous example
 
 // async and await
