@@ -60,13 +60,49 @@ These SQL commands are categorized in 4 types.
              desc - descending order. 
       update - This command to used to modify the data.
           update tableName set columnName = 'newVal' where columnName = 'oldVal'
-          ex: update employee set columnName = 'reddy@gmail.com' where columnName = 'rakesh@gmail.com'
+          ex: update employee set email = 'reddy@gmail.com' where email = 'rakesh@gmail.com'
       delete - Used to delete the data from the table.
          delete from tableName where columnName = value;
          ex: delete from employee where emp_id = 3
 
-  3. TCL
-  4. DCL
+  3. TCL(Transaction control language)
+       Transaction - A group of sql operations execued as a single unit.
+   these transaction can be controlled using TCL commands.
+   This makes sure either everything happens successfully or nothing happens at all.
+     1. Begin - starts the transaction
+     2. Commit - saves all changes made during current transaction to the database permanently
+     3. Rollback - undoes all changes made during current TX if any error is encuonter
+     4. savepoint - 
+
+insert1
+insert2
+insert3
+insert4
+insert5
+checkpoint 1
+insert11
+insert12
+insert13
+insert14
+insert15
+checkpoint 2
+insert11
+insert12
+insert13
+insert14
+insert15
+rollback to checkpoint 2
+
+
+commit;      
+  4. DCL:
+     DCl is used to control access and permissions in the DB.
+GRANT :
+   Grants prelivilages to the user.
+   GRANT select, insert on employee to user1;
+
+REVOKE
+    REVOKE INSERT on employee from user1
 
 
 
