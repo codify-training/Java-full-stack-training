@@ -1,0 +1,17 @@
+The below steps are used to interact with DB.
+
+1. Include the driver.
+   add the below dependency inside pom.xml
+   <dependencies>
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>42.7.3</version>
+        </dependency>
+    </dependencies>
+2. Establish connection to the database.
+
+
+3. Prepare sql query
+
+4. execute the query.

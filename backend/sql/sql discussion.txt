@@ -72,38 +72,120 @@ These SQL commands are categorized in 4 types.
      1. Begin - starts the transaction
      2. Commit - saves all changes made during current transaction to the database permanently
      3. Rollback - undoes all changes made during current TX if any error is encuonter
-     4. savepoint - 
+     4. savepoint - Creates check points inside the trasaction, untill where the transaction has to get rolled back.
+         BEGIN;
+               insert into employee(first_name, last_name, email, phone) 
+               values('Hari1', 'Hari1', 'hari1@gmail.com', '7200124319');
+               insert into employee(first_name, last_name, email, phone) 
+               values('DOE', 'DOE', 'DOE@gmail.com', '7200124319');
+               
+               SAVEPOINT sp1;
 
-insert1
-insert2
-insert3
-insert4
-insert5
-checkpoint 1
-insert11
-insert12
-insert13
-insert14
-insert15
-checkpoint 2
-insert11
-insert12
-insert13
-insert14
-insert15
-rollback to checkpoint 2
+               insert into employee(first_name, last_name, email, phone) 
+               values('Raj', 'Raj', 'Raj@gmail.com', '7200124319');
+               insert into employee(first_name, last_name, email, phone) 
+               values('Ramesh', 'Ramesh', 'Ramesh@gmail.com', '7200124319');
+               insert into employee(first_name, last_name, email, phone) 
+               values('John', 'John', 'John@gmail.com', '7200124319');
+               
+               SAVEPOINT sp2;
+
+               insert into employee(first_name, last_name, email, phone) 
+               values('DAVID', 'DAVID', 'DAVID@gmail.com', '7200124319');
+
+               -- Rollback only last insert
+               ROLLBACK TO SAVEPOINT sp1;
+
+         COMMIT;
 
 
 commit;      
   4. DCL:
      DCl is used to control access and permissions in the DB.
-GRANT :
-   Grants prelivilages to the user.
-   GRANT select, insert on employee to user1;
+      GRANT :
+         Grants prelivilages to the user.
+         GRANT select, insert on employee to user1;
 
-REVOKE
-    REVOKE INSERT on employee from user1
+      REVOKE
+         REVOKE INSERT on employee from user1
 
 
 
+                                        Joins
+                                        ------
+
+Join is used to combine rows from two or more tables based on a related column between them.
+
+Inner Join: 
+   It only returns rows where there is match in both tables. If a record in Table A doesnt have record in table B, it s excluded from the result.
+
+Query EX: select * from employee e inner join department d on e.dept_id = d.id;
+EX: 
+   Employee                                 department
+  name   email            dept_id            id  d_name           d_code
+  Ram    ram@gmail.com    1                   1  Elec Com Engg     ECE
+  Hari   hari@gmail.com    2                  2  Inf Tech Engg     IT
+  Ramesh ramesh@gmail.com  2                  3  Civil Tech Engg   Civil  
+  Rakesh rakesh@gmail.com  4
+
+Inner join result:
+Ram    ram@gmail.com    1                   1  Elec Com Engg     ECE
+Hari   hari@gmail.com    2                  2  Inf Tech Engg     IT
+Ramesh ramesh@gmail.com  2                  2  Inf Tech Engg     IT
+
+Left Join:
+  Returns all rows from left table and the matched rows fro the right table. if there is no match the result will contain null for every column of right table.
+       Employee                                 department
+  name   email            dept_id            id  d_name           d_code
+  Ram    ram@gmail.com    1                   1  Elec Com Engg     ECE
+  Hari   hari@gmail.com    2                  2  Inf Tech Engg     IT
+  Ramesh ramesh@gmail.com  2                  3  Civil Tech Engg   Civil 
+  Rakesh rakesh@gmail.com  4                    
+
+ Query Left join : select * from employee e left join department d on e.dept_id = d.id;
+
+   Left join result:
+   Ram    ram@gmail.com    1                   1  Elec Com Engg     ECE
+   Hari   hari@gmail.com    2                  2  Inf Tech Engg     IT
+   Ramesh ramesh@gmail.com  2                  2  Inf Tech Engg     IT
+   Rakesh rakesh@gmail.com  4                  null null            null  
+
+Right join:
+ Returns all rows from right table and the matched rows fro the left table. if there is no match the result will contain null for every column of left table. 
+     Employee                                 department
+  name   email            dept_id            id  d_name           d_code
+  Ram    ram@gmail.com    1                   1  Elec Com Engg     ECE
+  Hari   hari@gmail.com    2                  2  Inf Tech Engg     IT
+  Ramesh ramesh@gmail.com  2                  3  Civil Tech Engg   Civil 
+  Rakesh rakesh@gmail.com  4                    
+ 
+
+Query : select * from employee e right join department d on e.dept_id = d.id;
+
+
+   Right join result:
+   Ram    ram@gmail.com    1                   1  Elec Com Engg     ECE
+   Hari   hari@gmail.com    2                  2  Inf Tech Engg     IT
+   Ramesh ramesh@gmail.com  2                  2  Inf Tech Engg     IT
+    null       null         null               3  Civil Tech Engg   Civil  
     
+Full Outer Join:
+  The full join combines the logic of both left and right joins. It returns matched records from both tables along with every column in right and left tables, 
+  if there no match present in left or right those column result will be placed with null.  
+
+     Employee                                 department
+  name   email            dept_id            id  d_name           d_code
+  Ram    ram@gmail.com    1                   1  Elec Com Engg     ECE
+  Hari   hari@gmail.com    2                  2  Inf Tech Engg     IT
+  Ramesh ramesh@gmail.com  2                  3  Civil Tech Engg   Civil 
+  Rakesh rakesh@gmail.com  4                    
+
+Query EX:   select * from employee e full outer join department d on e.dept_id = d.id;
+
+   Right join result:
+   Ram    ram@gmail.com    1                   1  Elec Com Engg     ECE
+   Hari   hari@gmail.com    2                  2  Inf Tech Engg     IT
+   Ramesh ramesh@gmail.com  2                  2  Inf Tech Engg     IT
+    null       null         null               3  Civil Tech Engg   Civil
+   Rakesh rakesh@gmail.com  4                  null   null           null      
+  

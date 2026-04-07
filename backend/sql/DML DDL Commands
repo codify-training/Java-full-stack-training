@@ -33,3 +33,75 @@ update employee set email = 'reddy@gmail.com' where email = 'rakesh@gmail.com'
 update employee set last_name = 'shyam'
  
 delete from employee where emp_id = 3
+
+
+--TCL
+BEGIN;
+insert into employee(first_name, last_name, email, phone) 
+  values('Hari1', 'Hari1', 'hari1@gmail.com', '7200124319');
+insert into employee(first_name, last_name, email, phone) 
+  values('DOE', 'DOE', 'DOE@gmail.com', '7200124319');
+  
+SAVEPOINT sp1;
+
+insert into employee(first_name, last_name, email, phone) 
+  values('Raj', 'Raj', 'Raj@gmail.com', '7200124319');
+insert into employee(first_name, last_name, email, phone) 
+  values('Ramesh', 'Ramesh', 'Ramesh@gmail.com', '7200124319');
+  insert into employee(first_name, last_name, email, phone) 
+  values('John', 'John', 'John@gmail.com', '7200124319');
+  
+SAVEPOINT sp2;
+
+insert into employee(first_name, last_name, email, phone) 
+  values('DAVID', 'DAVID', 'DAVID@gmail.com', '7200124319');
+
+-- Rollback only last insert
+ROLLBACK TO SAVEPOINT sp1;
+
+COMMIT;
+
+
+
+--DDL Commands
+create table department(
+            id SERIAL primary key,
+            d_name varchar(50) not null,
+            d_code varchar(50) not null
+         );
+
+
+alter table employee ADD column dept_id integer;
+
+insert into department(d_name, d_code) values ('Electrnics and comm', 'ECE');
+insert into department(d_name, d_code) values ('information tech', 'IT');
+insert into department(d_name, d_code) values ('Civil Tech', 'CIVIL');
+
+
+  insert into employee(first_name, last_name, email, phone, dept_id) 
+  values('Ram', 'Roy', 'ram@gmail.com', '7200124319', 4)
+
+  insert into employee(first_name, last_name, email, phone, dept_id) 
+  values('Shyam', 'shyam', 'shyam@gmail.com', '7200124319', 2)
+
+select * from department
+select * from employee
+
+
+select * from employee
+
+
+Joins:
+------
+---inner join demo
+select * from employee e inner join department d on e.dept_id = d.id;
+
+-- Left join
+select * from employee e left join department d on e.dept_id = d.id;
+
+--Right join
+select * from employee e right join department d on e.dept_id = d.id;
+
+-- FULL Outer join
+select * from employee e full outer join department d on e.dept_id = d.id;
+
