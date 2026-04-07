@@ -1,0 +1,176 @@
+🖱️ Mouse Events in JavaScript
+Mouse events are used to detect user actions with the mouse or with laptop cursor like:
+moving mouse
+clicking
+entering/leaving elements
+
+
+1. mouseenter & mouseleave:
+
+What is mouseenter?
+=> Triggered when mouse enters inside an element
+
+What is mouseenter?
+=> Triggered when mouse enters inside an element
+
+Ex:
+// html code
+
+    <div
+      id="box2"
+      style="width: 100px; background-color: brown; height: 100px"
+    ></div>
+
+// JS code
+const box2EL = document.getElementById("box2");
+box2EL.addEventListener("mouseenter", () => {
+    box2EL.style.backgroundColor = "skyblue";
+    box2EL.style.borderRadius = "50%";
+});
+
+box2EL.addEventListener("mouseleave", () => {
+    box2EL.style.backgroundColor = "brown";
+    box2EL.style.borderRadius = "0%";
+});
+
+Explanation:
+
+When mouse or cursor enters:
+color → skyblue
+shape → circle
+
+When mouse or cursor leaves:
+color → brown
+shape → normal
+
+Note:
+mouseenter and mouseleave work only on the element itself, not on its children.
+
+-----------------------------------------------------------------------------------------------------------
+
+
+2. dblclick (Double Click)
+
+What is dblclick?
+=> Triggered when user clicks twice quickly
+
+Ex:
+
+<button type="button" id="btn">click me</button>
+<p id="clickMsg"></p>
+
+const btn = document.getElementById("btn");
+const clickMsg = document.getElementById("clickMsg");
+btn.addEventListener("dblclick", () => {
+    alert("double clicked");
+    clickMsg.textContent = "double clicked";
+});
+
+What happens?
+
+=> When user double clicks:
+Alert shows
+Text updates
+
+Real-Life Examples:
+=> Zoomin option in google maps
+=> Opening google document file from google drive 
+
+
+----------------------------------------------------------------------------------------------------------
+
+
+3. mouseover & mouseout:
+What is mouseover?
+=> Triggered when mouse moves over an element
+
+What is mouseout?
+=> Triggered when mouse moves out of an element
+
+Ex:
+
+    <div
+      id="parent"
+      style="
+        padding: 60px;
+        width: 150px;
+        background-color: green;
+        height: 150px;
+        border: 1px solid brown;
+      "
+    >
+      Parent Element
+      <div
+        id="child"
+        style="padding: 30px; background: yellow; border: 1px solid blue"
+      >
+        child element
+      </div>
+    </div>
+
+    <div>Counter : <span id="counter">0</span></div>
+
+
+// Using mouseover and mouseout
+const parentEL = document.getElementById("parent");
+const childEL = document.getElementById("child");
+const countEL = document.getElementById("counter");
+let count = 0;
+
+parentEL.addEventListener("mouseover", () => {
+    count++;
+    console.log("count", count);
+    countEL.textContent = count;
+})
+
+parentEL.addEventListener("mouseout", () => {
+    parentEL.style.backgroundColor="black";
+})
+
+childEL.addEventListener("mouseover", () => {
+    count--;
+    console.log("count", count);
+    countEL.textContent = count;
+})
+
+childEL.addEventListener("mouseout", () => {
+    childEL.style.backgroundColor="red";
+})
+
+Explanation:
+What happens?
+
+=> When mouse enters parent:
+count increases
+
+=> When mouse leaves parent:
+background color will be black
+
+=> When mouse enters child:
+count decreases
+
+=> When mouse leaves chils:
+background color will be red
+
+
+
+Important:
+
+| Event      | Behavior                                 |
+| ---------- | ---------------------------------------- |
+| mouseenter | Only triggers on main element            |
+| mouseover  | Triggers on parent element **and its child element** |
+
+
+--------------------------------------------------------------------------------------------------------------
+
+Quick Comparision:
+
+| Event      | Fires When                                    |
+| ---------- | --------------------------------------------- |
+| mouseenter | Mouse enters element                          |
+| mouseleave | Mouse leaves element                          |
+| mouseover  | Mouse moves over element (including children) |
+| mouseout   | Mouse leaves element (including children)     |
+| dblclick   | Double click                                  |
+
