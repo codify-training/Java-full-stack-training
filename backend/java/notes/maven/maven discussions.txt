@@ -1,0 +1,142 @@
+                        Maven
+                        -----
+
+Before maven, java projets has 3 big problems.
+   -> Dependency Hell
+      ->  Download jar file.
+      -> add them to class path.
+      ->  Handle version conflicts.  
+        postgresql 42.7.3 compatible commons-util 3.5.4.
+        postgresql updated to 50.2.4 compatible commons-util 4.2.1. 
+        You have find it and get compatible versions and keep them in classpath.
+
+   -> No standard project structure
+       every project looks different.
+          project A -> src/java
+          Project B -> source/code
+          project C -> random folders 
+
+   -> Build process was manual.
+       Compiling -> packaging -> deploy.
+     compiling - javac we compile java file to clsas file.
+     packaging - Picks all the class files and bundle it to jar/war files.
+     deploy  - copy the generated jar to a different server location to make the app run. 
+
+After Maven the above all the 3 problems are resolved.
+
+   1) Dependency Hell
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>42.7.3</version>
+        </dependency>
+
+        Maven takes care of downloading the jar file and attach it to class path of our project, and it also downloads trasative dependencies(dependency inside dependency). 
+
+
+     2) when a project is created with maven it follows a standard structure.
+         src/main/java
+         src/main/resources
+         src/test/java
+
+     3) Here build process was automated with a single command.
+         mvn clean install.
+
+
+What is Maven:
+        It is a powerful software management & build automation tool.
+        Primarily used for java projects.
+    software management
+        -> Manage dependencies
+        -> maven enforces project structure
+        -> versioning
+            -> It helps in releases(lets say i have group of 100 clients,  set of 50 clients need a update and the rest uses my old code, now using version i seggregate and say
+            whom to use what. )
+
+    build automation tool.
+                single command all my code is converted into a runnable app.
+            mvn clean install.
+            -> clears all the class files generated before.
+            -> Compiles the java files and generates class files
+            -> Run tests
+            -> package(Jar/WAR)
+            -> install to local repo.
+
+
+POM.xml Explanation:
+---------------------
+In pom.xml i will define all the instructions that has to be performed by maven on my project.
+
+
+1) <?xml version="1.0" encoding="UTF-8"?>
+   standard XML header.
+
+2) <project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+   project - This defines its a maven project.
+   
+   -> xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  - includes schema definitions .
+   
+   -> xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+    This tells where to validate XML structure.
+    it ensures our pom.xml is correct.  
+
+its a common thing. it represents POM model version number.
+<modelVersion>4.0.0</modelVersion>
+
+3)     <groupId>org.example</groupId>
+        This will reverse of our website domain name.(erverse domain name)
+     
+    <artifactId>javatutorings</artifactId>
+     -> artifactId - this will hold the name of my project. 
+      
+    <version>1.0-SNAPSHOT</version>
+      to hold the version number for my project.
+     
+ ex: www.theupskillhouse.com
+
+     <groupId>com.theupskillhouse</groupId>
+     <artifactId>javatutorings</artifactId>
+      <version>1.0-SNAPSHOT</version>
+
+
+4)  <maven.compiler.source>21</maven.compiler.source>
+     Compile using java 21 version
+  <maven.compiler.target>21</maven.compiler.target>
+     Geerate byte code for java21
+
+5)  <dependencies>
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>42.7.3</version>
+        </dependency>
+    </dependencies>
+
+    Here the dependecies/jar files required to run our project will be defined here.
+    ex: the above one adds postgressql dependency to y project.
+
+    mvn install
+      -> scans the dependencies tag. and picks all the dependencies.
+      -> connects to maven repository and download the jar file.
+      -> store it inside local repo (.m2) 
+      -> add to class path automatically.
+
+
+ 6)  <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.11.0</version>
+            </plugin>
+        </plugins>
+    </build>
+  Everything about your project build will goes inside your build tag.
+  plugin - > this will have a piece of code inside each plgin which will do actual work.
+
+  mvn clean install.
+
+
