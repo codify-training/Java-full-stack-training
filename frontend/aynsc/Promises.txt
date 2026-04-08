@@ -95,13 +95,13 @@ The Four Promise Combinator Methods:
 => If even ONE fails: It immediately rejects the whole batch ("fails fast") and returns the error of the first failed promise, ignoring the rest.
 
 // Resolves after 1 second
-const p1 = new Promise((resolve) => setTimeout(() => resolve("Data 1"), 1000));
+const p1 = new Promise((resolve)=>{ => setTimeout(() => resolve("Data 1"), 1000)});
 
 // Rejects after 0.5 seconds
-const p2 = new Promise((resolve, reject) => setTimeout(() => reject("Error in Data 2"), 500));
+const p2 = new Promise((resolve, reject) =>{ setTimeout(() => reject("Error in Data 2"), 500)});
 
 // Resolves after 2 seconds
-const p3 = new Promise((resolve) => setTimeout(() => resolve("Data 3"), 2000));
+const p3 = new Promise((resolve) =>{ setTimeout(() => resolve("Data 3"), 2000)});
 
 
 Ex:
@@ -119,7 +119,6 @@ Promise.all([p1, p2, p3])
 
 2.Promise.allSettled() (The "Wait for Everyone" approach)
 => It waits for all promises to finish, regardless of whether they succeed or fail.It will returns array of objects with status and value/reason
-=> It never "fails fast". Once everything is done, it returns an array of objects describing the outcome (status and value/reason) of each promise.
 
 Real-world usage: Uploading 5 different photos at once. If photo #3 fails, you still want photos #1, #2, #4, and #5 to finish uploading so you can tell the user "4 photos uploaded successfully, 1 failed."
 
