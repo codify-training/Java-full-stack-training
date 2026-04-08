@@ -1,0 +1,173 @@
+async and await:
+
+What are async and await ?
+=> async and await are special keywords used in modern programming languages (like JavaScript, Python, and C#) to handle asynchronous operations—tasks that take time to complete, 
+   like downloading a file or fetching data from a database.
+
+=> They were introduced to solve a major headache: writing asynchronous code used to be messy, relying on deeply nested "callbacks" (often called "callback hell") or complex .then() Promise chains.
+   async and await act as syntactic sugar, allowing you to write asynchronous, non-blocking code that looks and reads like traditional, top-to-bottom synchronous code.
+
+
+Async (Promise Maker):
+=> When you put the word async in front of a function, you are doing two things:
+=> You are telling the program, "This function will take some time to finish."
+
+=> You are guaranteeing that the function will always return a Promise (an object representing the eventual completion or failure of an operation). 
+=> Even if you just return a regular string or number, async automatically wraps it in a Promise.
+
+2. await (The Pauser):
+=> The await keyword can only be used inside an async function.
+=> When the code hits an await statement, it literally pauses the execution of that specific function until the background task finishes.
+
+Note: It does not freeze your entire application or website. While that specific function is paused waiting for data, the rest of your program continues running smoothly (responding to button clicks, animations, etc.).
+
+
+
+Real-Time Usages & Examples:
+In the real world, async/await is used anytime your application has to talk to something outside of its immediate memory.
+
+1. Fetching Data from APIs (Network Requests)
+=> Whenever an app needs to get data from the internet, it takes an unpredictable amount of time depending on network speed.
+=> Real-world scenario: A weather app fetching the current temperature for your city from a remote server, or an e-commerce site loading a list of products.
+=> Why use it: You don't want the user's screen to freeze completely while waiting for the server to reply.
+
+2. Database Operations
+=> Reading, writing, updating, or deleting data in a database is an external process.
+=> Real-world scenario: A user clicking "Checkout" on a shopping cart. The app must wait for the database to confirm the inventory is in stock, process the payment, and save the order receipt.
+=> Why use it: await ensures the program doesn't try to show the "Order Successful" screen before the database has actually confirmed the payment.
+
+3. File System Tasks
+=> Reading or writing files to a hard drive takes time, especially for large files.
+=> Real-world scenario: A user uploading a large profile picture, or a script reading a massive CSV file to generate a report.
+=> Why use it: The application can show a loading spinner and continue handling other tasks while the heavy lifting of the file transfer happens in the background.
+
+Ex:
+async function setData() {
+    const data = await add(data);
+    const updatedData = await update(data);
+    console.log("all operations completed", deletedData);
+}
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+Promises:
+=> Promise in programming (most commonly in JavaScript) is exactly what it sounds like: a guarantee that a value will be provided in the future.
+=> When you start a task that takes time (like fetching data from a server), the program doesn't give you the data immediately. 
+=> Instead, it gives you a "Promise" that it will eventually return either the data you asked for, or an error explaining why it couldn't.
+
+
+A Promise is always in one of three states:
+
+=> Pending: The task is still ongoing (the promise is made, but not yet fulfilled or broken).
+=> Fulfilled (Resolved): The task completed successfully.
+=> Rejected: The task failed.
+
+Ex:
+function getUserData() {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve({ id: 1, name: "naveen", });
+        }, 1500)
+    });
+}
+// asynchronous function 
+async function userData() {
+    console.log("getting user data");
+    try {
+        const user = await getUserData();
+        console.log("user", user);
+    } catch (e) {
+        console.log("e", e);
+        console.error(e);
+    } finally {
+        console.log("task is completed");
+    }
+}
+
+
+The Four Promise Combinator Methods:
+
+1. Promise.all() (The "All or Nothing" approach)
+=> It will takes an array of promises and waits for all of them to fulfill.
+=> If they all succeed: It returns a single array containing all the results in the exact order you requested them.
+=> If even ONE fails: It immediately rejects the whole batch ("fails fast") and returns the error of the first failed promise, ignoring the rest.
+
+// Resolves after 1 second
+const p1 = new Promise((resolve) => setTimeout(() => resolve("Data 1"), 1000));
+
+// Rejects after 0.5 seconds
+const p2 = new Promise((resolve, reject) => setTimeout(() => reject("Error in Data 2"), 500));
+
+// Resolves after 2 seconds
+const p3 = new Promise((resolve) => setTimeout(() => resolve("Data 3"), 2000));
+
+
+Ex:
+Promise.all([p1, p3])
+  .then(results => console.log(results)) 
+  // Output after 2s: ["Data 1", "Data 3"]
+
+Promise.all([p1, p2, p3])
+  .catch(error => console.error(error)); 
+  // Output after 0.5s: "Error in Data 2" (p1 and p3 are ignored)
+
+
+
+
+
+2.Promise.allSettled() (The "Wait for Everyone" approach)
+=> It waits for all promises to finish, regardless of whether they succeed or fail.It will returns array of objects with status and value/reason
+=> It never "fails fast". Once everything is done, it returns an array of objects describing the outcome (status and value/reason) of each promise.
+
+Real-world usage: Uploading 5 different photos at once. If photo #3 fails, you still want photos #1, #2, #4, and #5 to finish uploading so you can tell the user "4 photos uploaded successfully, 1 failed."
+
+Ex:
+Promise.allSettled([p1, p2])
+  .then(results => console.log(results));
+  
+/* Output after 1s:
+[
+  { status: "fulfilled", value: "Data 1" },
+  { status: "rejected", reason: "Error in Data 2" }
+]
+*/
+
+
+
+
+3. Promise.race() (The "First to Finish" approach)
+=> It takes an array of promises and returns the result of whichever promise finishes first. 
+=> It literally races them against each other.
+
+Real-world usage: Setting a timeout for an API request. You can race your data fetch against a timer. 
+If the timer finishes first, you throw a "Request Timed Out" error.
+
+Ex:
+Promise.race([p1, p2, p3])
+  .then(result => console.log(result))
+  .catch(error => console.error(error)); 
+  
+  // Output after 0.5s: "Error in Data 2" 
+  // (Because p2 took 0.5s, beating p1's 1s and p3's 2s)
+
+
+
+
+
+
+4. Promise.any() (The "First to Succeed" approach)
+=> is similar to race(), but it ignores failures. It will return the first promise that successfully fulfills. 
+
+Real-world usage: You have three different backup servers holding the same file. You want to fetch the file from whichever server responds the fastest, but if one server is down (rejects), 
+                  you just ignore it and take the file from the next fastest one.
+
+
+Ex:
+Promise.any([p1, p2, p3])
+  .then(result => console.log(result))
+  .catch(error => console.error(error)); 
+
+  // Output after 1s: "Data 1"
+  // (p2 failed first at 0.5s, but any() ignored it and waited for p1 to succeed at 1s)
