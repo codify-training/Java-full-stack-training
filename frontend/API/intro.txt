@@ -1,0 +1,43 @@
+1. What is an API?
+=> API stands for Application Programming Interface.
+
+Explanation:
+
+Think of an API as a bridge or a waiter.
+=> The Analogy: In a restaurant, you (the Frontend) tell the waiter (the API) what you want to eat. The waiter takes your request to the kitchen (the Backend/Database). 
+=> The kitchen prepares the food and the waiter brings it back to your table.
+=> The Reality: An API is a set of rules that allows two programs to talk to each other.
+
+
+
+2. The Data Flow?
+
+When you interact with a website or web Application, the data usually travels in this cycle:
+
+=> Frontend Hit: You click a button or load a page.
+=> Server Hit: The request travels to the backend server.
+=> Database (DB) Hit: The server asks the database for specific information (like your user profile).
+=> Response: The database sends data back to the server, which then sends it back to your screen.
+
+
+3. Local vs. Deployed APIs
+Local API: These run on your own computer during development.
+Example: http://localhost:8080/api/users
+
+Deployed (Public) API: These live on the internet and can be accessed by anyone with the URL.
+Example: https://dummyjson.com/users (A popular site for testing data).
+
+
+
+
+4. REST API & HTTP Methods
+=> REST (Representational State Transfer) is the most common "style" of API. 
+=> It uses different Methods to tell the server what action to perform:
+
+Method                  Purpose                             Real-world Example
+----------------------------------------------------------------------------------------
+GET                     Retrieve data                       Viewing your Instagram feed.
+POST                    Send/Create data                    Posting a new photo or signing up.
+PUT                     Update data (Full)                  Changing your entire profile bio and photo.
+PATCH                   Update data (Partial)               Only changing your password.
+DELETE                  Remove data                         Deleting a tweet.
