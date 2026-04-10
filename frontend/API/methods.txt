@@ -217,6 +217,7 @@ API Response Codes:
 -------------------------------------------------------------------------------------------------------------------
 Method             Purpose                     CRUD Equivalent                   Real-world Action
 -------------------------------------------------------------------------------------------------------------------
+GET               retrieving data              get                                getting user info
 POST              Create new data              Create                              User Sign Up
 PUT               Replace existing data        Update                         update total user profile
 PATCH             Update specific fields       Update                         Updating email address
