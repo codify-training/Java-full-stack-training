@@ -1,0 +1,32 @@
+                                 Core Concepts of Spring
+                                 ------------------------
+1) IOC(Inversion of Control)
+      IOC means the control of creating and managing objects is given to spring container instead of developer.
+      Without IOC - We create object using "new"
+      with IOC - Spring creates and manages objects for us.
+   Control of creating obejcts is invered(control tranferred from us to spring container)
+   IOC is concept - IOC tells who controls obejcts.
+
+2) Dependency(object) Injection:
+     DI is the process of providing required depenedncies(obejcts) to the class by spring.
+     -> Instead of creating dependencies inside a class they are injected from outside.
+
+Without DI:
+    class Engine{}
+    
+    class Car{
+        Engine engine = new Engine();
+    }
+
+With DI  
+    @Componenet
+    class Engine{}
+    
+    @Component
+    class Car{
+        @Autowired
+        Engine engine;
+    }
+3) AOP (Aspect Oriented Programming)
+4) Spring modules.
+

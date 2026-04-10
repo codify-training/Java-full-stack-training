@@ -30,3 +30,51 @@ How spring is lightweight:
         The code written in spring can be tested easily.
 
     No Heavy server required.Runs on simple server(even can run standalone.)                  
+
+Why Spring Frame work was developed.
+------------------------------------
+In order to resolves the problems of EJB's spring framework was introduced.
+
+EJB's:(Enterprise Java Beans)
+------------------------------
+It is used to siplyfy enterprise application development.
+Instead of providing everything from scratch, EJB's provides readymade services.
+   - Transaction management
+   - Security
+   - scalability.
+   - Concurrency/Thread management.
+
+Problems With EJB's
+---------------------
+  1. Too Complex.
+      Required multiple interfaces
+      We need to use more framework related classes.
+  2. Heavy XML Configuration. 
+       -  Everything is mentione in XML.
+       - Hard to read and maintain.
+  3. Mandatory Application server.
+      need servers like JBOSS/Weblogic.
+  4. Difficult Testing:    
+       - Required container(Server) to test. 
+       - Unit testing not not possible.
+  5. Tight Coupling.
+         Code depends on EJB API's. 
+
+Spring solves above all problems:
+    Simple:
+      no Special classes or interfaces required.
+    No Heavy servers:
+        No application servers are requied, the work EJB's do, the samething can be done by spring.
+    Minimal Configurations:
+       Annotations are used instead of XML.
+    Easy Testing
+       - No Container needed.
+       - Works with Junit.
+    It supports enterprise features:
+          - Trasaction mangment
+          - Scalability
+          - Security
+          - INtegration with databases/ cluoud systems.     
+
+
+

@@ -1,0 +1,13 @@
+                                           Banking App
+                                           -------------
+
+
+1) Create Account
+2) Deposit Amount/Withdraw Amount
+3) Transfer Amount
+4) transaction History.  
+
+Tables:
+-------
+  Account
+  
