@@ -1,0 +1,32 @@
+                          Spring Framework
+                          -----------------
+-> It is a java frmework.
+-> It is powerful and lightweight framework, which is used to build enterprise level applications.
+
+How spring is powerful and lightweight?
+     It provides enterprise level features like:
+   1. Dependency Injection - This we will discuss under.
+   2. Trasaction Management.
+         - Like commit and rollback features on transactions.
+   3. Security - userId/Pwd based auth, OAuth Based authentication. 
+   4. Web & Rest Support : Client /server interactions support.
+   5. Integrations:  Intgrations with JPA, Hibernate(database related itegrations), Cloud system integrations(Azure, microsoft ect.+)
+   6. Spring Boot advanatage:
+            - Build in emebeded server
+            - Auto onfiguration.            
+
+How spring is lightweight:
+     Spring supports modular architecture.
+        Use only what you need. Due to this you wont attach any unnnecessary depenedncy.
+        - Core
+        - JDBC
+        - Security
+        - MVC 
+    Minimal Configuration -
+      Congiguiration is the process of linking your class with framework.
+          -> Annotation based configuration.  
+
+    Easy Testable Code:
+        The code written in spring can be tested easily.
+
+    No Heavy server required.Runs on simple server(even can run standalone.)                  
