@@ -11,3 +11,45 @@ Tables:
 -------
   Account
   
+---------------------------------------
+
+Operation deposit
+1. Take account number and search in account table
+2. Take balance and add the deposit amount to the account.
+3. update new balance to the account.
+4. Add entry in the transaction.()
+
+Operation Withdraw
+-------------------
+1. Take account number and search in account table
+2. Check if balance is more than withdraw amount.
+3. if balance more than amount
+      -> take balance
+      -> substract the amount from balance
+      -> update new balance.
+      -> Add entry in transaction table.
+  if balance is less than amunt
+     -> stop the flow by throwing Runtime Exception. 
+  insufficient balance.
+
+
+Transfer Amount:
+-------------------------
+ To account number : account1
+ from account number : account2
+ Amount : 200
+ 
+ Take 2 account number and search in account table.
+ In account2 check if balance is available.
+if yes
+   -> Take account2 balance
+  -> Check if the balance is more than entered amout.
+       -> if yes then sustract account2 with amount
+          -> update account2 balance.
+       -> if N then exit the program 
+            Say insufficient balance.  
+        
+ take "acccount1" number 
+   -> take balance
+   -> baance + amount 
+    update account1
