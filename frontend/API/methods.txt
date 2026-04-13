@@ -1,0 +1,224 @@
+HTTP Methods for API Integration
+=> When we communicate with a server, we use different "methods" to tell the server exactly what we want to do with the data. 
+=> This is often referred to as CRUD (Create, Read, Update, Delete).
+
+
+1. GET (Retrieve or get Data)
+=>  GET method is used to request data from a specific resource. Unlike POST or PUT, a GET request never sends a "body" (payload). It only asks the server to send information.
+=>Key Characteristic: It is "read-only." It should not change anything on the server; it just fetches information.
+=> Analogy: Browsing a library catalog or looking at someone's profile page. You aren't changing their info; you're just seeing it.
+
+Ex:
+
+//html code
+<button onclick="getData()" type="button">Get Data </button>
+
+async function getData() {
+    try {
+        // 1. Wait for the server response
+        const response = await fetch('https://dummyjson.com/users',{
+            method:"GET"
+        });
+
+        // 2. Immediate check for HTTP errors (404, 500, etc.)
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        // 3. Wait for the data to parse into JSON
+        const data = await response.json();
+        
+        // 4. Use the data
+        console.log("Success Data:", data);
+
+    } catch (err) {
+        // 5. One central place to catch ANY error (Network, Syntax, or HTTP)
+        console.error("Fetch failed:", err.message);
+    }
+}
+
+
+----------------------------------------------------------------------------------------------------------------------
+
+
+2. POST (Create)
+=> The POST method is used to send new data to the server to create a new resource (like a new user, a post, or a comment).
+=> Key Characteristic: Every time you call a POST request, it usually creates a new entry.
+=> Analogy: Filling out a registration form to join a new website.
+
+Ex:
+<button type="button" onclick="submit()">submit</button>
+async function submit() {
+    const payload = {
+        title: 'I am sad.',
+        userId: 10,
+        tags: ['love',],
+        reactions: { likes: 10, dislikes: 2 }
+    };
+    try {
+        const response = await fetch("https://dummyjson.com/posts/add", {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(payload)
+        })
+        console.log("response", response);
+        if (response.status === 201) {
+            const data = await response.json();
+            console.log("data", data);
+        } else {
+            console.log("error", response.status);
+        }
+    } catch (error) {
+        console.log("error", error);
+    }
+}
+
+
+---------------------------------------------------------------------------------------------------------------
+
+
+3. PUT (Replace/Update)
+=> The PUT method is used to update an existing resource. 
+=> It typically replaces the entire resource with the new data you provide.
+=> Key Characteristic: If you forget a field in your payload, the server might delete the old value for that field or set it to null, because PUT expects the full object.
+=> Analogy: Replacing an old physical notebook with a brand-new one that has the same data.
+
+Ex:
+
+<button type="button" onclick="updateData()">Update</button>
+
+async function updateData() {
+
+    const payload = {
+        "name": "Apple MacBook Pro 16",
+        "data": {
+            "year": 2019,
+            "price": 2049.99,
+            "CPU model": "Intel Core i9",
+            "Hard disk size": "1 TB",
+            "color": "silver"
+        }
+    }
+    try {
+        const response = await fetch('https://api.restful-api.dev/collections/products/objects/7', {
+            method: 'PUT',
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(payload)
+        })
+        console.log("response", response);
+        if (response.status === 200) {
+            const data = await response.json();
+            console.log("data", data);
+        } else {
+            console.log("error", response.status);
+        }
+    } catch (error) {
+        console.log("error", error);
+    }
+}
+
+
+
+------------------------------------------------------------------------------------------------------------
+
+
+4. PATCH (Partial Update)
+=> PATCH is used for partial updates. You only send the specific fields you want to change, leaving the rest of the existing data untouched.
+=> Key Characteristic: It is more efficient than PUT because you aren't sending the data for change.
+=> Analogy: Updating only email in the user data table unlike everything.
+
+Ex:
+<button type="button" onclick="partialUpdate()">Update Email</button>
+
+async function partialUpdate() {
+
+    const payload = {
+        "email": "naveen@mail.com",
+    }
+    
+    try {
+        const response = await fetch('https://api.restful-api.dev/collections/products/objects/7', {
+            method: 'PATCH',
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(payload)
+        })
+        console.log("response", response);
+        if (response.status === 200) {
+            const data = await response.json();
+            console.log("data", data);
+        } else {
+            console.log("error", response.status);
+        }
+    } catch (error) {
+        console.log("error", error);
+    }
+}
+
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+5. DELETE (Remove)
+=> The DELETE method does exactly what it says: it removes a resource from the server.
+=> Key Characteristic: Usually, no "body" (payload) is required. You just need the specific ID of the item in the URL.
+=> Analogy: Throwing a specific file into the trash bin.
+
+Ex:
+<button type="button" onclick="deleteData()">Delete</button>
+
+async function deleteData() {
+
+    try {
+        const response = await fetch('https://api.restful-api.dev/collections/products/objects/6', {
+            method: 'DELETE',
+
+            // headers optional
+            headers: {
+                "Content-Type": "application/json"
+            },
+        })
+        console.log("response", response);
+        if (response.status === 200) {
+            const data = await response.json();
+            console.log("data", data);
+        } else {
+            console.log("error", response.status);
+        }
+    } catch (error) {
+        console.log("error", error);
+    }
+}
+
+
+----------------------------------------------------------------------------------------------------------
+
+
+API Response Codes:
+
+=> 200 OK: Request succeeded.
+=> 201 Created: Successfully created a new resource (common with POST).
+=> 400 Bad Request: The server didn't understand your request (maybe a typo in your JSON).
+=> 401 Unauthorized: You don't have permission (missing API key/token).
+=> 404 Not Found: The URL or ID you are looking for doesn't exist.
+=> 500 Internal Server Error: The server crashed or has a bug.
+
+
+
+------------------------------------------------------------------------------------------------------------------
+
+
+-------------------------------------------------------------------------------------------------------------------
+Method             Purpose                     CRUD Equivalent                   Real-world Action
+-------------------------------------------------------------------------------------------------------------------
+GET               retrieving data              get                                getting user info
+POST              Create new data              Create                              User Sign Up
+PUT               Replace existing data        Update                         update total user profile
+PATCH             Update specific fields       Update                         Updating email address
+DELETE            Remove data                  Delete                              Delete User Account
