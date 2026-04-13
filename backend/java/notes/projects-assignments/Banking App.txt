@@ -53,3 +53,13 @@ if yes
    -> take balance
    -> baance + amount 
     update account1
+
+
+
+    Transaction History
+    ----------------------
+      1.  Take account number and search in account table
+      2. Take account Id from the fetched record
+      3. Query trnsaction table using the accuont Id.
+      4. Show all the  transacytion records
+      
