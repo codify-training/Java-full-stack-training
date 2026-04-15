@@ -30,3 +30,70 @@ With DI
 3) AOP (Aspect Oriented Programming)
 4) Spring modules.
 
+                                                         Spring Architecture:
+                                                         --------------------
+
+architecture Diagram: Path: Java-full-stack-training\backend\java\notes\9999 - images\Spring-architecture.png
+
+Core Container:
+     This layer is responsible for managing java objects.
+
+    Core & Beans -
+          This provides dependency Injection
+          Instead we creating object spring container wil create object for us.
+
+    Context:
+       This is brain of our application.
+           - Creates Object
+           - Stores them
+           - connects them together(ex: in above ex of car class: engine object is attached to car object. )   
+           - Manages life cycle(when to create object, when to destroy)    
+
+     SPEL(Spring expression language): If we want to write a small logic inside annotation/config then we go for SPEL
+
+
+  Data Access/Integration Layer:
+  ------------------------------
+      With minimal amount of code we can communicate with database using data access layer/module.
+      
+      JDBC & ORM: (Java database connectivity & Object Relation manager) 
+         simplifies database code. 
+         It allows us to use JPA/Hibernate easily, so we can interact with DB using java objects instead SQL Query. 
+
+      Transaction:
+          This ensures data integrity. this makes sure everthing is done or if there is any failure then no peration is performed.  
+
+          Accout1 - 500
+          Account2 - 700
+          transfer 300 to account2 
+     Transaction handling 
+     ---------------------------
+          account1 = take out 300
+          update the account1 balance. - 200
+          
+          Read Account2 and get balance. - 700 - issue
+          
+          add 300 to account2 - 1000
+          save account2 - 100
+
+    ----------------------------------      
+
+    JMS: Java Messaging System
+    ---------------------------
+    Used for sending messages between different application.
+
+
+
+
+The Web Layer:
+---------------
+ This is the place where our appllication interac with outside world.
+
+  Web-MVC:
+    It handles incoming requests, routes them to right java class and send back the response.    
+  Web-Socket
+    Used real time features. like chat app/live sports scoring app.
+
+AOP Layer:
+--------------
+This layer add extra functionlity to our code without disturbing business logic.
