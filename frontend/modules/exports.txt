@@ -1,0 +1,41 @@
+1. Named Exports (The "Multi-Item" Bag) 
+=> Use this when you want to send out multiple variables or functions from one file. 
+=> You must use the exact same name to pull them out later.
+
+EX:
+The File (contants.js):
+export const add = (a, b) => a + b;
+export const subtract = (a, b) => a - b;
+export const pi = 3.14;
+
+The Main File (app.js):
+import { add, pi } from './constantsjs';
+
+console.log(add(5, 5)); // 10
+console.log(pi);        // 3.14
+
+Note: 
+=> If you're running this in a browser, make sure your HTML script tag has type="module", or the browser won't know what import means! 
+=> We will encounter an error as cannot find module in console tab
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+2. Default Export (The "Main Thing" Bag)
+=> when a file has one primary purpose (like a single class or a main function). 
+=> You can only have one default export per file, but you can name it whatever you want when you import it.
+
+ex:
+const User = {
+  name: "Alex",
+  age: 25
+};
+
+export default User; 
+
+The Main File (app.js):
+
+// No curly braces needed! You can even rename it.
+import Person from './User.js';
+console.log(Person.name); // Alex
