@@ -97,3 +97,77 @@ The Web Layer:
 AOP Layer:
 --------------
 This layer add extra functionlity to our code without disturbing business logic.
+
+
+Dependency Injection:
+-----------------------
+  The dependencies can be injected in 3 ways.
+  1. Constructor Injection
+  2. Setter Injection
+  3. Field injection
+
+1. Constructor Injection
+---------------------------
+   Here dependencies are passed through constructor arguments or parameters
+
+   @Component
+   class Student{} 
+   
+   @Componenet
+   class Deparment{
+      private final Student student;
+      
+      @Autowired
+      Deparment(Student student){
+          this.student = student;  
+      }
+   }
+
+  Program demo:
+  ----------------
+  1. Add dependency - keeping this dependency makes our application enabled with IOC and DI features.
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>6.2.7</version>
+        </dependency>
+
+ 2. 
+
+
+
+
+
+
+
+2. Setter Injection
+----------------------
+ -> Here dependencies are set using setter methods.
+
+ @Component
+   class Student{} 
+   
+   @Componenet
+   class Deparment{
+      private Student student;
+      
+      @Autowired
+      public void setStudent(Student student){
+          this.student = student;
+      }
+   }
+
+3. Field Injection
+---------------------
+-> Here dependencies are injected directly into fields.
+
+ @Component
+   class Student{} 
+   
+   @Componenet
+   class Deparment{
+      @Autowired
+      private Student student;    
+   }
+
+
