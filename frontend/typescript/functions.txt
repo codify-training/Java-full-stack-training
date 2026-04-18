@@ -1,0 +1,36 @@
+1. Standard Function:
+=> Simple function that takes no input. We use : void to indicate it doesn't return any data.
+
+function sayHello(): void {
+    console.log("Hello! Welcome to TypeScript.");
+}
+
+// Calling the function
+sayHello();
+
+
+2. Function With Arguments
+Here, we specify the type for each parameter. 
+TypeScript will throw an error if you try to pass the wrong type or miss an argument.
+
+function greetUser(name: string, age: number): string {
+    return `Hello ${name}, you are ${age} years old.`;
+}
+
+// Calling the function
+const message = greetUser("Alice", 25); 
+console.log(message);
+
+// greetUser("Bob", "twenty"); //  Error: Argument of type 'string' is not assignable to 'number'
+
+
+3.Arrow Function Example
+We can also use the modern arrow function syntax with types:
+
+Ex:
+const addNumbers = (a: number, b: number): number => {
+    return a + b;
+};
+
+console.log(addNumbers(5, 10)); // Result: 15
+
