@@ -1,0 +1,156 @@
+1. WHAT IS TYPESCRIPT?
+=> TypeScript is an open-source programming language developed by Microsoft that acts as a "superset" of JavaScript.
+
+Key Concepts:
+a. Superset of JavaScript: 
+Every piece of valid JavaScript code is also valid TypeScript code. 
+You can take an existing .js file, change its extension to .ts, and it will still work.
+
+b. Static Typing: 
+In JavaScript, a variable can hold a number one minute and a string the next. 
+TypeScript allows you to "lock in" the type of a variable (e.g., specifying that a variable must be a string), which prevents bugs like accidentally trying to perform math on text.
+
+c. Compilation : 
+Browsers cannot run TypeScript directly. 
+You must use the TypeScript Compiler (tsc) to "transpile" your code back into plain JavaScript that browsers can understand.
+
+d. Catching Errors Early: 
+JavaScript only shows errors when the code is actually running (runtime). 
+TypeScript identifies potential bugs at "compile-time"—before you even open your browser.
+
+
+Why TypeScript?
+=> Catch Bugs Early: Research suggests TypeScript can catch about 15% of common bugs during the development phase.
+=> Better Readability: Types act as built-in documentation. When you see a function, you immediately know exactly what inputs it requires.
+=> Easier Maintenance: In large projects, TypeScript makes it much safer to rename variables or restructure code because the compiler will tell you every single place that needs to be updated.
+
+
+Ex: JavaScript varaible
+let name = "Naveen";
+name = 100; // Allowed  (but logically wrong)
+
+Ex: TypeScript
+let name: string = "Naveen";
+name = 100; // Error 
+Note: TypeScript prevents mistakes
+
+
+----------------------------------------------------------------------------------------------------------------------------
+
+
+2. COMMON USE CASES
+Where TypeScript is used:
+
+=> Frontend:
+Angular (default uses TypeScript)
+React (with TS)
+
+=> Backend:
+Node.js with TypeScript
+
+Real time  Applications
+=> Enterprise apps
+=> E-commerce platforms
+=> Banking systems
+
+
+----------------------------------------------------------------------------------------------------
+
+
+
+3. DATA TYPES
+
+TypeScript data types are divided into two main categories: 
+=> Primitive types (basic building blocks)
+=> Non-primitive (Object) types (complex structures).
+
+1. Primitive Types
+=> These represent simple, immutable values directly supported by JavaScript. 
+=> number: Represents both integers and floating-point values (e.g., 42 or 3.14).
+=> string: Represents textual data enclosed in single quotes, double quotes, or backticks for template literals.
+=> boolean: Represents logical values: true or false.
+=> bigint: Used for whole numbers larger than 2^53-1
+=> null: Represents the intentional absence of any value.
+=> undefined: Represents a variable that has been declared but not yet assigned a value.
+
+2. Non-Primitive Types
+=> These handle more complex structures or special development scenarios. 
+=> Array: A collection of elements of a specific type (e.g., number[] or Array<string>).
+=> Tuple: An array with a fixed number of elements where each element can have a different, known type (e.g., [string, number]).
+=> Enum: A way to define a set of named constants, making code more readable.
+=> any: A "super type" that allows a variable to hold any kind of value, effectively opting out of type checking.
+=> void: Commonly used as a return type for functions that do not return a value.
+=> never: Represents values that never occur, such as a function that always throws an error. 
+
+
+Example data types:
+
+// --- 1. PRIMITIVE TYPES ---
+
+// number: handles integers and decimals
+let age: number = 25;
+let price: number = 99.99;
+
+// string: text data
+let userName: string = "Alice";
+
+// boolean: true/false
+let isCompleted: boolean = false;
+
+// bigint: for very large integers (requires target ES2020+)
+let bigIntVal: bigint = 9007199254740991n;
+
+// null & undefined: represent absence of value
+let empty: null = null;
+
+// varaible is there, but value is not defined
+let notAssigned: undefined = undefined;
+
+
+
+// --- 2. OBJECT & SPECIAL TYPES ---
+
+// Array: two ways to define them
+let scores: number[] = [10, 20, 30];
+let fruits: Array<string> = ["Apple", "Orange"];
+
+// Tuple: fixed-length array with specific types
+let user: [number, string] = [1, "Steve"];
+
+// Object: represents key value pair 
+let userData = {
+    name:"naveen",
+    age:20
+}
+
+// Enum: named constants
+enum Color { Red, Green, Blue };
+let favoriteColor: Color = Color.Green;
+
+// any: allows anything (use sparingly!)
+let randomData: any = "Hello";
+randomData = 42; 
+
+// void: used for functions that return nothing
+function logMessage(msg: string): void {
+    console.log(msg);
+}
+
+// never: for functions that throw errors or never stop
+function throwError(msg: string): never {
+    throw new Error(msg);
+}
+
+
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+4. QUICK COMPARISION:
+
+Feature 	             JavaScript	                                         TypeScript
+----------------------------------------------------------------------------------------------------------------
+Type Checking	         Happens at runtime (while the app is running)	     Happens at compile-time (before the app runs)
+Variable Types	         Dynamic (can change anytime)	                     Static (defined upfront)
+Browser Support	         Runs directly in all browsers	                     Needs to be converted to JS first
