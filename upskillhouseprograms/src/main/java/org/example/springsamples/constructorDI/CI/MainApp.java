@@ -9,7 +9,6 @@ public class MainApp {
         ApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig.class);
         Car car = ctx.getBean(Car.class);
         car.drive();
-
     }
 
 }

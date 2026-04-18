@@ -1,45 +1,37 @@
-1. Right Triangle Pattern
+-------------------------    Programs List          ---------------------------------------------------
 
-*
-**
-***
-****
-*****
+1. Basic Programs
+	Reverse a number
+	Check palindrome (number/string)
+	Fibonacci series (iterative & recursive)
+	Prime number check
+	Factorial (loop & recursion)
+	Armstrong number
+	Swap two numbers with temp variable
+	Swap two numbers without temp variable
+	Sum of digits
+	Count digits in a number
 
+2. String Programs
+	Count vowels and consonants
+	Remove duplicates from string
+	Find first non-repeating character
+	Count occurrences of each character
+	Longest substring without repeating characters
+	Check if string contains only digits
 
-2. Reverse Triangle
-*****
-****
-***
-**
-*
+3. Array Programs
+	Find largest & smallest element
+	Second largest number
+	Remove duplicates from array
+	Sort array
+	Find missing number in array
+	Move zeros to end
+	Find duplicate elements
+	Rotate array (left/right)
+	Merge two sorted arrays
 
-3. Pyramid Pattern
-    *
-   ***
-  *****
- *******
-*********
-
-4. Number Triangle
-1
-12
-123
-1234
-12345
-
-5. Reverse Number Pattern
-12345
-1234
-123
-12
-1
-
-6. Fibonacci Series
-0 1 1 2 3 5 8 13
-
-7. Palindrome Number
-
-8. Swap two numbers
-
-9. Armstrong number
+4. Collection Programs
+	Remove duplicates using Set
+	Frequency of elements using Map
+	Custom object sorting
