@@ -1,0 +1,41 @@
+Spring + JPA + hibernate.
+JPA - Jakarata Persistance API - interfaces
+hibernate - this will have iplementation classes.
+
+@Entity - This class level annotation. 
+This tells JPA that this class is blueprint od DB table
+
+@Table - This allows to specifiy database table name. If class Name and DB table name are different then 
+use @Table to map table to class.
+
+@Id - This field level annotation. 
+Give this annotation to primary key column
+
+@GeneratedValue - This field level annotation. 
+If you dont want to manually assign a value to colum every time to save object. this annoatation will automatically generates id value.
+
+@Column
+It matches field name to DB column name. 
+@Repostory
+  This marks a class as DAO(Data access Object), this class will have operations to insert, update, delete, retrieve data. 
+@Trasaction.
+   DB operation should be all or nothing.
+
+
+Implementations Steps:
+-------------------------
+1. Add Dependencies
+    spring-context - Give DI and IOC capabilties to app
+    spring-orm - Gives ORM capabilities to our app
+    spring-tx - Gives transactoin handling capability to our app.
+    jakarta.persistence-api - Gives JPA capability to our app.(It will have interfaces)
+    hibernate-core - Gives hibernate to spring app(it will have implementation)
+    HikariCP - It will have datasorce required for the spring to commence DB operations .
+2. Get ready with Configuration class
+   create datasource bean.
+   create a bean To inclue Hibernate 
+   create a bean to include transaction.
+3. Entity class
+4. Repository
+5. Service
+6. Main class.

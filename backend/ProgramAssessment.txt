@@ -1,37 +1,37 @@
 -------------------------    Programs List          ---------------------------------------------------
 
 1. Basic Programs
-	Reverse a number
-	Check palindrome (number/string)
-	Fibonacci series (iterative & recursive)
-	Prime number check
-	Factorial (loop & recursion)
-	Armstrong number
-	Swap two numbers with temp variable
-	Swap two numbers without temp variable
-	Sum of digits
-	Count digits in a number
+	- Reverse a number
+	- Check palindrome (number/string)  ABCBA   12521
+	- Fibonacci series (iterative & recursive)
+	- Prime number check
+	- Factorial (loop & recursion)
+	- Armstrong number
+	- Swap two numbers with temp variable
+	- Swap two numbers without temp variable
+	- Sum of digits
+	- Count digits in a number
 
 2. String Programs
-	Count vowels and consonants
-	Remove duplicates from string
-	Find first non-repeating character
-	Count occurrences of each character
-	Longest substring without repeating characters
-	Check if string contains only digits
+	- Count vowels and consonants
+	- Remove duplicates from string
+	- Find first non-repeating character
+	- Count occurrences of each character
+	- Longest substring without repeating characters
+	- Check if string contains only digits
 
 3. Array Programs
-	Find largest & smallest element
-	Second largest number
-	Remove duplicates from array
-	Sort array
-	Find missing number in array
-	Move zeros to end
-	Find duplicate elements
-	Rotate array (left/right)
-	Merge two sorted arrays
+	- Find largest & smallest element
+	- Second largest number
+	- Remove duplicates from array
+	- Sort array
+	- Find missing number in array
+	- Move zeros to end
+	- Find duplicate elements
+	- Rotate array (left/right)
+	- Merge two sorted arrays
 
 4. Collection Programs
-	Remove duplicates using Set
-	Frequency of elements using Map
-	Custom object sorting
+	- Remove duplicates using Set
+	- Frequency of elements using Map
+	- Custom object sorting
