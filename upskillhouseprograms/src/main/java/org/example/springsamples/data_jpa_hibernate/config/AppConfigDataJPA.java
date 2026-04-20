@@ -1,4 +1,4 @@
-package org.example.springsamples.data_jpa_hibernate;
+package org.example.springsamples.data_jpa_hibernate.config;
 
 import com.zaxxer.hikari.HikariDataSource;
 import org.springframework.context.annotation.Bean;
@@ -37,7 +37,7 @@ public class AppConfigDataJPA {
 
 
         Properties properties = new Properties();
-        properties.put("hibernate.dialect", "org.hibernate.dialect.PostgresSqlDialect");
+        properties.put("hibernate.dialect", "org.hibernate.dialect.PostgreSQLDialect");
         properties.put("hibernate.show_sql", true);
         properties.put("hibernate.hbm2ddl.auto", "update");
         emf.setJpaProperties(properties);
