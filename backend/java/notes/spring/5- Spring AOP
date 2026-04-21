@@ -1,0 +1,25 @@
+Spring AOP (Aspect Oriented programming)
+----------------------------------------
+Spring AOP is a way to handle Cross cutting Concerns without mixing them into our business logic.(EX: Logging)
+Instead of repeating Code you define it in one place and appy wherever you needed.
+
+Annotations:
+-------------
+@EnableAspectJAutoProxy - Enables AOP in our application. ths will be present in config class.
+@Aspect - This is class level annotation, The class that holds all the AOP code will be annotated with @Aspect
+@Before - If we want to execute a piece of code before a method executes.
+@After -  If we want to execute a piece of code After a method executes.
+@Around - If we want to execute a piece of code Before a method executes and after the method execution.
+
+Programming Steps:
+ <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-aop</artifactId>
+            <version>6.2.7</version>
+        </dependency>
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
+            <version>1.9.22</version>
+        </dependency>
+
