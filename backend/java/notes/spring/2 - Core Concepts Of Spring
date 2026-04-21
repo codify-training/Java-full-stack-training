@@ -132,14 +132,6 @@ Dependency Injection:
             <version>6.2.7</version>
         </dependency>
 
- 2. 
-
-
-
-
-
-
-
 2. Setter Injection
 ----------------------
  -> Here dependencies are set using setter methods.

@@ -1,0 +1,67 @@
+@Annotation - Without changing business logic we give extra functionlaities to our code.
+  In spring annotations are places at 
+     -> class level.
+     -> Field level
+     -> method level
+     -> constructor level
+
+Spring Core:
+-------------
+   @Component - Generic anotation for (spring managed bean) creating an object for class in spring container.
+       Used when a class dont fit in specific layer.
+       utiliy 
+       Helpers
+       commonn Logics.
+   @Service   - this annotation also used for (spring managed bean) creating an object for class in spring container indicates business logic. - 
+           Usage - 
+           Busines Logic
+           calculations
+           Processing data
+
+   @Autowired:
+      this annotation specifies spring continer to inject dependency into the class. 
+   @Configuration 
+     We will mention app level configurations in this. EX: what packages has to be scanned for creatin obejcts inside the spring container.
+
+   @Bean: Used in method level, this is used inside configuration class.
+   By using this we can make a specific class obejct to get loaded into the container.
+
+
+Spring Web:
+------------
+@Controller, @RestController, @RequestMapping, @Pathvariable, @RequestParam, @RequestMapping.
+
+All these annotations belong to spring Web.
+
+
+Spring Data:
+--------------
+   We use javaobject to communicate with DB.(But behind the scenes, lets say for insert,  spring data framework will convert javaobject to sql query and communicates with DB)
+
+   (Lets say for retrievel, behind the scenes, spring data framework will convert sql result to Obejct and gives that obejct to us.)
+
+@Entity
+@Table
+@Id
+@GeneratedValue
+@Colum
+@Repostory
+@Trasaction.
+
+
+Exception Handling:
+    @ControllerAdvice
+    @ExceptionHandler
+
+Property File reading
+@Value
+@PropertySource
+@ConfigurationProperties
+
+
+Project Work:
+//1. Understand the constructor injection sample.
+//2. Clone your banking project and rename it to spring-banking
+//3. Take this contructor injection code replicate in spring-banking project.
+//4. Take AccountServiceDaoImpl and convert it to Spring DI.(whereever you are using new AccountServiceDaoImpl() this has to be removed
+//   and the field should be injected via constructor injection)
