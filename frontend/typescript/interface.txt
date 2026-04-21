@@ -1,0 +1,80 @@
+
+1. Interface:
+=> It is a virtual contract that defines the shape of an object. 
+=> It describes what properties and methods an object must have, without providing the actual implementation
+=> It acts as a "contract" or a "blueprint" for an object.
+=> It tells TypeScript exactly what properties and methods an object should have, without worrying about how they work
+
+Ex:
+interface User {
+    id: number;
+    username: string;
+    email: string;
+    isAdmin?: boolean; // The '?' means this property is optional
+}
+
+
+
+
+------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+// 2. Use the interface (The Implementation)
+const myUser: User = {
+    id: 1,
+    username: "dev_jay",
+    email: "jay@example.com"
+    // isAdmin is omitted, which is fine because it's optional
+};
+
+// This would throw an ERROR because 'id' is missing:
+// const badUser: User = { username: "oops", email: "wrong@test.com" };
+
+Why Interface?
+=> Safety: If you misspell a property (e.g., user_name instead of username), TypeScript will catch it immediately.
+=> Autocompletion: Your code editor (like VS Code) will suggest the properties available in that interface as you type.
+=> Readability: It makes it clear to other developers what kind of data your functions expect.
+
+Interfaces with Functions:
+We can also use interfaces to define what a function should look like.
+
+Ex:
+interface UserData {
+    (name: string): string;
+}
+
+const sayHello: UserData = (name) => {
+    return `Hi, ${name}!`;
+};
+
+
+
+---------------------------------------------------------------------------------------------------------------------
+
+
+
+3. this Keyword:
+
+=> this keyword refers to the current instance of an object or class. 
+=> It allows you to access properties and methods belonging to that specific object from within its own code.
+
+Ex:
+class Product {
+    name: string;
+    price: number;
+
+    constructor(name: string, price: number) {
+        // 'this.name' refers to the property of the class
+        // 'name' refers to the argument passed to the constructor
+        this.name = name;
+        this.price = price;
+    }
+
+    display() {
+        console.log(`The price of ${this.name} is $${this.price}`);
+    }
+}
+
+const myPhone = new Product("SmartTV", 1000);
+myPhone.display(); // "The price of SmartTV is $1000"

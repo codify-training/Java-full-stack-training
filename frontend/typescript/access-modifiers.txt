@@ -1,0 +1,66 @@
+1. Access Modifiers:
+=> Access modifiers also known as access specifiers are keywords used to control the visibility and accessibility of class members—such as properties and methods. 
+=> They help implement encapsulation, ensuring that internal data is protected and only accessible where intended.
+
+There are three primary access modifiers in TypeScript, plus a special readonly modifier:
+
+a.public (Default)
+=> Data marked as public are accessible from anywhere: inside the class, in child classes, and outside the class by any instance.
+Note: If you don't specify a modifier, it is public by default. 
+
+b.private
+=> Data marked as private are only accessible within the class where they are defined. 
+=> They cannot be accessed from outside the class or even by subclasses.
+
+c.protected
+=> Data marked as protected are accessible within the class they are defined in and any subclasses (child classes). 
+=> However, they still cannot be accessed from outside the class hierarchy.
+
+Ex:
+
+class Employee {
+    public name: string;             // Accessible to everyone
+    protected role: string;          // Accessible to Employee and its subclasses
+    private salary: number;          // Accessible ONLY inside Employee class
+
+    constructor(name: string, role: string, salary: number) {
+        this.name = name;
+        this.role = role;
+        this.salary = salary;
+    }
+
+    public getSalaryInfo() {
+        // Can access private 'salary' inside the class
+        return `Salary is hidden for security.`;
+    }
+}
+
+class Manager extends Employee {
+    public displayRole() {
+        // Can access protected 'role' from the parent class
+        console.log(`Role: ${this.role}`);
+        
+        // ERROR: Cannot access 'salary' because it is private to Employee
+        // console.log(this.salary); 
+    }
+}
+
+const emp = new Employee("Alice", "Developer", 50000);
+
+console.log(emp.name);            //  Works (public)
+console.log(emp.getSalaryInfo()); // Works (public method)
+
+// console.log(emp.role);        //  Error: 'role' is protected
+// console.log(emp.salary);      //  Error: 'salary' is private
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------
+
+
+Summary Comparison Table:
+
+Modifier	  Inside Class	     Subclass (Child)	      Outside Class
+-------------------------------------------------------------------------------------------------
+public	         works	            works                    works
+protected	     works	            works                    won't work
+private	         works	            won't work               won't work
