@@ -8,4 +8,51 @@ If we develop webapps using Spring we get below issues:
      -> Build app to a war file, then deploy(copy the war file.) the war file in the server 
 
 Spring Boot solves all the above problem.
+     -> Auto Configurations  / Convention Over Configuration.(You write business logic, all the configuration will be given by spring boot.)
+           Instead of asking to configure everything in manual. it assumes default configurations and sets them automatcally.
+         Before Spring Boot(using Spring web.) the below are problems
+            -> Server Setup
+            -> Map URL to classes and methods.   
+            -> Component scanning(Spring context, spring AOP, spring core)
+            -> JSON Converters.
+         After Spring boot all the above problems are taken care :
+             - Embeded Server( EX: Apache Tomcat or Jetty)
+             - REST Support
+             - JSON Converters, we will get by default in spring boot.
+             - Request and Response handling are take care by spring boot.
+             - Default Port assignment by spring boot.
+     -> Starter Dependencies.
+         Starter dependencies are predefined budles of commonly used libraries.
+         EX: If i want to develop web app, i dont need to add all the depdencies instead i can just user one starter depency which will configure all we app related dependency.
+            -> spring-boot-starter-web - It will fetch all the dependencies related to web and attaches to the project.
+            -> spring-boot-starter-data--jpa - It will fetch all the dependencies related to data jpa(spring tx, spring ORM, spring data etc dependencies) and attaches to the project.
+         this will handle Version cpmpatability.
+              It ensures included libs inside the starter dependencies work well together, so we can avoid dependency conflicts.
+     -> Easy Production setup.
+          Production ready app (Once the app is developed the application is ready and to be served in the production for real users.)
+          App Monitoring and health checks can be done using Spring actutors.
+            -> Using spring boot actuators we can 
+                 -> monitor health
+                 -> memomory usage of app.  
 
+           External Configuration
+            It will support external configuration using application properties.
+               EX: for each environment(EX: Development, test, Production )  we have to configure databases seperately. those configs are 
+               written in application.properties for environmet wise.
+
+
+
+Spring Boot App Steps.
+------------------------
+  1. Add spring boot parent and starter dependencies - Done
+  2. impement Main starter class. - Done
+  3. Controller class. - Done
+
+Steps to Run the APP.
+ - GOTO Main starter class and run the main method.
+ - We want to run hello in DemoAppController.java so we have to use below URL for local app.
+    We have give below URL in my machine.
+      http://localhost:8080/hello
+      localhost - If you are running server in your machine, then you have to mention localhost to refer you machine from browser.
+      8080 - it is port nummber where our application started running.
+      /hello - mapping URL.
