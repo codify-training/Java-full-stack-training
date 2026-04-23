@@ -1,0 +1,128 @@
+1. Inheritance:
+=> It is a core concept of Object-Oriented Programming (OOP) that allows one class to derive properties and methods from another existing class.
+=> It establishes relationship between classes and interfaces.
+
+Key Terms:
+=> Base Class (Parent): The class whose features are being inherited.
+=> Derived Class (Child): The class that inherits those features.
+=> extends Keyword: The keyword used to create the link between classes.
+=> super() Keyword: A function used in the child class constructor to call the parent's constructor. 
+
+Ex:
+// 1. The Base (Parent) Class
+class Vehicle {
+    brand: string;
+
+    constructor(brand: string) {
+        this.brand = brand;
+    }
+
+    start() {
+        console.log(`${this.brand} is starting...`);
+    }
+}
+
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+// 2. The Derived (Child) Class
+class Car extends Vehicle {
+    model: string;
+
+    constructor(brand: string, model: string) {
+        super(brand); 
+        this.model = model;
+    }
+
+    drive() {
+        console.log(`${this.brand} ${this.model} is now driving!`);
+    }
+}
+
+// Using the inherited classes
+const myCar = new Car("Toyota", "Corolla");
+myCar.start(); // Inherited from Vehicle
+myCar.drive(); // Defined in Car
+
+
+Why Inheritance?
+=> Code Reusability: You don't have to rewrite shared properties like brand or start() for every type of vehicle.
+=> Method Overriding: A child class can replace a parent's method with its own version to provide specialized behavior.
+=> Logical Hierarchy: It helps organize code in a way that mirrors real-world structures. 
+
+Note: TypeScript only supports single inheritance for classes, meaning a class can only extend one other class at a time.
+
+
+
+2.Multiple Inheritance with Interfaces
+
+=> Interfaces can inherit from multiple other interfaces using a comma-separated list. 
+=> This is the simplest way to combine multiple "contracts" into one. 
+
+Ex:
+interface CanWalk {
+    walk(): void;
+}
+
+interface CanSwim {
+    swim(): void;
+}
+
+// Interface extending multiple interfaces
+interface Amphibian extends CanWalk, CanSwim {
+    isLandAndWater: boolean;
+}
+
+const frog: Amphibian = {
+    isLandAndWater: true,
+    walk: () => console.log("Hopping on land"),
+    swim: () => console.log("Swimming in water")
+};
+
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+3. Implementation: Class implementing Multiple Interfaces
+=> A single class can satisfy multiple interfaces at once. 
+=> Note that the class must provide the actual code (implementation) for every method defined in those interfaces.
+
+Ex:
+interface UserService {
+    getUsername(): void;
+    updateuser(): void;
+}
+
+interface AdminService {
+    name: string;
+    addAdmin(): void;
+    updateAdmin(id: string, data?: any): void;
+}
+
+
+class User implements UserService, AdminService {
+
+    name: string = '';
+
+    constructor() { }
+
+    addAdmin(): void {
+    }
+
+    updateAdmin(id: string): void {
+    }
+
+    getUsername(): void {
+    }
+
+    updateuser(): void {
+    }
+
+}
+

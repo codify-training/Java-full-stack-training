@@ -1,0 +1,132 @@
+Enums 
+=> An Enum (short for "enumeration") is a special data type that allows you to define a set of named constants.
+
+Key Characteristics:
+Logical Grouping: It organizes options like colors (Red, Blue), directions (North, South), or statuses (Loading, Success).
+Type Safety: In TypeScript, it ensures a variable can only hold one of the specific values defined in that enum.
+Readability: It makes code easier for humans to understand (e.g., using Status.Active instead of just the number 1).
+
+Types of Enums:
+1. Numeric Enums (The Default)
+=> By default, enums assign a number to each value starting from 0. 
+=> They are "auto-incrementing," meaning if you set the first one to 1, the rest follow as 2, 3, etc.
+
+Ex:
+enum Direction {
+  Up = 1, // Started at 1
+  Down,   // Becomes 2
+  Left,   // Becomes 3
+  Right   // Becomes 4
+}
+
+console.log(Direction.Up);    // Output: 1
+console.log(Direction[1]);    // Output: "Up" (Numeric enums support reverse mapping)
+
+2. String Enums
+=> String enums are often preferred in modern development because they are easier to debug. 
+=> Instead of seeing a random 0 or 1 in your logs, you see the actual word.
+Ex:
+enum AppTheme {
+  Light = "LIGHT_THEME",
+  Dark = "DARK_THEME",
+  HighContrast = "HIGH_CONTRAST_THEME"
+}
+
+let currentTheme = AppTheme.Dark;
+console.log(currentTheme); // Output: "DARK_THEME"
+Note: String enums do not support reverse mapping (you can't look up the name via the value as easily).
+
+3. Heterogeneous Enums (Mixed)
+=>  We can mix strings and numbers in a single enum, though it’s rarely recommended because it makes the data inconsistent and confusing.
+
+Ex:
+enum BooleanLikeHeterogeneousEnum {
+  No = 0,
+  Yes = "YES",
+}
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+Ternary Operator:
+=> The Ternary Operator is a "one-line shortcut" for an if-else statement. 
+=> It’s great for assigning a value based on a condition. 
+
+Syntax: condition ? value_if_condition_true : value_if_condition_false 
+
+let age: number = 20;
+
+// If age is 18 or more, status is 'Adult', otherwise 'Minor'
+let status = age >= 18 ? "Adult" : "Minor";
+
+console.log(status); // Output: "Adult"
+
+Realtime Usage:
+=> used in profile picture display
+=> used for button disabling statement
+=> used for user login status
+
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+Null Safety (Optional Chaining & Nullish Coalescing)
+
+
+A. Optional Chaining (?.)
+=> This allows you to access a property deep inside an object without checking if every parent level exists. 
+=> If something is null or undefined, it just stops and returns undefined instead of crashing.
+
+Ex:
+let user: any = null;
+// Instead of crashing, this returns 'undefined'
+console.log(user?.profile?.name); 
+
+Realtime Scenario:
+const userAPIResponse = {
+  id: "user_01",
+  profile: {
+    username: "JS_Dev_2024",
+    // address: { city: "New York" } // This might be missing!
+  }
+};
+
+// The dangerous way (Crashes if address is missing)
+// console.log(userAPIResponse.profile.address.city); 
+
+// The Null-Safe way (Returns 'undefined' instead of crashing)
+const userCity = userAPIResponse.profile.address?.city;
+console.log(userCity); // Output: undefined
+
+
+
+B. Nullish Coalescing (??)
+=> This provides a "fallback" or default value only if the result is null or undefined. 
+Ex:
+
+let input = null;
+// Use 'Anonymous' if input is null/undefined
+let displayName = input ?? "Anonymous";
+console.log(displayName); // Output: "Anonymous"
+
+
+Realtime Scenario:
+
+const userSettings = {
+  theme: "dark",
+  itemsPerPage: 0,     // The user explicitly set this to 0
+  customHeader: null   // The user never set this
+};
+
+
+// The Null-Safe way (??)
+// This ONLY uses the fallback if the value is null or undefined.
+const correctLimit = userSettings.itemsPerPage ?? 10;
+const headerText = userSettings.customHeader ?? "Welcome, Guest!";
+
+console.log(correctLimit); // Output: 0 (Correct!)
+console.log(headerText);   // Output: "Welcome, Guest!" (Correct!)
