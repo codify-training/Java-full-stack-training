@@ -130,3 +130,70 @@ const headerText = userSettings.customHeader ?? "Welcome, Guest!";
 
 console.log(correctLimit); // Output: 0 (Correct!)
 console.log(headerText);   // Output: "Welcome, Guest!" (Correct!)
+
+
+
+-------------------------------------------------------------------------------------------------------------------------------------
+
+
+1. Union Type
+=> A Union Type in TypeScript allows a variable to hold more than one type of value.
+=> syntax:
+let variable: type1 | type2;
+
+What it means:
+userNumber: number | null = 0;
+
+Explanation:
+This means:
+The variable can store a number
+OR it can be null
+
+Why we use it
+When a value:
+May or may not exist
+Comes later (API, user input, database)
+
+Example 1: API Data
+userAge: number | null = null;
+fetchUser() {
+  this.userAge = 25; // value comes later
+}
+
+Initially:
+userAge = null (no data yet)
+After API Call:
+userAge = 25
+
+
+
+-------------------------------------------------------------------------------------------------------------
+
+
+
+2. ! (Definite Assignment Assertion)
+=> feature that uses the ! symbol to tell the compiler:
+
+Ex:
+userType!: string;
+
+Why we use it
+
+In many real cases, value is assigned:
+
+After component loads
+From API
+From parent component
+
+
+Example 1: Angular Lifecycle
+
+userType!: string;
+
+ngOnInit() {
+  this.userType = "admin";
+}
+
+Explanation:
+=> Even though not initialized at declaration
+=> It gets value before usage
