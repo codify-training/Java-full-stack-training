@@ -1,0 +1,11 @@
+Spring Boot Introduction:
+-------------------------
+Webapp - it has the capability to run on server. And it can able to take the requests, process it and respond with response. 
+If we develop webapps using Spring we get below issues:
+     -> Manually we have to configure the server.
+     -> Add Many dependencies(jars) one by one.
+     -> Handling version compatabilities.
+     -> Build app to a war file, then deploy(copy the war file.) the war file in the server 
+
+Spring Boot solves all the above problem.
+
