@@ -1,0 +1,54 @@
+Angular CLI (Command Line Interface)
+=> Angular CLI is an official tool that helps developers create, build, test, and manage Angular applications directly from the terminal.
+=> It removes the need to manually configure project setup unlike react.
+
+Why Use Angular CLI?
+
+Without CLI:
+=> Manual setup (webpack, TypeScript, folders)
+=> Time-consuming
+=> Error-prone conflicts
+
+With CLI:
+=> One command → full project ready
+=> Built-in best practices
+=> Faster development
+
+
+
+Prerequisites:
+
+1) Node JS above 18 Version
+2) Check Node Version and npm version (comes with node)
+3) Angular CLI Installation
+
+Steps to create Angular Application:
+
+ 1 -> Install Node Js -> if yes check node js and npm verisons  => command node -v & npm -v
+ 2 -> install angular CLI => npm i -g @angular/cli
+ 3 -> create angular using CLI => ng new my-angular-app
+ 4 -> start application -> npm start or ng serve 
+ 5 -> Application will be running at http://localhost:4200, open browser and can check it
+
+
+
+--------------------------------------------------------------------------------------------------------------
+
+
+
+
+Project Structure:
+
+my-angular-app/
+│---public
+├── src/
+│   ├── app/
+│   │   ├── app.component.ts
+│   │   ├── app.component.html
+│   │   ├── app.module.ts
+│   │
+│   ├── assets/
+│   ├── environments/
+│
+├── angular.json
+├── package.json
