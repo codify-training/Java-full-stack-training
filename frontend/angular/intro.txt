@@ -1,0 +1,93 @@
+Introduction to Angular
+
+=> Angular is a TypeScript-based open-source frontend framework developed and maintained by Google.
+=> It is designed to build dynamic, scalable, single-page applications (SPAs).
+
+Key Characteristics:
+=> Component-based architecture
+=> Uses TypeScript (superset of JavaScript)
+=> Two-way data binding
+=> Follows MVC-like structure
+=> Built in Routing
+
+Use Cases of Angular
+Angular is best suited for large-scale and enterprise applications.
+
+1. Enterprise Web Applications
+=> Complex workflows
+=> Role-based systems
+=> Example: Admin dashboards
+
+2. Data-Driven Applications
+=> Analytics dashboards
+=> Reporting systems
+
+3. E-commerce Platforms
+=> Product listings
+=> Dynamic filtering
+=> Payment integration
+
+
+Core Concepts in Angular
+
+1. Components
+=> Basic building blocks of Angular apps
+=> Each component = HTML + CSS + TypeScript
+
+2. Modules
+=> Logical grouping of components
+=> Root module: AppModule
+
+3. Templates
+=> HTML with Angular-specific syntax
+
+4. Data Binding
+=> One-way binding
+=> Two-way binding → sync between UI & logic
+
+5. Directives
+=> Extend HTML behavior
+Examples:
+*ngIf
+*ngFor
+
+6. Services & Dependency Injection
+=> Share logic/data across components
+=> Angular has a powerful DI system
+
+7. Routing
+=> Enables navigation between views without reloading page
+
+
+Angular vs React:
+React is another popular frontend tool developed by Meta Platforms.
+
+| Feature           | Angular                       | React                          |
+| ----------------- | ----------------------------- | ------------------------------ |
+| Type              | Full-fledged framework        | UI library                     |
+| Language          | TypeScript (default)          | JavaScript / JSX               |
+| Architecture      | MVC-like, structured          | Flexible                       |
+| Learning Curve    | Steeper                       | Easier initially               |
+| Data Binding      | Two-way                       | One-way                        |
+| DOM Handling      | Real DOM                      | Virtual DOM                    |
+| Built-in Features | Routing, HTTP, forms included | Requires third-party libraries |
+| Performance       | Good                          | Often faster (Virtual DOM)     |
+| Best For          | Large enterprise apps         | UI-heavy, flexible apps        |
+
+
+When to Choose Angular?
+
+Choose Angular when:
+Building large-scale applications
+Need built-in features
+Working in enterprise teams
+Want structured architecture
+
+When to Choose React?
+
+Choose React when:
+Building interactive UI
+Need flexibility
+Creating lightweight apps
+Want faster initial learning
+
