@@ -11,5 +11,4 @@ public class DemoAppController {
             return "!!! Welcome to Spring boot Application !!! ";
     }
 
-
 }

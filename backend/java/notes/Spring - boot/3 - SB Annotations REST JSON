@@ -1,0 +1,62 @@
+REST - Representational State Transfer
+   its a style of designing webservices where client communicate with server via http methods.
+GET   - Fetches data
+POST  - Create new data
+PUT   - update Full resource.
+PATCH  - Partial Update
+DELETE - Reomves data.
+
+JSON - Javascript Object Notation..
+  It is lightweight text format used to store and exchange data between systems.
+
+EX: {
+    "name":"hari",
+    "age": 30,
+    "salary": 5000
+}
+Rules: 
+  1. Data is in key value pair.
+  2. Key must be in double Quotes
+  3. Values can be of String, number, boolean, array, object, null.
+     {
+        "name":"hari", // sring
+        "age": 30, // number
+        "salary": 5000, //number
+        "deptId": null, //null
+        "isActive": true // boolean
+     }
+     //Array Representation
+     {
+        "fruits": ["Apple", "grapes", "Oranges"]  //array representation
+     }
+
+     //Object representation   
+     {
+        "empId": 101,
+        "empName": "Hari",
+        empDept: {
+           "dName": "ECE",
+           "dDesc": "Electronics" 
+        }
+     }
+
+@Controller - 
+   - Used to create a Web controller
+   - It is Class level annotation      
+   - If class is annotated with controller and mapping the urls then it is ready to pick the requests from client and process it and send out the response back to client. 
+    It can return  HTML page / Thymeleaf pages(it has the capability to use java object and paint it in the HTML page)
+@RestController 
+  - Used to create REST API
+  - Returns the JSON string directly.
+@RequestMapping:
+    - maps URL requests to a class or method. 
+    - It is class level/Method level annotation.
+@Pathvariable:
+    - Used to read value from URL path
+    - Argument level variable
+    @requestMapping("/users/data/{id}")
+@RequestParam:
+     Used to read query parameter from URL.
+     ex: /users/data?id=120&sal=5000
+@RequestBody:
+    Read JSON data sent by client in http request and convert it to java object. 
