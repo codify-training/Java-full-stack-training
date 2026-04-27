@@ -6,4 +6,19 @@ import { Component } from '@angular/core';
   templateUrl: './header.html',
   styleUrl: './header.css',
 })
-export class Header {}
+export class Header {
+
+  title:string = 'Sample App';
+  buttonTitle:string='login/signup';
+  aboutItem:string  ='About';
+
+  userData= {
+    profile:'some-link',
+    name:'naveen'
+  }
+
+  public clickButton():void {
+
+  }
+
+}
