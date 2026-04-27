@@ -1,0 +1,10 @@
+1. Add Dependency to POM.xml
+2. Add Model class(this is equaivalent to database table)
+3. Repository interface. 
+   JpaRepository - If we add spring data JPA dependency, then we will get all the capabilites of getAll, getById, save, findOne, saveAll
+4. Service class
+5. Controller.
+6. we will have application.properties(it will have all the configuratios related to the app)
+    - Key value pair 
+
+    PostgreSQLDialect - it has the capability to communicate with the database by generating the queries understandable by the particular database(ex: postgresdielect used to generate queries understandable for postgressql database)

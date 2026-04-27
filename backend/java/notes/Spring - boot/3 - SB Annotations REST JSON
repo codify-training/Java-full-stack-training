@@ -60,3 +60,7 @@ Rules:
      ex: /users/data?id=120&sal=5000
 @RequestBody:
     Read JSON data sent by client in http request and convert it to java object. 
+
+
+
+

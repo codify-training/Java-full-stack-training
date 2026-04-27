@@ -1,0 +1,33 @@
+How to implement Banking app controller endpoints:
+--------------------------------------------------------
+
+@RestController
+@RequestMapping("bank")
+BankingController
+   @PostMapping("/create")
+   public void createAccount(@RequestBody Account account){
+       accountService.createAccount(account);
+   }
+
+
+   @postMapping("deposit/{id}")
+   public void deposit(@RequestBody final Map<String, Object> request, @Pathvariable Long id){
+    Account ac = acconutService.getById(id);
+    double amount = (Double)request.get("amuont")
+    accountService.deposit(ac.getAccountNum(), amount);
+   }
+
+    @postMapping("withdrawl/{id}")
+   public void deposit(@RequestBody final Map<String, Object> request, @Pathvariable Long id){
+        //withdrawl iplementation
+   }
+
+
+ @postMapping("/transfer")
+   public void deposit(@RequestBody final Map<String, Object> request){
+       //Transfer implementation 
+   }
+
+
+
+
