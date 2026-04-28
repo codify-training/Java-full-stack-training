@@ -15,7 +15,7 @@ a) Interpolation:
      => Automatic Updates: If the value of the bound variable changes in the TypeScript file, the UI updates automatically to reflect the new value.
 
   Ex: 
-1. Define data in the TypeScript file (app.component.ts) 
+Step 1. Define data in the TypeScript file (app.component.ts) 
     import { Component } from '@angular/core';
 
  @Component({
@@ -26,7 +26,7 @@ export class AppComponent {
   userName: string = 'Alex'; // Data to be displayed
 }
 
-2. Display data in the HTML template (app.component.html)
+step 2. Display data in the HTML template (app.component.html)
 <!-- The value of userName will be injected here -->
 <h1>Welcome, {{ userName }}!</h1>
 
