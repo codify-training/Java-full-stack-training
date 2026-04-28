@@ -1,0 +1,25 @@
+1. Spring Boot transaction handilng.
+     @EnableTransactionManagement - Application level.
+     @Transactional - Method level annotation.
+
+2. Spring boot exception handilng.
+     @RestControllerAdvice - class level annotation
+     @ExceptionHandler - Method level annotation
+
+3. Rest Endpoint communication.
+   1. add spring webflux dependency
+   2. We can use Webclient which is available in the above dependency to communicate with other server Rest endpoints.
+     WebClient.builder().build()
+                .get()
+                .uri("https://jsonplaceholder.typicode.com/users")
+                .retrieve()
+                .bodyToMono(String.class)
+                .block();
+      get() - http method
+      uri - URL we goinmg to hit to get response
+      retrieve - execute the request
+      bodyToMono - the response we received will be mapped to string type
+      block - wait until the execution completes.
+
+4. Spring Boot Swagger documentation.
+5. Spring Boot actuaters.

@@ -40,4 +40,16 @@ public class EmployeeController {
     }
 
 
+    @PostMapping("/trx-demo/{id}")
+    public Employee trxDemo(@PathVariable Long id, @RequestBody Employee employee){
+        return this.employeeService.trxDemo(id, employee);
+    }
+
+    @GetMapping("/rest-api-testing")
+    public void testRestAPI(){
+            this.employeeService.testRestAPI();
+    }
+
+
+
 }
