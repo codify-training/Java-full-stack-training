@@ -8,17 +8,33 @@ import { Component } from '@angular/core';
 })
 export class Header {
 
-  title:string = 'Sample App';
-  buttonTitle:string='login/signup';
-  aboutItem:string  ='About';
+  title: string = 'Sample App';
+  buttonTitle: string = 'login/signup';
+  aboutItem: string = 'About';
 
-  userData= {
-    profile:'some-link',
-    name:'naveen'
+  usersCount: number = 1;
+  isLoggedIn: boolean = true;
+  trueValue = true;
+  falseValue = false;
+
+  naveen ="naveen";
+
+  userData = {
+    profile: 'https://picsum.photos/536/354',
+    name: 'naveen'
   }
 
-  public clickButton():void {
+  buttonType:string = "button";
 
+  profileUrl = 'https://picsum.photos/536/354';
+
+  clickButton(): void {
+    alert("Text changed");
+    this.naveen = "angular app!"
   }
 
+  updateInput(data:any){
+    console.log("data",data);
+  }
+  
 }

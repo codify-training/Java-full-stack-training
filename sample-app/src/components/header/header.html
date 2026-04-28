@@ -1,18 +1,44 @@
 <div class="main">
-    <div>
-        {{title}}
-    </div>
-    <div class="list-container">
-        <ul>
-            <li>{{aboutItem}}</li>
-            <li>contact</li>
-            <li>product</li>
-            <li>team</li>
-            <li>quote</li>
-        </ul>
-    </div>
-    <div class="btn-container">
-        <p>{{userData?.name}}</p>
-        <button type="button">{{buttonTitle}}</button>
-    </div>
+  <div>
+    {{ title }}
+  </div>
+  <div class="list-container">
+    <ul>
+      <li>{{ aboutItem }}</li>
+      <li>contact</li>
+      <li>product</li>
+      <li>team</li>
+      <li>quote</li>
+    </ul>
+  </div>
+  <div class="btn-container">
+    <input type="text" placeholder="search text" (change)="updateInput($event)" autofocus />
+    <button [type]="buttonType" title="login/signup" (click)="clickButton()">
+      {{ buttonTitle }}
+    </button>
+    @if (isLoggedIn) {
+      <!-- <img src="" alt="" > -->
+      <!-- property binding -->
+      <img src="{{ profileUrl }}" [title]="userData.name" alt="user-profile" class="profile" />
+    } @else {
+      <button
+        [type]="buttonType"
+        title="login/signup"
+        [disabled]="isLoggedIn ? falseValue : trueValue"
+        (click)="clickButton()"
+      >
+        {{ buttonTitle }}
+      </button>
+    }
+  </div>
 </div>
+
+<!--syntax of property binding -->
+<!-- [html-attribute]="value" -->
+
+<!--img-> src -->
+<!-- button -> disbaled -->
+
+<!-- event binding -->
+<!-- (click) => click event -->
+<!-- (change) => change event -->

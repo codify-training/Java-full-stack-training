@@ -20,6 +20,13 @@ button{
     border: none;
     background-color: skyblue;
     color: white;
+    cursor: pointer;
+}
+
+button:disabled {
+    background: rgb(43, 41, 41);
+    color: rgb(212, 211, 211);
+    cursor: not-allowed;
 }
 
 *{
@@ -32,4 +39,9 @@ button{
     flex-direction: row;
     gap: 10px;
     align-items: center;
+}
+
+.profile{
+    width: 90px;
+    border-radius: 10%;
 }
