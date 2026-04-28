@@ -1,0 +1,122 @@
+Component:
+=> Component is the basic building block of your application's user interface (UI).
+=> Think of it as a custom HTML tag that combines its own layout, look, and logic into one reusable package.
+
+Structure of Component:
+Every component is made up of three main parts:
+=> HTML Template: The structure and layout (the "View").
+=> CSS Styles: How the component looks (colors, fonts, etc.).
+=> TypeScript Class: The logic and data, such as variables and functions.
+
+
+Suitable Example: A Greeting Component
+
+1. TypeScript Class (greeting.component.ts)
+=> This file contains the logic. We define a userName property that will be displayed in the UI. 
+
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-greeting', // This is your custom HTML tag (html selector)
+  templateUrl: './greeting.component.html',
+  styleUrls: ['./greeting.component.css']
+})
+export class GreetingComponent {
+  userName: string = 'naveen'; 
+}
+
+
+-------------------------------------------------------------------------------------------------------------------------------------
+
+
+2. HTML Template (greeting.component.html)
+=>  html template is use show the UI and also can get data from the typescript class
+=>  It is also known as view side of the component.
+Ex:
+<div class="card">
+  <p>Welcome to the world of Angular components.</p>
+</div>
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+3. CSS Styles (greeting.component.css)
+=> In this file we will write the css styles which will be applied to greeting.component.html
+Ex:
+.card {
+  border: 1px solid #ccc;
+  padding: 20px;
+  text-align: center;
+  border-radius: 8px;
+}
+
+
+Important:
+Usage of selector in html
+ <!-- Inside another component's HTML file -->
+<app-greeting></app-greeting>
+=> Now using this we can get all the UI from the component 
+
+Key Benefits:
+=> Reusability: You can use <app-greeting> multiple times across your app in any components.
+=> Encapsulation: Styles in one component won't accidentally change how another component looks.
+=> Maintainability: Large apps are easier to manage when broken into small, focused pieces.
+
+
+
+------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+4. Command to generate component:
+=> ng generate component component-name or ng g c component-name
+=> structure of component will be:
+
+Ex: header component
+header->
+header.css
+header.html
+header.spec.ts
+header.ts
+
+
+-----------------------------------------------------------------------------------------------------------------------------------
+
+
+5. @Component
+
+=> @Component is a decorator. 
+=> Without this decorator, Angular has no idea that your class is supposed to represent a piece of your website.
+
+The Breakdown:
+Inside the parentheses @Component({ ... }), you pass an object with specific settings (metadata). Here are the three most important ones:
+1. selector
+This defines your custom HTML tag.
+* Example: selector: 'app-user-profile'
+* Usage: You can now use <app-user-profile></app-user-profile> in your HTML files.
+
+2. templateUrl or template
+This tells Angular what HTML to show.
+
+* templateUrl: Points to an external .html file.
+* template: Allows you to write short HTML directly inside the decorator (using backticks `).
+
+3. styleUrls or styles
+This tells Angular how it should look.
+
+* styleUrls: An array pointing to your .css or .scss files.
+* styles: Allows you to write CSS rules directly inside the decorator.
+
+
+What it looks like in code:
+
+@Component({
+  selector: 'app-hello',           
+  template: `./hello.html`, 
+  styles: [`./hello.css`]  
+})export class HelloComponent {
+  // This is where the logic goes later!
+}
+
+
