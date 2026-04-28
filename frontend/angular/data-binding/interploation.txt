@@ -44,4 +44,3 @@ For security and performance, certain actions are not allowed inside interpolati
 => New Keyword: You cannot use new, instanceof, or typeof.
 => Chaining: You cannot use semicolons ; to chain multiple statements.
 
-
