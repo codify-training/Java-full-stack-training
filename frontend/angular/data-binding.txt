@@ -1,0 +1,47 @@
+1. Data Binding:
+=> Data binding is how your code and your template talk to each other. 
+=> There are four ways to bind data:
+a) Interpoation
+b) Property Binding
+c) Event Binding
+
+
+a) Interpolation:
+   => Interploation in Angular is a data-binding technique that allows you to embed dynamic values from your TypeScript code directly into your HTML template.
+   => It is a form of one-way data binding, where data flows from the component class (logic) to the view (UI).
+   Key Concepts:
+     => Syntax: Use double curly braces {{ }} (often called "mustache syntax") to wrap an expression.
+     => Evaluation: Angular evaluates the expression inside the braces, converts the result to a string, and renders it in the DOM.
+     => Automatic Updates: If the value of the bound variable changes in the TypeScript file, the UI updates automatically to reflect the new value.
+
+  Ex: 
+1. Define data in the TypeScript file (app.component.ts) 
+    import { Component } from '@angular/core';
+
+ @Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html'
+})
+export class AppComponent {
+  userName: string = 'Alex'; // Data to be displayed
+}
+
+2. Display data in the HTML template (app.component.html)
+<!-- The value of userName will be injected here -->
+<h1>Welcome, {{ userName }}!</h1>
+
+
+What can you interpolate?
+Beyond simple variables, you can use various template expressions inside the curly braces: 
+=> Arithmetic Operations: {{ 10 + 20 }} will display 30.
+=> Method Calls: {{ userName.toUpperCase() }} will display ALEX.
+=> Concatenation: {{ 'Hello ' + userName }}.
+=> Object Properties: If you have an object user = { age: 25 }, use {{ user.age }}. 
+
+Important Restrictions:
+For security and performance, certain actions are not allowed inside interpolation braces: 
+=> Assignments: You cannot use =, +=, or ++.
+=> New Keyword: You cannot use new, instanceof, or typeof.
+=> Chaining: You cannot use semicolons ; to chain multiple statements.
+
+
