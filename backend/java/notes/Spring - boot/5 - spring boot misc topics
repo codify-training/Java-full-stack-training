@@ -21,5 +21,48 @@
       bodyToMono - the response we received will be mapped to string type
       block - wait until the execution completes.
 
+   For converting response to object we can mention Object.class directly (ex :  bodyToMono(User.class) - converts response to user object))
+
 4. Spring Boot Swagger documentation.
+   1. Dependency
+     org.springdoc: springdoc-openapi-starter-webmvc : 2.6.0
+   2. Goto Browser and use the URL( /swagger-ui/index.html)
+
 5. Spring Boot actuaters.
+  application Heathcheck - weather my app is up and running or not.  
+  metrics - JVM memory, server memory, process config etc  
+  1. Dependency
+    org.springframework.boot: spring-boot-starter-actuator.
+  2. write a config in application.properties
+     management.endpoints.web.exposure.include=health,info,metrics
+     management.endpoint.health.show-details=always
+     
+  3. hit the actuator URL. 
+    /actuator
+    {
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/actuator", - Lists you all the actuator URLs 
+      "templated": false
+    },
+    "health-path": {
+      "href": "http://localhost:8080/actuator/health/{*path}",
+      "templated": true
+    },
+    "health": {
+      "href": "http://localhost:8080/actuator/health", - Health check URL
+      "templated": false
+    },
+    "info": {
+      "href": "http://localhost:8080/actuator/info",
+      "templated": false
+    },
+    "metrics-requiredMetricName": {
+      "href": "http://localhost:8080/actuator/metrics/{requiredMetricName}", - the key from below URl can be used here to extract corresponding metric values. EX: Processor usage, memory usage, CPU Usage. 
+      "templated": true
+    },
+    "metrics": {
+      "href": "http://localhost:8080/actuator/metrics", - Lists you all the metrics keys that you can query.
+      "templated": false
+    }
+  }

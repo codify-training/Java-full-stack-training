@@ -1,6 +1,7 @@
 package org.example.service;
 
 import org.example.model.Employee;
+import org.example.model.User;
 import org.example.repository.EmployeeRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -63,14 +64,13 @@ public class EmployeeService {
     }
 
 
-    public void testRestAPI(){
-        String response = WebClient.builder().build()
+    public User testRestAPI(Long id){
+        return WebClient.builder().build()
                 .get()
-                .uri("https://jsonplaceholder.typicode.com/users")
+                .uri("https://jsonplaceholder.typicode.com/users/"+id)
                 .retrieve()
-                .bodyToMono(String.class)
+                .bodyToMono(User.class)
                 .block();
-        System.out.println("WE got rewsponse from server :::: "+ response);
     }
 
 }

@@ -2,6 +2,7 @@ package org.example.controller;
 
 
 import org.example.model.Employee;
+import org.example.model.User;
 import org.example.service.EmployeeService;
 import org.springframework.web.bind.annotation.*;
 
@@ -45,9 +46,9 @@ public class EmployeeController {
         return this.employeeService.trxDemo(id, employee);
     }
 
-    @GetMapping("/rest-api-testing")
-    public void testRestAPI(){
-            this.employeeService.testRestAPI();
+    @GetMapping("/rest-api-testing/{id}")
+    public User testRestAPI(@PathVariable Long id){
+            return this.employeeService.testRestAPI(id);
     }
 
 
