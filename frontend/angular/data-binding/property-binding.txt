@@ -1,0 +1,36 @@
+Property Binding:
+=> In Angular, Property Binding is a one-way data-binding technique used to pass data from a component's TypeScript code to a property of an HTML element or an Angular component. 
+=> It allows you to control the behavior and appearance of your UI elements dynamically based on your app's state.
+
+Key Concepts
+=> One-Way Flow: Data moves in a single direction: from the Component (TypeScript) to the View (HTML template).
+=> Syntax: Use square brackets [] around the target property name.
+=> example: [attribute/property]="expression".
+=> Evaluation: When Angular sees brackets, it treats the right side as a dynamic expression (a variable or function) rather than a simple string.
+
+Example:
+=> we bind a component's variable to an image's src property and a button's disabled property. 
+
+1. The Component (app.component.ts)
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html'
+})
+export class AppComponent {
+  imageUrl = 'https://angular.dev';
+  isButtonDisabled = true; // This will disable the button initially
+}
+
+2. The Template (app.component.html)
+<!-- Binds 'imageUrl' from TS to the 'src' property of the <img> tag -->
+<img [src]="imageUrl" alt="Angular Logo">
+
+<!-- Binds 'isButtonDisabled' to the 'disabled' property of the <button> -->
+<button [disabled]="isButtonDisabled">Click Me</button>
+
+Common Use Cases
+=> Toggling Features: Dynamically enabling or disabling buttons using [disabled].
+=> Dynamic Assets: Changing image sources or links using [src] or [href].
+=> Styling: Applying dynamic CSS classes or inline styles using [class] or [style].
