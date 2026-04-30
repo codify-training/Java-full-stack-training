@@ -1,0 +1,135 @@
+There are three main types of directives in Angular: Component, Structural, and Attribute.
+
+1. Component Directives
+These are the most common type. Every Angular component is actually a directive with an associated HTML template.
+
+=> Example: When you create <app-header></app-header>, you are using a component directive to tell Angular to render that specific block of UI.
+
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+2. Structural Directives:
+
+Older Version Structural Directives:
+=> These change the structure of the DOM by adding, removing, or replacing elements.
+=> You can easily spot them because they are prefixed with an asterisk (*).
+
+=> syntax:
+*ngIf="condition/expression"
+=> *ngIf: Shows or hides an element based on a true/false condition.
+
+// ts file data
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-user-profile',
+  templateUrl: './user-profile.component.html'
+})
+export class UserProfileComponent {
+  isLoggedIn: boolean = false;
+  fruits = ['apple','banana','guava','mango'];
+}
+
+// html file
+<!-- The message only appears if isLoggedIn is true -->
+<p *ngIf="isLoggedIn">Welcome back, User!</p>
+
+=> *ngFor: Loops through a list and creates a new element for every item.
+
+
+<!-- Creates a list item for every fruit in the array -->
+<ul>
+  <li *ngFor="let fruit of fruits">{{ fruit }}</li>
+</ul>
+
+
+Newer Version of Structural Directives:
+=> In Newer Version, condition will be similar to programming language javascript.
+Ex:
+// ts file data
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-user-profile',
+  templateUrl: './user-profile.component.html'
+})
+export class UserProfileComponent {
+  isLoggedIn: boolean = false;
+  fruits = ['apple','banana','guava','mango'];
+}
+
+=> @if -> shows or hides an element based on a true/false condition.
+=> Syntax: 
+@if (condition){
+    // HTML UI code
+}
+@if(isLoggedIn){
+    <p>Welcome User! </p>
+} @else {
+    <button>Please login </button>
+}
+
+=> For Loop -> It will iterate each items from the list using for loop similar to js programming syntax.
+=> syntax:
+@for(item of items; track $index){
+    // HTML code snippet
+}
+
+Note: index -> index number for particular item from the list.
+
+@for (item of fruits; track $index) {
+        <div>
+          {{ item }}
+        </div>
+      }
+
+
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+3. Attribute Directives
+=> These change the appearance or behavior of an existing element, component, or another directive. 
+=> They look like regular HTML attributes.
+
+* ngClass: Dynamically adds or removes CSS classes.
+
+// css class
+.active{
+    color:blue;
+    background: gray;
+}
+<!-- Adds the 'active' class only if isActive is true -->
+<div [ngClass]="{'active': isActive}">Status Box</div>
+
+* ngStyle: Applies inline styles based on a condition.
+
+Ex:
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-user-profile',
+  templateUrl: './user-profile.component.html'
+})
+export class UserProfileComponent {
+  status:string ='success';
+}
+
+<!-- Changes the text color based on the 'status' variable -->
+<p [ngStyle]="{'color': status === 'error' ? 'red' : 'green'}">
+  System Check
+</p>
+
+
+Quick Comparison Table
+
+| Type       |        Purpose                    |         Syntax Clue          |     Example          |
+--------------------------------------------------------------------------------------------------------
+| Component   |  Creates a reusable UI block     |         Custom tag           | <app-user-list>      |
+| Structural  |  Changes DOM layout (Add/Remove) |         Starts with *        | *ngIf, *ngFor        |
+| Attribute   |  Changes look or feel            |         Used as attribute    | ngClass, ngStyle     |
+
