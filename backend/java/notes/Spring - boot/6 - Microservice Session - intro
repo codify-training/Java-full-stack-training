@@ -1,0 +1,31 @@
+1. Monolith application:
+   1. Login Page/Authentication.
+   2. Products catalog
+   3  Payment Processing
+   4. Order management.
+   5. All UI also in same codebase.
+
+  The monolith application will be easy during initial development or for POCS.
+
+ In Monolith Architecture
+     - All features are tightly integrated and work as one large system. 
+     - Lets say there is issue in Product catalog page/Payment processing page/Order management page, 
+     the whole application will go down or crash.
+     - Small change in one module is deployed, the testing needs to be done for whole app.
+     - Its very difficcult to introduce new feature safely, bcz change in one module may effect other modules too. 
+     - You must scale entire application, not just part i need. - scalability issue. 
+     - Slower Development - 
+          Products catalog - changes that can be done in 3 to 4 days. ()
+          Payment Processing - International payments acceptance - very big chnage - 2 months.
+          Order management. - One month.
+         All has to go for production at a time, so the development process is very slow.
+     - Technology Lockin
+         EX: Products catalog - This can be done more feasible and effectively written using python
+         Order Management - using PHP can be done better.
+         Tech upgrade for each module is not possible with Monolith architecture.
+      Difficult to maintain.
+        - Code base becomes huge and complex.
+        - New developers takes long time to understand.     
+
+
+

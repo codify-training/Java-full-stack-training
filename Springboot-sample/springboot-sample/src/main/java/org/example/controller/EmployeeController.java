@@ -37,7 +37,7 @@ public class EmployeeController {
     @DeleteMapping("/{id}")
     public String delete(@PathVariable Long id){
         this.employeeService.delete(id);
-        return "Employee Deleted";
+        return "Employee has been Deleted";
     }
 
 
