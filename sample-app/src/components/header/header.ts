@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -17,14 +17,14 @@ export class Header {
   trueValue = true;
   falseValue = false;
 
-  naveen ="naveen";
+  naveen = "naveen";
 
   userData = {
     profile: 'https://picsum.photos/536/354',
     name: 'naveen'
   }
 
-  buttonType:string = "button";
+  buttonType: string = "button";
 
   profileUrl = 'https://picsum.photos/536/354';
 
@@ -33,8 +33,10 @@ export class Header {
     this.naveen = "angular app!"
   }
 
-  updateInput(data:any){
-    console.log("data",data);
+  @Input() name: string = '';
+
+  updateInput(data: any) {
+    console.log("data", data);
   }
-  
+
 }

@@ -1,7 +1,9 @@
+<app-header [name]="'naveen'" ></app-header>
 <div class="main">
   <!-- left block -->
   <div>
     <div class="left-inner-block">
+      <div>Welcome </div>
       <h4>Est. 2018 · Hyderabad</h4>
       <h1>Where Every Cup Tells a Story</h1>
       <p>
@@ -84,4 +86,8 @@
 </p> -->
 
 <!-- [ngClass] used for normal class selectors -->
-<div [ngClass]="{ active: status }">my status</div>
+<!-- <div [ngClass]="{ active: status }">my status</div>
+ -->
+
+ <!-- home component which is parent will listnens for the message from the child componnet -->
+<app-child (messageEvent)="receievedData($event)" ></app-child>
