@@ -1,0 +1,51 @@
+.main{
+    background-color: brown;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px;
+}
+
+.left-inner-block{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.coffee-img{
+    border-radius: 30px;
+}
+
+.explore-btn{
+    background: rgb(77, 77, 231);
+    padding: 10px;
+    border: none;
+    color: white;
+    border-radius: 10px;
+}
+
+.find-btn{
+    background: rgba(55, 231, 108, 0.747);
+    padding: 10px;
+    border: none;
+    color: white;
+    border-radius: 10px;
+}
+
+h1{
+    padding: 0;
+    margin: 0;
+}
+.row{
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+}
+
+.active {
+    padding: 20px;
+    color: brown;
+    font-size: 20px;
+}
