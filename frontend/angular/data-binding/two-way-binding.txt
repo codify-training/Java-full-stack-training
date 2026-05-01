@@ -1,0 +1,39 @@
+Two Way Binding:
+=> Two-way data binding is a mechanism that keeps your component data (TypeScript) and your view (HTML) in perfect sync.
+=> If you change a value in the code, the screen updates; if the user types something on the screen, the code variable updates automatically.
+
+The "Banana-in-a-Box" Syntax:
+Angular uses a special syntax for two-way binding: [()]. 
+=> The square brackets [] represent Property Binding (data moving from code to screen).
+=> The parentheses () represent Event Binding (data moving from screen to code). 
+
+Ex:
+=> To use ngModel, you must first import the FormsModule from @angular/forms dependency.
+
+1. The Component (TypeScript)
+Define a variable that you want to bind to an input field. 
+
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-user-profile',
+  templateUrl: './user-profile.component.html'
+})
+export class UserProfileComponent {
+  // This is our data model
+  userName: string = 'Guest User';
+}
+
+2. The Template (HTML)
+Apply the [(ngModel)] directive to an input element. 
+<!-- Data flows both ways here -->
+<input type="text" [(ngModel)]="userName">
+
+<!-- Display the current value of the variable -->
+<p>Hello, {{ userName }}!</p>
+
+Example Behaves:
+
+1. On Load: The input box will automatically show "Guest User" because it reads the value from the TypeScript variable.
+2. User Typing: If the user deletes "Guest User" and types "Sita", the userName variable in the TypeScript file instantly changes to "Sita".
+3. Automatic Update: Because the paragraph tag uses {{ userName }}, it will update to "Hello, Sita!" in real-time as the user types.

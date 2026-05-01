@@ -1,0 +1,88 @@
+Component Communication:
+=> Transfering data from child to parent and parent to child through components.
+=> There are two ways:
+a. Parent to Child
+b. Child to parent
+
+
+
+
+a. Parent to Child (@Input)
+=> The parent holds the data and passes it down.
+=> here, we use input decorator to pass the data from parent ro child.
+
+=> The Logic: You use the @Input() decorator in the child component to say, "I’m ready to receive this."
+=> Example: A UserListComponent (Parent) passing a username to a UserCardComponent (Child).
+
+Child Component:
+@Component({
+  selector: 'app-child',
+  template: `./child.html`
+})export class ChildComponent {
+  @Input() userName: string = ''; // Receiving the "gift"
+}
+
+// child.html
+<p>Hello, {{ userName }}!</p>
+Explanation:
+=> child receives alice in child component
+
+Parent Component:
+<!-- Parent passes "data Alice" into the child's userName property -->
+<app-child [userName]="'Alice'"></app-child>
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+2. Child to Parent (@Output and EventEmitter)
+=> When ever event is trgiggered then child will pass the data to parent using event emitter.
+
+=> The Logic: The child creates an event using EventEmitter. The parent "listens" for that event.
+=> Example: A child component has a "Delete" button that tells the parent to remove an item.
+
+Child Component:
+
+@Component({
+  selector: 'app-child',
+  template: `.child.html`
+})export class ChildComponent {
+
+  @Output() messageEvent = new EventEmitter<any>();
+
+  sendMessage() {
+    this.messageEvent.emit('Hello Parent!'); 
+  }
+}
+
+// child.html file
+<button (click)="sendMessage()">Notify Parent</button>
+
+Explanation:
+=> when ever button clicked then data will be sent to parent using event emitter with Output decorator
+
+
+Parent Component:
+
+<!-- Parent listens for messageEvent and runs the 'receiveMessage' function -->
+<app-child (messageEvent)="receivedData($event)"></app-child>
+
+parent.ts file
+@Component({
+  selector: 'app-parent',
+  template: `.parent.html`
+})export class Parent {
+
+  receivedData(data:any) {
+    console.log("data received from child:",data)
+  }
+}
+
+
+
+------------------------------
+
+
+Note:
+* Parent → Child: Use @Input.
+* Child → Parent: Use @Output.
