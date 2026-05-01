@@ -1,4 +1,5 @@
 1. Monolith application:
+Flipkart Project
    1. Login Page/Authentication.
    2. Products catalog
    3  Payment Processing
@@ -28,4 +29,53 @@
         - New developers takes long time to understand.     
 
 
+Microservices Architecture:
+----------------------------
+In Microservice Architecture, we break entire system into small independent services.
 
+Flipkart
+   1. Login Page/Authentication. - Service - spring boot app
+   2. Products catalog - service - spring boot app
+   3. Payment Processing - service - spring boot app
+   4. Order management. - service - spring boot app
+   5. All UI also in same codebase. (angular app)
+
+1) Monolith Problem : If one module fails, whole app goes down.
+  Microservice Fix: fault isolation(Only the service that went wrong goes down, the entire still be working.)
+
+2) Problem: Small change in one module is deployed, the testing needs to be done for whole app.
+   Microservice Fix: Independent deployment.
+   EX: change in product catalog, deploy only that service. 
+   you dont need to deploy all other services
+
+3) Problem: Hard To introdcuce New feature:
+    Microservice Fix: Service Isolation
+    If there is new feature has to be added in order service, do that feature for order service
+    and deploy only that service.
+
+4) Scalability issue. We need to increase the memory of whole system   
+    Microservice Fix: Independent scaling
+    EX: If Products catalog service is most businest service then we allocate max. memory to this service.
+    Rest of the services can use nominal memory.
+
+5) Problem:  Slower Development 
+          Products catalog - changes that can be done in 3 to 4 days. ()
+          Payment Processing - International payments acceptance - very big chnage - 2 months.
+          Order management. - One month.
+  microservice Fix: Parallel development and release process.
+  Products catalog  - development done in 3 to 4 days, testing 3 day , deployment.
+  Payment Processing - International payments acceptance - very big chnage - 2 months. + 1 month testing -> release 
+  
+6) Problem:  Technology Lock in:
+   Microservice Fix:  Polyglot architecture - Its a design approach where a system utililizes multiple programming languages, frameworks codebases within same ecosystem.
+   This makes us select best tool for specific problem.
+   EX: Products catalog  - Python
+    Payment Processing - PHP
+    Order Mnagaement - Java.
+
+7) Problem:  Difficult to maintain(huge codebases)    
+  Microservice Fix: Smaller codebases
+  Each service is small and focused
+  Easier for new developer.
+
+Email: pparimi89@gmail.com
