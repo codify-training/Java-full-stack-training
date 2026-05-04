@@ -1,9 +1,8 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { Child } from "../child/child";
 
 @Component({
   selector: 'app-parent',
-  imports: [Child],
+  imports: [],
   templateUrl: './parent.html',
   styleUrl: './parent.css',
 })

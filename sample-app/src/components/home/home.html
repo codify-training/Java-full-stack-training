@@ -10,45 +10,15 @@
         Handcrafted coffee, freshly baked pastries, and a warm corner to call your own. Come as you
         are.
       </p>
-      <input
-        type="text"
-        [(ngModel)]="btnLabel"
-        placeholder="enter button name"
-        style="padding: 10px; margin-bottom: 10px"
-      />
-      <!-- <button>Update</button> -->
-
-      <!-- older version -->
-      <!-- <div *ngIf="btnLabel.length > 5">
-        {{ btnLabel }}
-      </div> -->
-      <small>Older version</small>
-
-      <!-- ngFor older version -->
-      <div *ngFor="let name of dataList">
-        {{ name }}
-      </div>
-      <br />
-      <div>New version</div>
-      @for (item of dataList; track $index) {
-        <div>
-          {{ item }}
-        </div>
-      }
-
-      <!-- new version -->
-      <!-- @if (btnLabel.length > 15) {
-         {{ btnLabel }}
-       } @else {
-         data
-       } -->
-
+      <p>{{commonService.applicationName}}</p>
+      
+      
       <br />
       <div class="row">
-        <button type="button" class="explore-btn">
+        <button type="button" class="explore-btn" >
           {{ btnLabel }}
         </button>
-        <button type="button" class="find-btn">Find Us</button>
+        <button type="button" class="find-btn" (click)="openAlert()">Find Us</button>
       </div>
     </div>
   </div>
@@ -90,4 +60,4 @@
  -->
 
  <!-- home component which is parent will listnens for the message from the child componnet -->
-<app-child (messageEvent)="receievedData($event)" ></app-child>
+<!-- <app-child (messageEvent)="receievedData($event)" ></app-child> -->
