@@ -1,0 +1,60 @@
+Microservice Design Patterns:
+-------------------------------
+    when designing micrservices there are proven design solutions to common problems.
+
+1. Decomposition Pattern:
+-------------------------
+   - we split into microservices based on Business Capability
+       - Split based on domains
+          - Authentication
+          - Product Catalog
+          - Payment Processing 
+          - Order Processing
+          (Domain driven design)
+
+ 2) Data Management Pattern
+ -----------------------------
+   Database per service.
+      Lets say the below services has its own databases.
+      EX:
+            1. Login Page/Authentication. - Service - It authentication database
+            2. Products catalog - service -  Products database 
+            3. Payment Processing - service - Payments database 
+            4. Order management. - service - Order management database
+
+ 3) Resillience Pattern:(Handling failures)
+ -------------------------------------------
+   Circuit breaker pattern: This prevents cascading failures.
+   --------------------------
+   Problem EX: EX: PC(product catalog) calling PP(payment processing) service, 
+   lets say PC called PP and PP did not responded, now the PC thread calling PP will keep on hold.
+   1000 members PC to PP, 1000 threads(process or 1000 webclient requests)  lets say if we dont get response for all these requests. the PC service will get crashed.
+   Remedy : The circuit breaking pattern prevents this by failiing fast retrning an error immediately rather than waiting for request to respond.
+   
+   Retry pattern:
+      PC a call went  to PP(capacity 500 requests) if PP capacity is full. Now PP returns error response saying i cant process your request. 
+      PP processed some 10 request and now the PP (procesing 490 out of 500, now pp can hande 10 more requests) 
+      PC service will send out the request one more time to PP(bcz there is capabilty to process 10 more requests) now my request will get succeded.
+
+  Timout pattern:
+     We send the request and wait for certain amount of time, if we get response in that time frame then it is fine, else the request is considered as failed.    
+
+
+4) Depoyment Pattern:
+----------------------
+   Containerization: It is method f packaging an application and all its dependencies, libraries, binaries(java environemt, tomcat server ) 
+   into a single isolated unit or file caled container
+     Consistency: App Runs everywhere sae in developers machine as well as in production also.
+     EX: Docker.
+   Orchestration: 
+       If app grows, ex: from 1000 users to 1lakh users, i have to increase my servers. lets say to 100 machines each handling 1000 requests
+     we use orchestrator to manage all these.
+     It has automated scaling, managing the networking of all the machines.
+   Kubernetes:
+      automated scaling : Automatically removing and adding of servers based on traffic. 
+      Self healing : If a conatiner fails, the orchestrator automatically restarts it, 
+                    if the server not recovered yet after restarts then the system will be removed by orchestrator.
+      Load balancing: Distributing incoming traffic eenly accross all containers.
+   Canary Releases:
+       Release to small % of users first.
+       EX: release new code keep 10% user requests flow to new code and 90% request to old code.
