@@ -1,0 +1,23 @@
+Java new Features:
+----------------------
+ - Lambda Expression
+      It is a short block of code that takes in parmeters as input and returns value.
+      Lambdas are designed to simplyfy the implementation of functional intefaces.
+      Syntax: It has mainly 3 parts
+        Parameter - comma seperated list enclosed in paranthesis.()
+        Arrow -> It seperates parameter and body
+        Body - Block of code.
+        EX: (p) -> p.price <=600;
+       Refere : Java-full-stack-training\upskillhouseprograms\src\main\java\org\example\corejavasamples\Javanewfeatures\LambdaExprDemo.java
+                 Java-full-stack-training\upskillhouseprograms\src\main\java\org\example\corejavasamples\Javanewfeatures\WithoutLambdaExprDemo.java
+      
+ - Functional Interfaces:
+     It is an interface that has only one abstract method.
+     EX: 
+ - Stream API
+ - Method References
+ - default methods in interfaces
+ - static methods in interfaces
+ - Optional
+ - ForEach
+ - Collector class
