@@ -1,12 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject, Input } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Header } from "../header/header";
+import { Header } from "../../components/header/header";
 import { Common } from '../../service/common';
 
 @Component({
   selector: 'app-home',
-  imports: [CommonModule, FormsModule, Header,],
+  imports: [CommonModule, FormsModule,],
   templateUrl: './home.html',
   styleUrl: './home.css',
 })

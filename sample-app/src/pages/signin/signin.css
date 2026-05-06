@@ -1,0 +1,40 @@
+.main{
+    width: 45%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h2{
+    text-align: center;
+}
+
+.form-group{
+    margin-bottom: 20px;
+}
+
+.signin-btn{
+    width: 100%;
+    background: rgb(28, 136, 224);
+    color: white;
+    padding: 9px;
+    border: none;
+    border-radius: 10px;
+}
+
+.btm-content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.signup-text{
+    margin-right: 5px;
+    color: rgb(28, 136, 224);
+    cursor: pointer;
+
+}
+
+.signup-text:hover{
+    text-decoration: underline;
+}
