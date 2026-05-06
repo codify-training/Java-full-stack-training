@@ -1,0 +1,117 @@
+Services and Dependency Injection(DI):
+=> Services and Dependency Injection (DI) work together like a restaurant: the Service is the specialized chef who knows how to cook a specific dish, and Dependency Injection is the waiter who delivers that chef's food to your table whenever you ask for it.
+
+
+1. What is a Service?
+=> A Service is a class with a narrow, well-defined purpose.
+=> It’s used to share data or logic across multiple components so you don't have to rewrite the same code. 
+Common uses:
+Fetching data from an API.
+Logging messages to the console.
+Handling user authentication.
+
+
+Example: A simple Logging Service
+// service file
+import { Injectable } from '@angular/core';
+
+@Injectable({
+  providedIn: 'root', // This makes it available everywhere
+})
+export class LoggerService {
+  log(message: string) {
+    console.log(`Log: ${message}`);
+  }
+}
+
+
+2. What is Dependency Injection (DI)?
+=> Instead of a component creating a service itself (using new LoggerService()), the component asks Angular to provide it. 
+=> Angular looks at its "toolbox," finds the service, and injects it into the component.
+
+Why use DI?
+=> Decoupling: The component doesn't need to know how to create the service.
+=> Testing: It’s easier to swap the real service for a "fake" one during testing.
+
+
+3. Putting it together: The Example
+// ts code
+=> Let's use our LoggerService inside a component.
+import { Component } from '@angular/core';
+import { LoggerService } from './logger.service';
+
+@Component({
+  selector: 'app-user',
+  template: `.user.html`
+})
+export class UserComponent {
+  // DI happens here in the constructor
+  constructor(private logger: LoggerService) {}
+
+  clickButton() {
+    this.logger.log('User clicked the button!');
+  }
+}
+
+// user.html 
+<div>
+<button (click)="clickButton()" type="button"> click me </button>
+</div>
+
+
+Mechanism Explanation:
+=> Create: You define a class and mark it with @Injectable.
+=> Register: By using providedIn: 'root', you tell Angular, "This service is available for the whole app."
+=> Inject: You list the service in a component's constructor.
+=> Use: You call the service's methods inside your component logic.
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+1.Using the Inject() function:
+=> Starting with Angular 14, we can perform dependency injection without using a constructor by using the inject() function. 
+=> This modern approach allows you to inject services directly as class field initializers. 
+
+Ex:
+=> Instead of listing services in the constructor, you can assign them to a variable directly at the top of your class.
+
+import { Component, inject } from '@angular/core';
+import { LoggerService } from './logger.service';
+
+@Component({
+  selector: 'app-user',
+  template: `<button (click)="logClick()">Click Me</button>`
+})
+export class UserComponent {
+  // Direct injection without a constructor!
+  private logger = inject(LoggerService);
+
+  logClick() {
+    this.logger.log('Button clicked using inject()!');
+  }
+}
+
+
+// user.html 
+<div>
+<button (click)="logClick()" type="button"> click me </button>
+</div>
+
+
+
+
+2. Why use this instead of a constructor?
+=> Cleaner Syntax: It significantly reduces "boilerplate" code, especially when you have many dependencies.
+=> Easier Inheritance: If you extend a base class, you don't need to pass all services through a super() call, which is a common pain point in traditional DI.
+=> Type Inference: TypeScript can often automatically infer the type of the service, so you don't always have to explicitly write it.
+=> Functional Use: You can use inject() inside standalone functions, such as Functional Router Guards or Resolvers, where classes and constructors don't exist. 
+
+
+
+
+3. Critical Rule: The "Injection Context" 
+The inject() function only works during the initialization of the class. 
+
+=> Where it works: In field initializers (like the example above) or inside the constructor itself.
+=> Where it fails: You cannot call inject() inside a regular method or a lifecycle hook like ngOnInit().
