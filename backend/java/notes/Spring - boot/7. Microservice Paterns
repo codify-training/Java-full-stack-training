@@ -44,15 +44,15 @@ Microservice Design Patterns:
 ----------------------
    Containerization: It is method f packaging an application and all its dependencies, libraries, binaries(java environemt, tomcat server ) 
    into a single isolated unit or file caled container
-     Consistency: App Runs everywhere sae in developers machine as well as in production also.
+     Consistency: App Runs everywhere as in developers machine as well as in production also.
      EX: Docker.
    Orchestration: 
        If app grows, ex: from 1000 users to 1lakh users, i have to increase my servers. lets say to 100 machines each handling 1000 requests
      we use orchestrator to manage all these.
      It has automated scaling, managing the networking of all the machines.
-   Kubernetes:
-      automated scaling : Automatically removing and adding of servers based on traffic. 
-      Self healing : If a conatiner fails, the orchestrator automatically restarts it, 
+      Kubernetes:
+         automated scaling : Automatically removing and adding of servers based on traffic. 
+         Self healing : If a conatiner fails, the orchestrator automatically restarts it, 
                     if the server not recovered yet after restarts then the system will be removed by orchestrator.
       Load balancing: Distributing incoming traffic eenly accross all containers.
    Canary Releases:
