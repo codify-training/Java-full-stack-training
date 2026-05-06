@@ -1,0 +1,36 @@
+1. https://console.cloud.google.com/
+2. Select a Project / Create new project.
+3. Create a billing account and link it to the project.
+3. GOTO API / Service Details -> Cloud Build API - Enable this
+
+4. Install Google Cloud SDK - https://cloud.google.com/sdk/docs/install
+
+5. GCP Commands
+    gcloud auth login - authenticate with your google account
+    gcloud init - initialize the gcloud environment
+    gcloud config set project < YOUR_PROJECT_ID - GCP project ID > - set the project for gcloud commands
+      ex: gcloud config set project fine - tractor - 414013
+    gcloud services enable run.googleapis.com
+    gcloud services enable cloudbuild.googleapis.com
+
+6. Create a Dockerfile in the root of your project with the following content:
+
+Filename: Dockerfile
+    FROM eclipse - temurin: 21 - jre - alpine
+WORKDIR / app
+    COPY target / springboot - sample - 1.0 - SNAPSHOT.jar app.jar
+ENTRYPOINT["java", "-jar", "app.jar"]
+
+7. docker build - t gcr.io / YOUR_PROJECT_ID / springboot - app.
+    ex: docker build - t gcr.io / fine - tractor - 414013 / springboot - app.
+        Note: Make sure to run this command from the root of your project where the Dockerfile is located. 
+   The docker has to be installed on your machine to run this command.
+   the docker hast to be started before running this command.
+   -> docker push gcr.io / fine - tractor - 414013 / springboot - app
+    -> docker tag springboot - app asia - south1 - docker.pkg.dev / fine - tractor - 414013 / my - repo / springboot - app
+
+8. gcloud run deploy springboot - app--image gcr.io / fine - tractor - 414013 / springboot - app--platform managed--region asia - south1--allow - unauthenticated
+  After this step we will get a URL where our application is deployed and we can access it from there.
+
+
+

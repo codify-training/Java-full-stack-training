@@ -44,7 +44,7 @@ Microservice Design Patterns:
 ----------------------
    Containerization: It is method f packaging an application and all its dependencies, libraries, binaries(java environemt, tomcat server ) 
    into a single isolated unit or file caled container
-     Consistency: App Runs everywhere sae in developers machine as well as in production also.
+     Consistency: App Runs everywhere as in developers machine as well as in production also.
      EX: Docker.
    Orchestration: 
        If app grows, ex: from 1000 users to 1lakh users, i have to increase my servers. lets say to 100 machines each handling 1000 requests
