@@ -1,0 +1,61 @@
+Steps to Deploy Spring boot app in oracle cloud:
+---------------------------------------------------
+Signup, Signin and VM creation Steps
+    1. Signup to Oracle Cloud. In this process you provide your detail, it will ask for card details too.
+    After signup process it will ask you to configure authenticater app.
+    2. Login into Oracle cloud after signup process completes.
+    3. After Login process we go with VM instance creation.
+        -> Basic Information and security go with defaults.
+        -> When creating instance for first time select Create new virtual cloud network under networking.
+        Also make sure "Public IPv4 address assignment" is selected as Yes. If this is Yes then only we can communicate with VM instance via internet.
+        Also make sure to download public key and private keys.
+    4. Adding 8080 port to ingress, this is important bcz it exposes the port outside.
+      - Goto dashboard, click on instance name.
+      - Goto Networking tab
+      - under Attached VNIC, Click Subnet/VLanLink
+      - In the Subnnet/VlankLink page goto security and click on default security list
+      - Under Security rules -> Add Ingress Rules
+            Source Type CIDR, Keep Source 0.0.0.0/0, Ip Protoc  
+      - Make sure the Rule get listed under the Ingress rules.       
+
+Build Image in local and push that image to docker hub.
+-------------------------------------------------------
+    - Create your spring boot app and make sure it is running in your local by hitting -  "java -jar jarname.jar"
+    - Installl docker application in our machine.
+    1. Create Docker file in the project
+    2. Install docker desktop in local.
+    3. Create account in docker.
+    4. Build docker.
+        In local do this build and run app, 
+        docker build -t springboot-app-1 .
+        docker run -d -p 8080:8080 --name springboot-app-1 springboot-app-1 
+    5. Push the image docker hub.
+        Create tag and push the image to docker hub.
+        docker tag springboot-app-1:latest pparimi89/springboot-app-1:latest 
+        docker push pparimi89/springboot-app-1:latest
+
+In VM instance we connect to the docker hub and get the image into docker software available inside VM machine. 
+-----------------------------------------------------------------------------------------------------------------
+  - Login to Cloud, goto Cloud Shell 
+  - Copy the private key into the cloud shell terminal.
+  - To login into the VM instance use this command: ssh -i ssh-key-2026-05-06.key opc@68.233.117.70
+  - To install Docker in the VM use the below commands.
+        wget https://mirror.stream.centos.org/9-stream/AppStream/x86_64/os/Packages/container-selinux-2.240.0-1.el9.noarch.rpm
+        sudo rpm -ivh container-selinux-2.240.0-1.el9.noarch.rpm
+
+        wget https://download.docker.com/linux/centos/9/x86_64/stable/Packages/containerd.io-1.7.27-3.1.el9.x86_64.rpm
+        wget https://download.docker.com/linux/centos/9/x86_64/stable/Packages/docker-ce-cli-28.0.4-1.el9.x86_64.rpm
+        wget https://download.docker.com/linux/centos/9/x86_64/stable/Packages/docker-ce-28.0.4-1.el9.x86_64.rpm
+
+        sudo rpm -ivh containerd.io-*.rpm
+        sudo rpm -ivh docker-ce-cli-*.rpm
+        sudo rpm -ivh docker-ce-*.rpm   
+
+
+Setup pushed springboot image in spring cloud.
+------------------------------------------------
+  Pull image : sudo docker pull pparimi89/springboot-app-1
+  Run image: sudo docker run -d -p 8080:8080 --name springboot-app-1 pparimi89/springboot-app-1:latest
+
+  Test URL: http://68.233.117.70:8080/api/swagger-ui/index.html#/employee-controller/create
+  http://68.233.117.70:8080/api/employee
