@@ -8,7 +8,7 @@ import { Component, Input } from '@angular/core';
 })
 export class Header {
 
-  title: string = 'Sample App';
+  title: string = 'Zenith Bank';
   buttonTitle: string = 'login/signup';
   aboutItem: string = 'About';
 
@@ -33,7 +33,7 @@ export class Header {
     this.naveen = "angular app!"
   }
 
-  @Input() name: string = '';
+  // @Input() name: string = '';
 
   updateInput(data: any) {
     console.log("data", data);
