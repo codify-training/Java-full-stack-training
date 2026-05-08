@@ -10,11 +10,33 @@ Java new Features:
         EX: (p) -> p.price <=600;
        Refere : Java-full-stack-training\upskillhouseprograms\src\main\java\org\example\corejavasamples\Javanewfeatures\LambdaExprDemo.java
                  Java-full-stack-training\upskillhouseprograms\src\main\java\org\example\corejavasamples\Javanewfeatures\WithoutLambdaExprDemo.java
-      
+      EX program: D:\Tutions\upskillhouse\Java-full-stack-training\upskillhouseprograms\src\main\java\org\example\corejavasamples\Javanewfeatures
  - Functional Interfaces:
      It is an interface that has only one abstract method.
      EX: 
+     @FunctionalInterface
+     interface Vehicle{
+        void start();
+        void accelerate(); // Voilation, it will throw error.
+     }
+    Common built in functioanl Interfaces:
+       EX: Predicate<T>  -> test() -> returns boolean
+       Function<T, R>   -> apply() -> takes input and returns output.
+       BiFunction<M, T, R> -> apply() -> takes 2 input arguments and returns output.
+
  - Stream API
+    It is a powerful API used to process sequence of elements like Collections or arrays.
+    EX: Sorting, Summing of elements, filter only even elements, filter only odd items
+     It has 3 steps:
+       1. Source - Here data comes from Collections or arrays.
+       2. Intermediate Operations - Sorting, filtering etc will come under Inter. operation.
+       For this step the data will come from source.
+       ex: sorted(), filter().
+       Every time an intermediate operation is performed the by prodcut is stream again.
+       3. ternary operation - this marks the end of stream. once this operation is applied 
+       the stream cannot be used again.
+       ex: forEach(), collect()
+
  - Method References
  - default methods in interfaces
  - static methods in interfaces

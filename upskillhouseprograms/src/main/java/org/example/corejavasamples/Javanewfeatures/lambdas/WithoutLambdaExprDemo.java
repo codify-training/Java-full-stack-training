@@ -1,4 +1,4 @@
-package org.example.corejavasamples.Javanewfeatures;
+package org.example.corejavasamples.Javanewfeatures.lambdas;
 
 
 import java.util.Arrays;
