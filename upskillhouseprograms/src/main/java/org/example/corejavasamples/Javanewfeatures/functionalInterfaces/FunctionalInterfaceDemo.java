@@ -7,6 +7,13 @@ import java.util.function.Predicate;
 @FunctionalInterface
 interface Vehicle{
     void startVehicle();
+
+    default void test(){
+        System.out.println("Default method");
+    }
+    static void testNow(){
+        System.out.println("Static method");
+    }
 }
 
 public class FunctionalInterfaceDemo {

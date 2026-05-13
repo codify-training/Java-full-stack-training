@@ -1,0 +1,35 @@
+Spring Boot AI integration
+  ex: Sum of 2 numbers.
+1. write it in python
+2. write it in java
+3. write it in C
+4. write it in C++
+5. write it in Scala
+
+3
+
+------------
+processing - Take the 2 commands
+Sum of 2 numbers. write it in C-language - chat model(EX: gemini, chatgpt, ollama or claude etc)
+response: This response we will give to user.
+
+-----------------------------------------------------------------
+1. Generate API key.
+https://aistudio.google.com/projects - Goto this URL
+Create Project, Create API Key.
+Model URL: https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent
+
+2. Create Spring Restcontroller
+  with endpoint - "/ask" - endpoint - takes the user input.
+
+3. Configure URL and API Key inside application.properties
+
+4. Read those properties in the app
+
+5. use the AI model URL and API key to communicate with the LLM
+
+6. Get the response from the LLM and pass it to use back who ever requested the ask.
+
+
+
+EX: GET : http://localhost:8080/api/ai/ask?question=write addition of 2 numbers in java

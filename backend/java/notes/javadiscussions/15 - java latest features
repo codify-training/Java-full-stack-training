@@ -37,9 +37,87 @@ Java new Features:
        the stream cannot be used again.
        ex: forEach(), collect()
 
- - Method References
- - default methods in interfaces
- - static methods in interfaces
- - Optional
- - ForEach
+ - Method References:
+     These are shorthand representation of lambda expression.
+
+      Refers to static method:
+          ClassName::staticMethod
+
+      Reference to instance method:
+          object::instanceMethod
+
+ - default methods in interfaces -  **We use this to keep common functionlaty
+            Here we can keep dafult method, for keeping common functionlity during inheritence, we can use this.
+                Vehicle - interface
+                abstract Method - engineStart()
+
+                Car implements vehicle{
+                    engineStart(){"Car engine start"};
+                    horn(){"sound horn"}// we can remoove this after implementing default method in inteferface.
+                    calculateSpeed(speed, time){
+                        returns speed * time;
+                    }
+                }
+
+                Bus implements vehicle{
+                    engineStart(){"Bus engine start"}
+                    horn(){"sound horn"}// we can remoove this after implementing default method in inteferface.
+                    calculateSpeed(speed, time){
+                        returns speed * time;
+                    }
+                }
+            
+                Now if we see horn() method is common across vehicles
+                so Inside Vehicle interface. I wil keep 
+                horn(){"sound horn"} default method.// implemented default method in interface.
+
+            syntax:
+                Vehicle - interface{
+                abstract Method - engineStart()
+                default void horn(){"Sound horn"}
+                }
+
+            Now we can remove horn() from both the classes.
+
+ - static methods in interfaces: - **we use this for keeping utiity methods.
+            Vehicle - interface
+                abstract Method - engineStart()     
+                calculateSpeed(speed, time){
+                returns speed * time;
+            }  // Now i can remove calculateSpeed from above 2 classes
+    syntax: static retrnType method(){
+        return val;
+    }
+ 
+ 
+ 
+ - Optional - It is a container for object used to avoid Nullpointerexception
+  Problem Code:
+     String str = null;
+     sop(str.length);
+  The problem here is you will get Nullpointerexception.
+  Syntax:
+     Optional<String> oStr = Optional.ofNullable(str);
+     if(oStr.isPresent()){
+        oStr.get().length();
+     }
+
+     get(): for getting value from optional.
+     isPresent(): This checks if the optional container is having data or not.
+     ifPresent(lambda): exectes the lambda when there is value else it wont execute lambda.
+     orElseThrow(exception): if value is present then get the value, else throw the exception mentioned.
+
+ - ForEach:
+     it is terinary operation.  We can use this to susbstitute for loop.
+     ex: Java-full-stack-training\upskillhouseprograms\src\main\java\org\example\corejavasamples\Javanewfeatures\streams\ForEachDemo.java
+     ** ForEach loop wont return you result.
+ 
  - Collector class
+      It is a terinary operation, This will return you some result as output.
+      1) Collect data to a collection:         
+      2) Grouping of data: 
+      3) Aggregate Results.
+      sample: Java-full-stack-training\upskillhouseprograms\src\main\java\org\example\corejavasamples\Javanewfeatures\CollectDemo.java
+
+
+     
