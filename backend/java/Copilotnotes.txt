@@ -1,0 +1,24 @@
+Chat View: ctrl + Alt + I - Used for multifile edits.
+Inline View: Ctrl + I - this is specific to piece of code.
+Quick Chat: ctrl + alt + shift + L Quick question without leaving current view.
+Command line: browser app view.
+
+Add Context to your Prompt:
+ Implicit Context :VS code automatically includes current selection and file name as context
+ @mentions - 
+    @Workspace - uses entire Workspace
+      ex: @workspace explain authentication flow in this project.
+    @terminal: reads terminal output.
+       ex: @terminal - explain why did my spring boot app fail to start?
+    @github: github related actions
+      Summerizes pull request - here you need to give SHA(commit Id that was auto generated.)
+ #mentions
+   This is used to reference below things.
+  -> files
+  -> folders
+  -> methods
+  -> classes
+  -> Code snippets
+
+Use proper commenting and describe your functionlaity in the class or file, 
+so that the agent will autocomplte your code in more accurate way.

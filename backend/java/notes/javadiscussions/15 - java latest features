@@ -89,8 +89,6 @@ Java new Features:
         return val;
     }
  
- 
- 
  - Optional - It is a container for object used to avoid Nullpointerexception
   Problem Code:
      String str = null;
