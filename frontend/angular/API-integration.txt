@@ -6,21 +6,21 @@ API Integration in Angular
 
 ## Key Terms to Know
 
-=> **HttpClient:** The built-in tool Angular uses to send network requests.
-=> **Observable:** A stream of data that you can watch. Angular APIs use observables instead of promises.
-=> **.subscribe():** The method that triggers the observable to run and listens for the API response.
+=> HttpClient: The built-in tool Angular uses to send network requests.
+=> Observable: A stream of data that you can watch. Angular APIs use observables instead of promises.
+=> .subscribe(): The method that triggers the observable to run and listens for the API response.
 
 ---
 
 ## HTTP Methods Overview
 
-| Method | Purpose   |               Example Use Case |
+| Method | Purpose                   | Example Use Case |
 |---------------------------------------------------------
 | GET    | Fetch / Read data         | Load a list of users |
-| POST   | Create new data          | Register / Login |
+| POST   | Create new data           | Register / Login |
 | PUT    | Replace entire record     | Update full user profile |
-| PATCH  | Update part of a record | Change only the username |
-| DELETE | Remove a record        | Delete a user account |
+| PATCH  | Update part of a record   | Change only the username |
+| DELETE | Remove a record           | Delete a user account |
 
 ---
 
@@ -110,7 +110,7 @@ ngOnInit(): void {
   this.userService.getAllUsers().subscribe(
     (res: any) => {
       console.log("All Users:", res.users);
-      this.userList = res.users;  // bind to template
+      
     },
     error => {
       alert("Failed to load users!");
@@ -122,7 +122,7 @@ ngOnInit(): void {
 
 ---
 
-#### 📥 GET — Fetch a Single User by ID
+####  GET — Fetch a Single User by ID
 > Use this when you want to **load one specific record** (e.g., a user profile page).
 
 ```typescript
@@ -223,7 +223,7 @@ updateEmail(): void {
 
 ---
 
-#### 🗑️ DELETE — Remove a User
+####  DELETE — Remove a User
 > Use this when you want to **permanently remove** a record from the server.
 
 ```typescript
@@ -249,9 +249,9 @@ deleteAccount(userId: number): void {
 
 ---
 
-## PUT vs PATCH — Quick Comparison for Beginners
+## PUT vs PATCH — Quick Comparison
 
-```
+
 Existing record on server:
 { id: 1, firstName: "John", lastName: "Doe", email: "john@mail.com", age: 25 }
 
@@ -269,9 +269,9 @@ Result  → { id: 1, firstName: "Jane", lastName: "Doe", email: "john@mail.com",
 Rule of Thumb:
   => Use PUT   when submitting a full edit form (all fields present)
   => Use PATCH when updating a single field (e.g., toggle status, change email)
-```
 
----
+
+-----------------------------------------------------------------------------------------------------------------------------------
 
 ## Summary:
 
