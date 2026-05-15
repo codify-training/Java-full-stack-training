@@ -1,0 +1,87 @@
+API Integration:
+=> API integration in Angular connects your frontend user interface to a backend server to fetch, save, or update data.
+=> Angular handles this using a built-in service called HttpClient. 
+
+
+
+Key Terms to Know:
+=> HttpClient: The built-in tool Angular uses to send network requests.
+=> Observable: A stream of data that you can watch. Angular APIs use observables instead of promises.
+=> .subscribe(): The method that triggers the observable to run and listens for the API response. 
+
+
+// example service code
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+
+@Injectable({
+  providedIn: 'root',
+})
+export class SigninService {
+
+  constructor(private http: HttpClient) { }
+
+  userlogin(body: any) {
+    return this.http.post('https://dummyjson.com/auth/login', body);
+  }
+
+}
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+Steps to Integrate API:
+
+1) Enable the API Client.
+
+In app.config.ts:
+
+import { ApplicationConfig } from '@angular/core';
+import { provideHttpClient } from '@angular/common/http';
+
+export const appConfig: ApplicationConfig = {
+  providers: [provideHttpClient()]
+};
+
+
+
+2) Inject the http Client module for Constructor like below
+   
+   constructor(private http: HttpClient, private service: SigninService) { }
+
+
+3) Call the API whenever required
+
+
+    // direct API call from the component => not recommended
+    this.http.post('https://dummyjson.com/auth/login', payload).subscribe((data: any) => {
+      console.log("data", data);
+      if (data) {
+        // if login success, this block of code will be executed
+      }
+      // error methods will be hanlded
+      else {
+        // if any error occurs then this block will execute
+      }
+    }, error => {
+      alert("Something went wrong!");
+      console.log("Something went wrong!", error);
+    })
+  
+
+    // calling API from the service => Preferred Approach
+    this.signinService.userlogin(payload).subscribe((res: any) => {
+      console.log("res", res);
+      if(res){
+        
+      }
+      // error methods will be hanlded
+      else {
+        // if any error occurs then this block will execute
+      }
+    }, 
+    error => {
+        alert("Something went wrong!");
+        console.log("Something went wrong!", error);
+    });
