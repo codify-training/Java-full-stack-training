@@ -88,7 +88,7 @@
             </small>
         </div>
 
-        <button type="submit" class="signin-btn" [disabled]="signinForm.invalid">Sign In</button>
+        <button type="submit" class="signin-btn" [disabled]="signinForm.invalid" (click)="onSubmit(signinForm)">Sign In</button>
     </form>
 
     <div class="btm-content">
