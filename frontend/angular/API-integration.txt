@@ -10,6 +10,9 @@ Key Terms to Know:
 => .subscribe(): The method that triggers the observable to run and listens for the API response. 
 
 
+
+
+
 // example service code
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -28,7 +31,14 @@ export class SigninService {
 }
 
 
+
+
+
 ---------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
 
 
 Steps to Integrate API:
@@ -85,3 +95,9 @@ export const appConfig: ApplicationConfig = {
         alert("Something went wrong!");
         console.log("Something went wrong!", error);
     });
+
+
+
+
+
+
