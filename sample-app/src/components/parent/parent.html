@@ -1,4 +1,19 @@
-<p>parent works!</p>
+<div class="product-c">
+  <div *ngFor="let product of productsList">
+    <div class="card" style="width: 18rem">
+      <img [src]="product?.images[0]" class="card-img-top" alt="..." />
+      <div class="card-body">
+        <h5 class="card-title">{{ product?.name }}</h5>
+        <p class="card-text">
+          {{ product?.description }}
+        </p>
+        <span href="" class="btn btn-primary" (click)="viewProduct(product)">View Product</span>
+      </div>
+    </div>
+  </div>
+</div>
 
-<!-- calling child html selector and sending data to child component -->
-<!-- <app-child [userName]="userName" ></app-child> -->
+<!-- <button (click)="increaseCount()">Increase Count</button> -->
+
+<!-- child component selector -->
+<!-- <app-child [count]="clickCount" ></app-child> -->

@@ -3,10 +3,11 @@ import { Component, inject, Input } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Header } from "../../components/header/header";
 import { Common } from '../../service/common';
+import { Parent } from "../../components/parent/parent";
 
 @Component({
   selector: 'app-home',
-  imports: [CommonModule, FormsModule,],
+  imports: [CommonModule, FormsModule, Parent],
   templateUrl: './home.html',
   styleUrl: './home.css',
 })
