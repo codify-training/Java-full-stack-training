@@ -1,103 +1,286 @@
-API Integration:
+API Integration in Angular
+
 => API integration in Angular connects your frontend user interface to a backend server to fetch, save, or update data.
-=> Angular handles this using a built-in service called HttpClient. 
+=> Angular handles this using a built-in service called HttpClient.
 
 
+## Key Terms to Know
 
-Key Terms to Know:
 => HttpClient: The built-in tool Angular uses to send network requests.
 => Observable: A stream of data that you can watch. Angular APIs use observables instead of promises.
-=> .subscribe(): The method that triggers the observable to run and listens for the API response. 
+=> .subscribe(): The method that triggers the observable to run and listens for the API response.
 
+---
 
+## HTTP Methods Overview
 
+| Method | Purpose                   | Example Use Case |
+|---------------------------------------------------------
+| GET    | Fetch / Read data         | Load a list of users |
+| POST   | Create new data           | Register / Login |
+| PUT    | Replace entire record     | Update full user profile |
+| PATCH  | Update part of a record   | Change only the username |
+| DELETE | Remove a record           | Delete a user account |
 
+---
 
-// example service code
+## Service File — All Methods Together
+
+```typescript
+// signin.service.ts
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
   providedIn: 'root',
 })
-export class SigninService {
+export class UserService {
+
+  private baseUrl = 'https://dummyjson.com';
 
   constructor(private http: HttpClient) { }
 
-  userlogin(body: any) {
-    return this.http.post('https://dummyjson.com/auth/login', body);
+  // ─── POST ─── Create / Login
+  userLogin(body: any) {
+    return this.http.post(`${this.baseUrl}/auth/login`, body);
+  }
+
+  // ─── GET ─── Fetch all users
+  getAllUsers() {
+    return this.http.get(`${this.baseUrl}/users`);
+  }
+
+  // ─── GET ─── Fetch a single user by ID
+  getUserById(id: number) {
+    return this.http.get(`${this.baseUrl}/users/${id}`);
+  }
+
+  // ─── PUT ─── Replace the entire user record
+  updateUser(id: number, body: any) {
+    return this.http.put(`${this.baseUrl}/users/${id}`, body);
+  }
+
+  // ─── PATCH ─── Update only specific fields of a user
+  patchUser(id: number, body: any) {
+    return this.http.patch(`${this.baseUrl}/users/${id}`, body);
+  }
+
+  // ─── DELETE ─── Remove a user by ID
+  deleteUser(id: number) {
+    return this.http.delete(`${this.baseUrl}/users/${id}`);
   }
 
 }
+```
 
+---
 
+## Steps to Integrate API
 
+### Step 1 — Enable the HTTP Client
 
-
----------------------------------------------------------------------------------------------------------------------------------------------------------
-
-
-
-
-
-
-Steps to Integrate API:
-
-1) Enable the API Client.
-
-In app.config.ts:
-
+```typescript
+// app.config.ts
 import { ApplicationConfig } from '@angular/core';
 import { provideHttpClient } from '@angular/common/http';
 
 export const appConfig: ApplicationConfig = {
   providers: [provideHttpClient()]
 };
+```
 
+### Step 2 — Inject the Service into your Component
 
+```typescript
+constructor(private userService: UserService) { }
+```
 
-2) Inject the http Client module for Constructor like below
-   
-   constructor(private http: HttpClient, private service: SigninService) { }
+---
 
+### Step 3 — Call Each Method from the Component
 
-3) Call the API whenever required
+---
 
+#### GET — Fetch All Users
+> Use this when you want to **load and display a list** of records (e.g., a user list page).
 
-    // direct API call from the component => not recommended
-    this.http.post('https://dummyjson.com/auth/login', payload).subscribe((data: any) => {
-      console.log("data", data);
-      if (data) {
-        // if login success, this block of code will be executed
-      }
-      // error methods will be hanlded
-      else {
-        // if any error occurs then this block will execute
-      }
-    }, error => {
-      alert("Something went wrong!");
-      console.log("Something went wrong!", error);
-    })
-  
-
-    // calling API from the service => Preferred Approach
-    this.signinService.userlogin(payload).subscribe((res: any) => {
-      console.log("res", res);
-      if(res){
-        
-      }
-      // error methods will be hanlded
-      else {
-        // if any error occurs then this block will execute
-      }
-    }, 
+```typescript
+// Fetch all users when the component loads
+ngOnInit(): void {
+  this.userService.getAllUsers().subscribe(
+    (res: any) => {
+      console.log("All Users:", res.users);
+      
+    },
     error => {
-        alert("Something went wrong!");
-        console.log("Something went wrong!", error);
-    });
+      alert("Failed to load users!");
+      console.log("Error:", error);
+    }
+  );
+}
+```
+
+---
+
+####  GET — Fetch a Single User by ID
+> Use this when you want to **load one specific record** (e.g., a user profile page).
+
+```typescript
+// Fetch user with ID = 5
+loadUserProfile(userId: number): void {
+  this.userService.getUserById(userId).subscribe(
+    (res: any) => {
+      console.log("User Details:", res);
+      this.userProfile = res;   // bind to template
+    },
+    error => {
+      alert("User not found!");
+      console.log("Error:", error);
+    }
+  );
+}
+```
+
+---
+
+#### POST — Login (Already shown above, included for completeness)
+> Use this when you want to **send new data** to the server (e.g., login, register, create post).
+
+```typescript
+login(): void {
+  const payload = { username: 'emilys', password: 'emilyspass' };
+
+  this.userService.userLogin(payload).subscribe(
+    (res: any) => {
+      console.log("Login Success:", res);
+      // save token, navigate to dashboard, etc.
+    },
+    error => {
+      alert("Something went wrong!");
+      console.log("Error:", error);
+    }
+  );
+}
+```
+
+---
+
+### PUT — Replace Entire User Record
+> Use this when you want to **completely replace** an existing record.
+> Any field you don't send will be wiped out on the server.
+
+```typescript
+// Replace all details of user with ID = 1
+updateFullProfile(): void {
+  const updatedUser = {
+    firstName: 'John',
+    lastName: 'Doe',
+    email: 'johndoe@example.com',
+    age: 30
+    // All fields must be sent — missing fields will be removed
+  };
+
+  this.userService.updateUser(1, updatedUser).subscribe(
+    (res: any) => {
+      console.log("User Updated:", res);
+      alert("Profile updated successfully!");
+    },
+    error => {
+      alert("Update failed!");
+      console.log("Error:", error);
+    }
+  );
+}
+```
+
+---
+
+####  PATCH — Update Only Specific Fields
+> Use this when you want to **update just one or a few fields** without touching the rest.
+> Safer than PUT when you only want to change partial data.
+
+Ex:
+```typescript
+// Update only the email of user with ID = 1
+updateEmail(): void {
+  const partialUpdate = {
+    email: 'newemail@example.com'
+    // Only the email is sent — other fields remain unchanged on the server
+  };
+
+  this.userService.patchUser(1, partialUpdate).subscribe(
+    (res: any) => {
+      console.log("Email Updated:", res);
+      alert("Email updated successfully!");
+    },
+    error => {
+      alert("Update failed!");
+      console.log("Error:", error);
+    }
+  );
+}
+```
+
+---
+
+####  DELETE — Remove a User
+> Use this when you want to **permanently remove** a record from the server.
+
+```typescript
+// Delete user with ID = 1
+deleteAccount(userId: number): void {
+  if (confirm("Are you sure you want to delete this account?")) {
+
+    this.userService.deleteUser(userId).subscribe(
+      (res: any) => {
+        console.log("User Deleted:", res);
+        alert("Account deleted successfully!");
+        // redirect or refresh the list
+      },
+      error => {
+        alert("Delete failed!");
+        console.log("Error:", error);
+      }
+    );
+
+  }
+}
+```
+
+---
+
+## PUT vs PATCH — Quick Comparison
 
 
+Existing record on server:
+{ id: 1, firstName: "John", lastName: "Doe", email: "john@mail.com", age: 25 }
+
+─────────────────────────────────────────────────────────────────────
+Using PUT — send only { firstName: "Jane" }
+Result  → { id: 1, firstName: "Jane", lastName: null, email: null, age: null }
+                                       ^^^^^^^^^^^^^ Other fields get wiped!
+
+─────────────────────────────────────────────────────────────────────
+Using PATCH — send only { firstName: "Jane" }
+Result  → { id: 1, firstName: "Jane", lastName: "Doe", email: "john@mail.com", age: 25 }
+                                       ^^^^^^^^^^^^^ Other fields are safe!
+─────────────────────────────────────────────────────────────────────
+
+Rule of Thumb:
+  => Use PUT   when submitting a full edit form (all fields present)
+  => Use PATCH when updating a single field (e.g., toggle status, change email)
 
 
+-----------------------------------------------------------------------------------------------------------------------------------
+
+## Summary:
+
+GET    → Read data      → .get(url)
+POST   → Create data    → .post(url, body)
+PUT    → Full update    → .put(url, body)
+PATCH  → Partial update → .patch(url, body)
+DELETE → Remove data    → .delete(url)
 
 
+All five methods follow the same pattern in Angular:
+**Service defines the call → Component calls the service → `.subscribe()` handles the response from server.**
