@@ -1,0 +1,152 @@
+Life Cycle Methods:
+
+=> Angular components have a lifecycle managed by Angular itself. 
+=> Angular creates the component, renders it, creates its children, checks it when data-bound properties change, and destroys it before removing it from the DOM.
+
+There are types of Life Cycle Methods:
+=> ngOnInit
+=> ngOnChanges
+=> ngOnDestroy
+=> ngDoCheck
+=> ngAfterContentInit
+=> ngAfterContentChecked
+=> ngAfterViewInit
+=> ngAfterViewChecked
+=> afterEveryRender and afterNextRender
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+=> Here, we majorly use only three methods ngOnInit, ngOnChanges, ngOnDestroy
+
+1. ngOnInit:
+=> This hook initializes the component after Angular has finished setting up the input properties.
+=> It runs only once during the component's lifetime. 
+
+When it runs: Right after the first ngOnChanges.
+Best use Case: Fetching data from a backend API or setting up initial component logic.
+
+Example:
+import { Component, OnInit } from '@angular/core';
+import { UserService } from './user.service';
+
+@Component({
+  selector: 'app-user-list',
+  template: `./user-list.html`
+})
+export class UserListComponent implements OnInit {
+  users: any[] = [];
+
+  constructor(private userService: UserService) {}
+
+  ngOnInit() {
+    // Ideal place to fetch API data
+    this.getUsersData();
+  }
+
+  getUsersData(){
+    this.userService.getUsers().subscribe(data => {
+      this.users = data;
+    });
+  }
+}
+
+Explanation:
+=> When component loaded on UI, getUsersData() method will be called then user data will be fetched.
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+2. ngOnChanges:
+=> This hook runs first and executes every time an @Input() data-bound property changes.
+=> It receives a SimpleChanges object containing the current and previous property values.
+
+When it runs: Before ngOnInit, and whenever an input property updates.
+Best use case: Resetting internal state when a parent component passes new data.
+
+
+Example:
+
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+
+@Component({
+  selector: 'app-user-profile',
+  template: `./user-profile.html`
+})
+export class UserProfileComponent implements OnChanges {
+  @Input() username!: string;
+
+  ngOnChanges(changes: SimpleChanges) {
+    console.log('Input changed!', changes);
+    // You can access changes['username'].currentValue
+    // You can access changes['username'].previousValue
+  }
+}
+
+// html code
+<p>Active User: {{ username }}</p>
+
+Explanation:
+=> when ever value changes, we can get current value, previous value and also first change.
+=> Mostly used in forms.
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+3. ngOnDestroy:
+=> This hook runs just before Angular destroys the component and removes it from the screen. 
+=> It runs only once. 
+
+When it runs: Right before the component is removed from the DOM.
+Best use case: Cleaning up to prevent memory leaks (unsubscribing from API call, stopping timers). 
+
+
+Example:
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { interval, Subscription } from 'rxjs';
+
+@Component({
+  selector: 'app-timer',
+  template: `./timer.html`
+})
+export class TimerComponent implements OnInit, OnDestroy {
+  seconds = 0;
+  private mySubscription!: Subscription;
+
+  ngOnInit() {
+    // Start a timer that ticks every second
+    this.mySubscription = interval(1000).subscribe(val => {
+      this.seconds = val;
+    });
+  }
+
+  ngOnDestroy() {
+    // Clean up the timer to prevent it from running forever in the background
+    this.mySubscription.unsubscribe();
+    console.log('Component destroyed and cleaned up!');
+  }
+}
+// html code
+<p>Seconds passed: {{ seconds }}</p>
+
+Explanation:
+=> this.mySubscription.unsubscribe(): This turns off the counter.
+=> Why it matters: If you do not call .unsubscribe(), the counter keeps running in your computer's memory forever, even though the component is gone. 
+=> This is called a memory leak and makes apps slow.
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+Quick Summary:
+ngOnChanges: Fires when @Input properties receive data.
+ngOnInit: Fires once after inputs are ready. Ideal for fetching data.
+ngOnDestroy: Fires once just before the component dies. Ideal for cleanup.

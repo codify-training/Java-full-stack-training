@@ -1,0 +1,419 @@
+Routing & Navigation in Angular
+
+What is Routing?
+
+=> Routing means **navigating between different pages (components)** in your Angular app —> without the browser actually reloading the page.
+=> Angular is a **Single Page Application (SPA)** — meaning there is only ONE html file (`index.html`), but Angular swaps components in and out to simulate page navigation.
+=> Think of it like changing TV channels — the TV (browser) stays the same, only the content (component) changes.
+
+```
+Without Routing:                With Routing:
+─────────────────               ─────────────────────────────────
+Only 1 page visible             /home      → HomeComponent
+No navigation possible          /about     → AboutComponent
+                                /users     → UsersListComponent
+                                /users/5   → UserDetailComponent (id = 5)
+```
+
+Steps to Implement Routing for Application:
+
+
+# Step 1 — Setup Routing in your App
+
+```typescript
+// app.routes.ts  ← Define all your routes here
+import { Routes } from '@angular/router';
+import { HomeComponent } from './home/home.component';
+import { AboutComponent } from './about/about.component';
+import { UsersListComponent } from './users-list/users-list.component';
+import { UserDetailComponent } from './user-detail/user-detail.component';
+import { NotFoundComponent } from './not-found/not-found.component';
+
+export const routes: Routes = [
+  { path: '',             component: HomeComponent },        // default page
+  { path: 'home',        component: HomeComponent },
+  { path: 'about',       component: AboutComponent },
+  { path: 'users',       component: UsersListComponent },
+  { path: 'users/:id',   component: UserDetailComponent },  // :id is a dynamic value
+  { path: '**',          component: NotFoundComponent },    // wildcard — catches unknown URLs
+];
+```
+
+```typescript
+// app.config.ts  ← Register the routes here
+=> Here, Routes configuartion will be added.
+
+import { ApplicationConfig } from '@angular/core';
+import { provideRouter } from '@angular/router';
+import { routes } from './app.routes';
+
+export const appConfig: ApplicationConfig = {
+  providers: [provideRouter(routes)]
+};
+
+
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+# Step 2 — Add the Router Outlet
+
+=> `<router-outlet>` is a **placeholder** in your HTML where Angular will load the matching component.
+=> Without this tag, routing is configured but nothing will display.
+
+```html
+<!-- app.html -->
+
+<nav>
+  <a routerLink="/home">Home</a>
+  <a routerLink="/about">About</a>
+  <a routerLink="/users">Users</a>
+</nav>
+
+=> from here, routing will be started for the application.
+<router-outlet></router-outlet>
+```
+
+```
+URL in browser          What renders inside <router-outlet>
+──────────────────────  ────────────────────────────────────
+/home                →  HomeComponent
+/about               →  AboutComponent
+/users               →  UsersListComponent
+/users/5             →  UserDetailComponent  (with id = 5)
+/anything-unknown    →  NotFoundComponent
+```
+
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+## Step 3 — Navigation Using routerLink (HTML Way)
+
+=> `routerLink` is used in HTML templates to navigate — just like `href` in plain HTML, but without page reload.
+
+```html
+<!-- Static Links — fixed path -->
+<a routerLink="/home">Go to Home</a>
+<a routerLink="/about">Go to About</a>
+<a routerLink="/users">View All Users</a>
+
+<!-- Dynamic Link — pass a variable as the ID -->
+<a [routerLink]="['/users', user.id]">View User {{ user.id }}</a>
+<!--             ^^^^^^^^^^^^^^^^^^^
+                 Square brackets = dynamic binding
+                 This generates:  /users/1, /users/2, etc.        -->
+
+<!-- routerLinkActive — adds a CSS class when this link is the active route -->
+<a routerLink="/home" routerLinkActive="active-link">Home</a>
+<a routerLink="/about" routerLinkActive="active-link">About</a>
+```
+
+```css
+/* styles.css */
+.active-link {
+  color: blue;
+  font-weight: bold;
+  border-bottom: 2px solid blue;
+}
+```
+
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+## Step 4 — Navigation from TypeScript (Programmatic Way)
+
+=> Use `Router` service when you want to navigate **after some logic runs** (e.g., after login, after form submit).
+=> 
+
+```typescript
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+
+@Component({ ... })
+export class LoginComponent {
+
+  constructor(private router: Router) { }
+
+  onLoginSuccess(): void {
+    // After login is successful, send user to dashboard
+    this.router.navigate(['/home']);
+  }
+
+  goToUserProfile(userId: number): void {
+    // Navigate to a specific user's page
+    this.router.navigate(['/users', userId]);
+    // Result: navigates to /users/5  (if userId = 5)
+  }
+
+  goBack(): void {
+    // Go back to users list
+    this.router.navigate(['/users']);
+  }
+
+}
+```
+
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+## Step 5 — Route Parameters ( :id )
+
+=> Route parameters are **dynamic values embedded inside the URL path**.
+=> Defined with a colon `:` in the route — example: `users/:id`
+
+```
+URL                   Parameter
+──────────────────    ────────────────
+/users/1          →   id = 1
+/users/42         →   id = 42
+/users/999        →   id = 999
+```
+
+### How to Read the `:id` in the Component
+
+```typescript
+// user-detail.component.ts
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';  // ← Key import
+import { UserService } from '../services/user.service';
+
+@Component({
+  selector: 'app-user-detail',
+  templateUrl: './user-detail.component.html'
+})
+export class UserDetailComponent implements OnInit {
+
+  userId!: number;
+  userDetails: any;
+
+  constructor(
+    private route: ActivatedRoute,   // ← Gives access to current route info
+    private userService: UserService
+  ) { }
+
+  ngOnInit(): void {
+
+    // ─── Method 1: snapshot (reads the ID only once on load) ───
+    this.userId = +this.route.snapshot.paramMap.get('id')!;
+    //            ^
+    //            + converts string "5" to number 5
+
+    console.log("User ID from URL:", this.userId);
+
+    // Use the ID to call the API
+    this.userService.getUserById(this.userId).subscribe(
+      (res: any) => {
+        this.userDetails = res;
+        console.log("User Data:", res);
+      },
+      error => {
+        console.log("Error fetching user:", error);
+      }
+    );
+
+    // ─── Method 2: subscribe (reacts if ID changes without leaving page) ───
+    this.route.paramMap.subscribe(params => {
+      this.userId = +params.get('id')!;
+      console.log("Updated User ID:", this.userId);
+      // Call API again with new ID if needed
+    });
+
+  }
+}
+```
+
+```html
+<!-- user-detail.component.html -->
+<div *ngIf="userDetails">
+  <h2>User Profile</h2>
+  <p>ID    : {{ userDetails.id }}</p>
+  <p>Name  : {{ userDetails.firstName }} {{ userDetails.lastName }}</p>
+  <p>Email : {{ userDetails.email }}</p>
+</div>
+```
+
+```
+snapshot  vs  subscribe
+──────────────────────────────────────────────────────────────────────
+snapshot     → Read ID once when page loads. Simple. Use for most cases.
+subscribe    → Watch for ID changes live (e.g. Next/Previous user buttons
+               on the same page without routing away). More reactive.
+```
+
+---
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+## Step 6 — Query Parameters ( ?key=value )
+
+=> Query parameters are **optional extra information** passed in the URL after a `?`
+=> They do NOT need to be defined in the routes file.
+=> Commonly used for **search, filters, pagination, sorting**.
+
+```
+URL Example:
+/users?page=2&search=john&sort=asc
+        ──────────────────────────
+        These are query parameters
+```
+
+### Sending Query Parameters
+
+```typescript
+// From TypeScript
+this.router.navigate(['/users'], {
+  queryParams: {
+    page: 2,
+    search: 'john',
+    sort: 'asc'
+  }
+});
+// Result URL: /users?page=2&search=john&sort=asc
+```
+
+```html
+<!-- From HTML template -->
+
+  routerLink="/users"
+  [queryParams]="{ page: 2, search: 'john' }"
+>
+  Page 2
+</a>
+```
+
+### Reading Query Parameters
+
+```typescript
+// users-list.component.ts
+import { ActivatedRoute } from '@angular/router';
+
+export class UsersListComponent implements OnInit {
+
+  currentPage!: number;
+  searchTerm!: string;
+
+  constructor(private route: ActivatedRoute) { }
+
+  ngOnInit(): void {
+
+    // ─── Method 1: snapshot (read once) ───
+    this.currentPage = +this.route.snapshot.queryParamMap.get('page')!;
+    this.searchTerm   =  this.route.snapshot.queryParamMap.get('search')!;
+
+    console.log("Page:", this.currentPage);    // 2
+    console.log("Search:", this.searchTerm);   // john
+
+    // ─── Method 2: subscribe (reacts to filter/page changes) ───
+    this.route.queryParamMap.subscribe(params => {
+      this.currentPage = +params.get('page')!;
+      this.searchTerm   =  params.get('search')!;
+      console.log("Filters changed — Page:", this.currentPage, "Search:", this.searchTerm);
+      // Re-fetch data based on new filters
+    });
+
+  }
+}
+```
+
+---
+
+Route Params vs Query Params — Key Difference
+
+```
+                  Route Param              Query Param
+──────────────────────────────────────────────────────────────────────
+Syntax in URL     /users/5                 /users?page=2&search=john
+Defined in        app.routes.ts (:id)      Not needed in routes file
+Required?         Yes — URL breaks         No — fully optional
+                  without it
+Best used for     Identifying a specific   Filters, search, sorting,
+                  resource (User ID,       pagination — extra options
+                  Product ID)
+Example           /products/101            /products?category=shoes
+                  (show product 101)       (filter by category)
+```
+
+---
+
+## Complete Real-World Flow Example
+
+```
+User opens /users
+  → UsersListComponent loads
+  → GET /api/users → shows list of users
+  → User clicks "View" on User #5
+
+URL changes to /users/5
+  → UserDetailComponent loads
+  → ActivatedRoute reads id = 5
+  → GET /api/users/5 → shows that user's profile
+  → User clicks "Edit"
+
+URL changes to /users/5/edit
+  → EditUserComponent loads
+  → Reads id = 5, pre-fills the form
+  → User submits → PATCH /api/users/5
+  → On success → router.navigate(['/users'])
+  → Back to users list 
+```
+
+---
+
+## Quick Reference Cheat Sheet
+
+```typescript
+// ── 1. Define Routes ──────────────────────────────
+{ path: 'users',      component: UsersListComponent  }
+{ path: 'users/:id',  component: UserDetailComponent }
+
+// ── 2. Navigate from HTML ─────────────────────────
+<a routerLink="/users">List</a>
+<a [routerLink]="['/users', user.id]">View</a>
+
+// ── 3. Navigate from TypeScript ───────────────────
+this.router.navigate(['/users']);
+this.router.navigate(['/users', userId]);
+this.router.navigate(['/users'], { queryParams: { page: 2 } });
+
+// ── 4. Read Route Param (:id) ─────────────────────
+this.route.snapshot.paramMap.get('id');      // once
+this.route.paramMap.subscribe(p => p.get('id')); // live
+
+// ── 5. Read Query Param (?page=2) ─────────────────
+this.route.snapshot.queryParamMap.get('page');        // once
+this.route.queryParamMap.subscribe(p => p.get('page')); // live
+```
+
+---
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Quick Summary:
+
+Concept           What it does
+──────────────────────────────────────────────────────────────────────
+routes array      Maps URL paths to components
+<router-outlet>   The slot where matched component is displayed
+routerLink        Navigate from HTML without page reload
+Router.navigate   Navigate from TypeScript after logic runs
+:id param         Dynamic value in the URL path  (/users/5)
+?key=value        Optional extra data in URL  (/users?page=2)
+ActivatedRoute    The service that lets you READ the current URL info
+snapshot          Read URL info once on load
+paramMap.subscribe  Watch for URL changes reactively
