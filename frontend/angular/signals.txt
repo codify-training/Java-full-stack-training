@@ -6,12 +6,12 @@ Signals in Angular:
 
 Here is a beginner-friendly guide to understanding and using Angular Signals.
 
-## The Three Core Concepts
+The Three Core Concepts
 Angular Signals rely on three main building blocks:
 
 * Signals: Writable values that hold data.
 * Computed Signals: Values derived from other signals (read-only).
-* Effects: Functions that run automatically whenever their dependent signals change. [5, 6, 7, 8, 9] 
+* Effects: Functions that run automatically whenever their dependent signals change. 
 
 
 
@@ -58,6 +58,7 @@ import { Component, signal } from '@angular/core';
 2. Computed Signals (Derived Data)
 => Sometimes you need a value that depends on another value.
 => Computed signals automatically recalculate only when the signals inside them change. 
+
 
 Ex:
 import { Component, signal, computed } from '@angular/core';
@@ -120,4 +121,4 @@ Why Signals are Better Than Old Angular State
 
 * No Zone.js reliance: Angular knows exactly which HTML element needs to change, making apps much faster.
 * Simple syntax: No complicated RxJS boilerplate (Observable, .pipe(), BehaviorSubject) is required for basic state tracking.
-* Guaranteed execution: Computed properties only recalculate when necessary, saving CPU power. [22, 23, 24, 25] 
+* Guaranteed execution: Computed properties only recalculate when necessary, saving CPU power. 
