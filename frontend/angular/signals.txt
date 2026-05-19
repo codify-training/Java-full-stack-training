@@ -1,0 +1,123 @@
+Signals in Angular:
+
+=> Signals are a way to manage state in Angular that automatically tracks where data is used and updates the screen when that data changes. 
+=> Think of them like Excel cells: if cell A1 changes, any cell that adds A1 + B1 updates instantly.
+
+
+Here is a beginner-friendly guide to understanding and using Angular Signals.
+
+## The Three Core Concepts
+Angular Signals rely on three main building blocks:
+
+* Signals: Writable values that hold data.
+* Computed Signals: Values derived from other signals (read-only).
+* Effects: Functions that run automatically whenever their dependent signals change. [5, 6, 7, 8, 9] 
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+1. Writable Signals (The Data Source) 
+=> A writable signal holds a value that you can directly read and update.
+
+
+EX:
+import { Component, signal } from '@angular/core';
+
+@Component({
+  selector: 'app-counter',
+  template: `
+    <!-- Read a signal by calling it like a function () -->
+    <p>Current Count: {{ count() }}</p> 
+    <button (click)="increment()">Add 1</button>
+    <button (click)="reset()">Reset</button>
+  `
+})export class CounterComponent {
+  // Initialize a signal with a starting value of 0
+  count = signal(0);
+
+  increment() {
+    // Use .update() to change the value based on the current value
+    this.count.update(current => current + 1);
+  }
+
+  reset() {
+    // Use .set() to force a brand new value
+    this.count.set(0);
+  }
+}
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+2. Computed Signals (Derived Data)
+=> Sometimes you need a value that depends on another value.
+=> Computed signals automatically recalculate only when the signals inside them change. 
+
+Ex:
+import { Component, signal, computed } from '@angular/core';
+
+@Component({
+  selector: 'app-shopping',
+  template: `
+    <p>Price: ${{ price() }}</p>
+    <p>Total for 3 items: ${{ total() }}</p>
+    <button (click)="changePrice()">Change Price</button>
+  `
+})export class ShoppingComponent {
+  price = signal(10);
+  
+  // This automatically updates whenever 'price' changes
+  total = computed(() => this.price() * 3);
+
+  changePrice() {
+    this.price.set(20); // 'total' will instantly become 60
+  }
+}
+
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+ 3. Effects (Side Effects)
+=> An effect is an operation that runs at least once and then re-runs whenever any signal read inside it changes. 
+=> Use effects for logging, syncing with local storage, or calling external APIs. 
+
+Ex:
+import { Component, signal, effect } from '@angular/core';
+
+@Component({
+  selector: 'app-logger',
+  template: `<button (click)="toggle()">Toggle Log</button>`
+})export class LoggerComponent {
+  isLoggedIn = signal(false);
+
+  constructor() {
+    // Effects must be created inside a constructor context
+    effect(() => {
+      console.log(`The user login status is now: ${this.isLoggedIn()}`);
+    });
+  }
+
+  toggle() {
+    this.isLoggedIn.update(status => !status);
+  }
+}
+
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+Why Signals are Better Than Old Angular State
+
+* No Zone.js reliance: Angular knows exactly which HTML element needs to change, making apps much faster.
+* Simple syntax: No complicated RxJS boilerplate (Observable, .pipe(), BehaviorSubject) is required for basic state tracking.
+* Guaranteed execution: Computed properties only recalculate when necessary, saving CPU power. [22, 23, 24, 25] 

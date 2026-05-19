@@ -53,7 +53,7 @@ export class Signin implements OnInit, OnDestroy {
 
     const payload = {
       email: this.email,
-      password: this.password
+      password: this.password,
     }
     if (signinForm.valid) {
       console.log('Sign in data', payload);
