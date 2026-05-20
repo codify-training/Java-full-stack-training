@@ -1,0 +1,96 @@
+To install and use Angular Material, you need to set up the package, import the components, and invoke them in your code. [1, 2] 
+Here is the step-by-step guide to installing Angular Material and creating a popup dialog box.
+
+
+## 1. Install Angular Material
+=> Run the official schematic command in your project terminal.
+=> This command installs Angular Material, Component Dev Kit (CDK), and animations. 
+
+command: ng add @angular/material
+
+During installation, the command-line interface will prompt you to choose: 
+=> themes : rose & red, azure & blue, cyan & orange, Magenta & violet, 
+
+* Theme: Select a pre-built color theme or custom setup.
+
+--------------------------------------------------------------------------------------------------------------------------------------
+
+
+## 2. Dialog Box Implementation with Angular Material
+
+=> Angular Material Dialogs require two parts: a trigger mechanism and a component that acts as the dialog content.
+
+## Step A: Create the Dialog Content Component
+=> Generate a new component that will serve as the template inside your popup window.
+
+ng generate component my-dialog
+
+=> Open my-dialog.component.html and add the Material design structure:
+
+// html code
+<h2 mat-dialog-title>Confirm Action</h2>
+<mat-dialog-content>
+  <p>Are you sure you want to delete this item permanently?</p>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button [mat-dialog-close]="false">Cancel</button>
+  <button mat-raised-button color="warn" [mat-dialog-close]="true">Delete</button>
+</mat-dialog-actions>
+
+=> Open my-dialog.component.ts and ensure your imports are configured for standalone components
+
+import { Component } from '@angular/core';import { MatDialogModule } from '@angular/material/dialog';import { MatButtonModule } from '@angular/material/button';
+
+@Component({
+  selector: 'app-my-dialog',
+  standalone: true,
+  imports: [MatDialogModule, MatButtonModule],
+  templateUrl: './my-dialog.component.html'
+})export class MyDialogComponent {}
+
+## Step B: Trigger the Dialog from a Parent Component 
+Now, configure the main app component (or any parent component) to open this popup.
+Open your parent component file app.component.ts and inject MatDialog: 
+
+import { Component } from '@angular/core';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
+import { MyDialogComponent } from './my-dialog/my-dialog.component';
+
+@Component({
+  selector: 'app-root',
+  standalone: true,
+  imports: [MatButtonModule, MatDialogModule],
+  templateUrl: './app.component.html'
+})export class AppComponent {
+  // Inject the MatDialog service via constructor
+  constructor(private dialog: MatDialog) {}
+
+  openConfirmationDialog() {
+    // Open the dialog window
+    const dialogRef = this.dialog.open(MyDialogComponent, {
+      width: '400px',
+      disableClose: true // Prevents closing by clicking outside
+    });
+
+    // Handle data returned from the dialog actions
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`); 
+      if (result === true) {
+        // Execute your delete logic here
+      }
+    });
+  }
+}
+
+Open parent.html and add a button to trigger the function: 
+
+<div style="padding: 20px;">
+  <h1>Angular Material Dialog Example</h1>
+  <button mat-raised-button color="primary" (click)="openConfirmationDialog()">
+    Open Dialog Box
+  </button>
+</div>
+
+
+

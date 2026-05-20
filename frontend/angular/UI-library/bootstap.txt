@@ -1,0 +1,115 @@
+Bootstrap Installation and Configuration for Angular
+
+1. Install Bootstrap
+
+- Open a terminal in your Angular app folder .
+- Install Bootstrap via npm:
+  
+  => npm install bootstrap
+  
+
+2. Add Bootstrap CSS to `angular.json`
+
+- Open `angular.json` in your Angular project root.
+- Find the build options for your app under `projects -> <app-name> -> architect -> build -> options`.
+- Add the Bootstrap CSS file to the `styles` array:
+  ```json
+  "styles": [
+    "src/styles.css",
+    "node_modules/bootstrap/dist/css/bootstrap.min.css"
+  ]
+  ```
+
+- If your app uses SCSS, add it to `src/styles.scss` instead of `src/styles.css` and update the path accordingly.
+
+3. Add Bootstrap JS 
+
+- Bootstrap JavaScript is only needed for interactive Bootstrap components such as modals, dropdowns, tooltips, and popovers.
+- Add both Bootstrap JS and Popper to the `scripts` array in the same `angular.json` section:
+  ```json
+  "scripts": [
+    "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+  ]
+  ```
+- The `bootstrap.bundle.min.js` file already includes Popper.
+
+4. Use Bootstrap classes in Angular templates
+
+- After installing and configuring, use Bootstrap CSS classes directly in component HTML files.
+- Example:
+  ```html
+  <div class="container mt-4">
+    <h1 class="display-5">Hello Bootstrap</h1>
+    <button class="btn btn-primary">Primary Button</button>
+  </div>
+  ```
+
+
+
+5. Verify the setup
+
+- Restart the Angular development server if it is already running.
+- Run:
+  ng serve/ npm start
+  
+- Open the app in the browser and confirm Bootstrap styling appears.
+
+
+-----------------------------------------------------------------------------------------------------------------------------------
+
+
+8. Bootstrap component usage examples
+
+Alert messages
+
+- Use the `alert` class and contextual classes such as `alert-primary`, `alert-success`, `alert-danger`, and `alert-warning`.
+- Example:
+  ```html
+  <div class="alert alert-success" role="alert">
+    Success! Your action was completed successfully.
+  </div>
+
+  <div class="alert alert-warning" role="alert">
+    Warning! Check your input and try again.
+  </div>
+  ```
+
+Buttons
+
+- Bootstrap buttons use the `btn` class plus a variant like `btn-primary`, `btn-secondary`, `btn-success`, `btn-danger`, and `btn-link`.
+- Example:
+  ```html
+  <button type="button" class="btn btn-primary">Primary</button>
+  <button type="button" class="btn btn-secondary">Secondary</button>
+  <button type="button" class="btn btn-success">Success</button>
+  <button type="button" class="btn btn-danger">Danger</button>
+  <button type="button" class="btn btn-outline-primary">Outline Primary</button>
+  ```
+
+Badges
+
+- Badges are inline counters and labels using `badge` and contextual classes.
+- Example:
+  ```html
+  <h1>Notifications <span class="badge bg-primary">4</span></h1>
+  <button type="button" class="btn btn-info">
+    Messages <span class="badge bg-light text-dark">12</span>
+  </button>
+  ```
+
+Cards
+
+- Cards provide flexible content containers.
+- Example:
+  ```html
+  <div class="card" style="width: 18rem;">
+    <img src="https://via.placeholder.com/286x180" class="card-img-top" alt="Sample image">
+    <div class="card-body">
+      <h5 class="card-title">Card title</h5>
+      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
+  </div>
+  ```
+
+

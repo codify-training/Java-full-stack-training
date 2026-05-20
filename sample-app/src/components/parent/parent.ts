@@ -1,18 +1,25 @@
-import { Component, computed, effect, OnDestroy, OnInit, signal } from '@angular/core';
+import { Component, computed, effect, inject, OnDestroy, OnInit, signal } from '@angular/core';
 import { Child } from "../child/child";
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { SigninService } from '../../service/signin-service';
 import { Subscription } from 'rxjs/internal/Subscription';
 import { CommonModule } from '@angular/common';
+import { MatButtonModule } from '@angular/material/button';
+import {
+  MatDialog,
+  MatDialogModule,
+} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-parent',
-  imports: [CommonModule],
+  imports: [CommonModule, MatButtonModule, MatDialogModule,],
   templateUrl: './parent.html',
   styleUrl: './parent.css',
 })
 export class Parent implements OnInit, OnDestroy {
+
+  dialog = inject(MatDialog);
 
   clickCount = signal(0);
 
@@ -26,8 +33,6 @@ export class Parent implements OnInit, OnDestroy {
 
   total = computed(() => this.price() * 2);
 
-  
-
 
   changePrice() {
     this.price.set(5);
@@ -39,7 +44,7 @@ export class Parent implements OnInit, OnDestroy {
 
   readonly booleanSignal = signal(true);
   isLoggedIn: boolean = true;
- 
+
   loggedIn = signal(false);
 
 
@@ -112,6 +117,14 @@ export class Parent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     // it will prevents memory leaks and also wont make unwanted API calls 
     this.dataSubscription?.unsubscribe();
+  }
+
+  openDialog(): void {
+    this.dialog.open(Child, {
+      // height:"500px",
+      // width:"800px",
+      data: { name: "naveenn" },
+    });
   }
 
 }
