@@ -38,6 +38,16 @@ export class Parent implements OnInit, OnDestroy {
     this.price.set(5);
   }
 
+  ELEMENT_DATA:any[]= [
+  {id: 1, name: 'Hydrogen', amount: 10079, accNum: 'H'},
+  {id: 2, name: 'Helium', amount: 40026, accNum: 'He'},
+  {id: 3, name: 'Lithium', amount: 6941, accNum: 'Li'},
+  {id: 4, name: 'Beryllium', amount: 90122, accNum: 'Be'},
+  {id: 5, name: 'Boron', amount: 10811, accNum: 'B'},
+  {id: 6, name: 'Carbon', amount: 120107, accNum: 'C'},
+  
+];
+
 
   dummyList = signal([]);
   objectSignal = signal({});
@@ -119,11 +129,11 @@ export class Parent implements OnInit, OnDestroy {
     this.dataSubscription?.unsubscribe();
   }
 
-  openDialog(): void {
+  openDialog(rowData:any,type:string): void {
     this.dialog.open(Child, {
       // height:"500px",
       // width:"800px",
-      data: { name: "naveenn" },
+      data: { rowData:rowData, type: type },
     });
   }
 

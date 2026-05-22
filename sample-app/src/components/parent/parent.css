@@ -4,3 +4,9 @@
     flex-wrap: wrap;
     gap: 20px;
 }
+
+.gradient-color{
+    background: radial-gradient(rgb(214, 214, 10),rgb(11, 11, 190));
+    
+}
+
